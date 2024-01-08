@@ -11,7 +11,7 @@ const ProductResult = ({ product }: ProductResultProps): ReactElement => {
       <div className='max-w-20'>
         <img className='rounded' src={product.img} alt={product.title} />
       </div>
-      <div className='flex-col'>
+      <div className='flex flex-col text-end'>
         <p className='text-lg mb-2.5'>{product.title}</p>
         <p className='text-base font-medium'>
           {new Intl.NumberFormat("en-US", {
