@@ -1,4 +1,5 @@
 import cartIcon from "../../../../assets/cart.svg";
+import ButtonIndex from "../../../buttons/ButtonIndex";
 
 // AGREGAR LINK O NAVLINK DE REACT ROUTER DOM
 
@@ -8,9 +9,10 @@ import cartIcon from "../../../../assets/cart.svg";
 const CartWidget = () => {
   return (
     <div>
-      <a href='#'>
-        <img src={cartIcon} alt='Cart icon' />
-      </a>
+      <ButtonIndex.CartWidgetBtn
+        handleClick={() => console.log("CART")}
+        icon={cartIcon}
+      />
     </div>
   );
 };
