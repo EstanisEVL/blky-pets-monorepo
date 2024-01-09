@@ -2,11 +2,11 @@ import { useState } from "react";
 import { createPortal } from "react-dom";
 import ButtonIndex from "../buttons/ButtonIndex";
 
-type ModalPropsType = {
+type MobileModalPropsType = {
   onBackdropClick: () => void;
 };
 
-const Modal = ({ onBackdropClick }: ModalPropsType) => {
+const MobileModal = ({ onBackdropClick }: MobileModalPropsType) => {
   const [content, setContent] = useState("");
 
   const handleAdminLogin = () => {
@@ -17,18 +17,16 @@ const Modal = ({ onBackdropClick }: ModalPropsType) => {
     setContent("user");
   };
 
-  // PASAR RENDERS A OTROS COMPONENTES,
-  // QUE ACÁ SÓLO QUEDE LA LÓGICA
   return createPortal(
     <div
       onClick={onBackdropClick}
-      className='bg-black/[.8] fixed flex justify-center items-center h-full w-full top-0 left-0 z-20'
+      className='bg-black/[.8] fixed flex justify-center items-end h-full w-full top-0 left-0 z-20'
     >
       <div
         onClick={(e) => e.stopPropagation()}
-        className='bg-white rounded select-none w-1/2 h-1/2 flex flex-col items-center justify-center relative'
+        className='bg-white rounded select-none w-full h-2/3 flex flex-col items-center justify-center relative'
       >
-        <div className='absolute top-0 right-0 m-4'>
+        <div className='absolute top-0 mt-10'>
           <ButtonIndex.CloseBtn handleClick={onBackdropClick} icon={"X"} />
         </div>
 
@@ -57,4 +55,4 @@ const Modal = ({ onBackdropClick }: ModalPropsType) => {
   );
 };
 
-export default Modal;
+export default MobileModal;
