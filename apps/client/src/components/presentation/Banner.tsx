@@ -1,12 +1,12 @@
-interface Props {
+type BannerPropsType = {
   height: string;
   fsize: string;
   text: string;
   color: string;
   bgColor: string;
-}
+};
 
-const Banner = ({ height, fsize, text, color, bgColor }: Props) => {
+const Banner = ({ height, fsize, text, color, bgColor }: BannerPropsType) => {
   return (
     <section
       className={`w-full ${height} font-semibold flex justify-center items-center ${bgColor} ${color}`}

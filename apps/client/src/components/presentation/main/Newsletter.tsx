@@ -1,3 +1,4 @@
+import ButtonIndex from "../../buttons/ButtonIndex";
 // AGREGAR FUNCIONAMIENTO Y PASAR LOS COMPONENTES DE PRESENTACIÓN A SUBCOMPONENTES
 
 const Newsletter = () => {
@@ -20,13 +21,8 @@ const Newsletter = () => {
               className='pl-4 w-96 border border-gray-500 rounded min-h-14 outline-none text-base'
             />
           </div>
-          <div className='flex justify-center'>
-            <button
-              className='w-36 h-9 mt-12 border border-gray-500 text-base uppercase'
-              type='submit'
-            >
-              {"sign up"}
-            </button>
+          <div className='flex justify-center mt-12'>
+            <ButtonIndex.ShowMoreBtn text={"sign up"} />
           </div>
         </form>
       </div>

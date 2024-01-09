@@ -1,4 +1,5 @@
 import bigBannerImg from "../../../assets/big-banner.jpg";
+import ButtonIndex from "../../buttons/ButtonIndex";
 
 // SIMPLIFICAR CANTIDAD DE COMPONENTES DE PRESENTACIÓN Y HACERLO REUTILIZABLE
 
@@ -12,9 +13,7 @@ const BigImgBanner = () => {
           <p className='uppercase text-lg'>{"new print"}</p>
         </div>
         <div className='flex justify-center'>
-          <button className='w-32 h-9 uppercase text-base font-kanit bg-zinc-900 text-white'>
-            {"shop now"}
-          </button>
+          <ButtonIndex.BigBannerBtn text={"shop now"} />
         </div>
       </div>
     </div>

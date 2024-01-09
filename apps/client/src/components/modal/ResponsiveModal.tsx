@@ -1,19 +1,24 @@
 import MediaQuery from "react-responsive";
 import DesktopModal from "./DesktopModal";
 import MobileModal from "./MobileModal";
+import { ReactNode } from "react";
 
 type ResponsiveModalPropsType = {
+  content?: ReactNode;
   onBackdropClick: () => void;
 };
 
-const ResponsiveModal = ({ onBackdropClick }: ResponsiveModalPropsType) => {
+const ResponsiveModal = ({
+  content,
+  onBackdropClick,
+}: ResponsiveModalPropsType) => {
   return (
     <MediaQuery minWidth={580}>
       {(matches) =>
         matches ? (
-          <DesktopModal onBackdropClick={onBackdropClick} />
+          <DesktopModal content={content} onBackdropClick={onBackdropClick} />
         ) : (
-          <MobileModal onBackdropClick={onBackdropClick} />
+          <MobileModal content={content} onBackdropClick={onBackdropClick} />
         )
       }
     </MediaQuery>

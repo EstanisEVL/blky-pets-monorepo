@@ -2,6 +2,7 @@ import { ReactElement, useState } from "react";
 import loginIcon from "../../../../assets/login.svg";
 import BaseModalWrapper from "../../../modal/BaseModalWrapper";
 import ButtonIndex from "../../../buttons/ButtonIndex";
+import LoginMode from "../../../presentation/header/navbar/LoginMode";
 
 const Login = (): ReactElement => {
   const [open, setOpen] = useState(false);
@@ -13,7 +14,11 @@ const Login = (): ReactElement => {
   return (
     <div>
       <ButtonIndex.LoginBtn handleClick={toggleModal} icon={loginIcon} />
-      <BaseModalWrapper isVisible={open} onBackdropClick={toggleModal} />
+      <BaseModalWrapper
+        isVisible={open}
+        onBackdropClick={toggleModal}
+        content={<LoginMode />}
+      />
     </div>
   );
 };

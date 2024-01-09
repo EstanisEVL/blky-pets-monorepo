@@ -1,24 +1,14 @@
-import { useState } from "react";
+import { ReactNode } from "react";
 import { createPortal } from "react-dom";
 import ButtonIndex from "../buttons/ButtonIndex";
 
 type DesktopModalPropsType = {
+  content?: ReactNode;
   onBackdropClick: () => void;
 };
 
-const DesktopModal = ({ onBackdropClick }: DesktopModalPropsType) => {
-  const [content, setContent] = useState("");
-
-  const handleAdminLogin = () => {
-    setContent("admin");
-  };
-
-  const handleUserLogin = () => {
-    setContent("user");
-  };
-
+const DesktopModal = ({ content, onBackdropClick }: DesktopModalPropsType) => {
   // PASAR RENDERS A OTROS COMPONENTES, AGREGAR BOTÓN CERRAR AL ÍNDICE DE BOTONES
-  // QUE ACÁ SÓLO QUEDE LA LÓGICA
   return createPortal(
     <div
       onClick={onBackdropClick}
@@ -32,24 +22,8 @@ const DesktopModal = ({ onBackdropClick }: DesktopModalPropsType) => {
           <ButtonIndex.CloseBtn handleClick={onBackdropClick} icon={"X"} />
         </div>
 
-        <div>
-          <ButtonIndex.LoginModalBtn
-            handleClick={handleAdminLogin}
-            text={"admin login"}
-          />
-
-          <ButtonIndex.LoginModalBtn
-            handleClick={handleUserLogin}
-            text={"user login"}
-          />
-        </div>
-
-        <div>
-          {content && content.toLowerCase() === "user" ? (
-            <h3>User Login</h3>
-          ) : (
-            <h3>Admin Login</h3>
-          )}
+        <div className='w-full h-full flex justify-center items-center'>
+          {content}
         </div>
       </div>
     </div>,

@@ -1,7 +1,7 @@
 import useProducts from "../../../hooks/useProducts";
 import { Product } from "../../../interfaces/product.interface";
+import ButtonIndex from "../../buttons/ButtonIndex";
 import ProductCard from "../../presentation/main/ProductCard";
-import ShowMoreBtn from "../../presentation/main/ShowMoreBtn";
 import StoreFilters from "../../presentation/main/StoreFilters";
 import StoreTitle from "../../presentation/main/StoreTitle";
 
@@ -22,7 +22,7 @@ const Store = () => {
       </div>
 
       <div className='text-center my-8'>
-        <ShowMoreBtn text={"show more"} />
+        <ButtonIndex.ShowMoreBtn text={"show more"} />
       </div>
     </section>
   );

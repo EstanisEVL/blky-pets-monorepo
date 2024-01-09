@@ -1,3 +1,5 @@
+import ButtonIndex from "../../buttons/ButtonIndex";
+
 type HeroProps = {
   img: string;
   h1Text: string;
@@ -13,9 +15,7 @@ const Hero = ({ img, h1Text, pText, btnText }: HeroProps) => {
         <div className='flex-col text-center uppercase'>
           <h1 className='text-3xl text-black '>{h1Text}</h1>
           <p className='text-lg mb-6'>{pText}</p>
-          <button className='w-28 h-9 border border-gray-500 text-base uppercase'>
-            {btnText}
-          </button>
+          <ButtonIndex.HeroBtn text={btnText} />
         </div>
       </div>
     </div>

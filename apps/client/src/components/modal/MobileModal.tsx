@@ -1,22 +1,13 @@
-import { useState } from "react";
+import { ReactNode } from "react";
 import { createPortal } from "react-dom";
 import ButtonIndex from "../buttons/ButtonIndex";
 
 type MobileModalPropsType = {
+  content?: ReactNode;
   onBackdropClick: () => void;
 };
 
-const MobileModal = ({ onBackdropClick }: MobileModalPropsType) => {
-  const [content, setContent] = useState("");
-
-  const handleAdminLogin = () => {
-    setContent("admin");
-  };
-
-  const handleUserLogin = () => {
-    setContent("user");
-  };
-
+const MobileModal = ({ content, onBackdropClick }: MobileModalPropsType) => {
   return createPortal(
     <div
       onClick={onBackdropClick}
@@ -30,25 +21,7 @@ const MobileModal = ({ onBackdropClick }: MobileModalPropsType) => {
           <ButtonIndex.CloseBtn handleClick={onBackdropClick} icon={"X"} />
         </div>
 
-        <div>
-          <ButtonIndex.LoginModalBtn
-            handleClick={handleAdminLogin}
-            text={"admin login"}
-          />
-
-          <ButtonIndex.LoginModalBtn
-            handleClick={handleUserLogin}
-            text={"user login"}
-          />
-        </div>
-
-        <div>
-          {content && content.toLowerCase() === "user" ? (
-            <h3>User Login</h3>
-          ) : (
-            <h3>Admin Login</h3>
-          )}
-        </div>
+        <div>{content}</div>
       </div>
     </div>,
     document.getElementById("modal-root")!
