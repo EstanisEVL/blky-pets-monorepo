@@ -1,9 +1,11 @@
-import { useState } from "react";
+import { ReactElement, useState } from "react";
 import ButtonIndex from "../../../buttons/ButtonIndex";
 import AdminLoginForm from "../../../forms/AdminLoginForm";
 import UserLoginForm from "../../../forms/UserLoginForm";
+import UserSignupForm from "../../../forms/UserSignupForm";
+import UserPwdRecoveryForm from "../../../forms/UserPwdRecoveryForm";
 
-const LoginMode = () => {
+const LoginMode = (): ReactElement => {
   const INIT_STATE = "user";
   const [loginMode, setLoginMode] = useState(INIT_STATE);
 
@@ -13,6 +15,14 @@ const LoginMode = () => {
 
   const handleUserLogin = () => {
     setLoginMode("user");
+  };
+
+  const handleUserSignup = () => {
+    setLoginMode("sign-up");
+  };
+
+  const handleUserPwdRecovery = () => {
+    setLoginMode("pwd-recovery");
   };
 
   return (
@@ -30,9 +40,23 @@ const LoginMode = () => {
         />
       </div>
 
-      {/* pasarle el loginMode al userloginform o cambiar a componente register al hacer click en el link? */}
       <div className='flex flex-col justify-center items-center grow'>
-        {loginMode === "admin" ? <AdminLoginForm /> : <UserLoginForm />}
+        {loginMode === "admin" && <AdminLoginForm />}
+        {loginMode === "user" && (
+          <UserLoginForm
+            handleUserSignup={handleUserSignup}
+            handleUserPwdRecovery={handleUserPwdRecovery}
+          />
+        )}
+        {loginMode === "sign-up" && (
+          <UserSignupForm handleUserLogin={handleUserLogin} />
+        )}
+        {loginMode === "pwd-recovery" && (
+          <UserPwdRecoveryForm
+            handleUserLogin={handleUserLogin}
+            handleUserSignup={handleUserSignup}
+          />
+        )}
       </div>
     </div>
   );

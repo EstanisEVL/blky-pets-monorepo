@@ -11,12 +11,14 @@ const AdminLoginForm = () => {
           <FormInput
             label={"Correo electrónico:"}
             input={"email"}
+            id={"email"}
             text={"Ingresa tu correo electrónico"}
             isRequired={true}
           />
           <FormInput
             label={"Contraseña:"}
             input={"password"}
+            id={"password"}
             text={"Ingresa tu contraseña"}
             isRequired={true}
           />

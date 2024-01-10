@@ -1,10 +1,17 @@
+import { ReactEventHandler } from "react";
 import ButtonIndex from "../buttons/ButtonIndex";
 import FormInput from "./inputs/FormInput";
 import FormLink from "./links/FormLink";
 
-const UserLoginForm = () => {
-  // COMPLETAR EL PROCESO DE LOGIN Y LUEGO VER SI SE MANTIENE EL REGISTRO Y LA RECUPERACIÓN DE CONTRASEÑA
-  // AGREGAR COMPONENTES LINKS (QUE ALTERAN EL LOGIN STATUS?)
+type UserLoginFormPropsType = {
+  handleUserSignup: ReactEventHandler;
+  handleUserPwdRecovery: ReactEventHandler;
+};
+
+const UserLoginForm = ({
+  handleUserSignup,
+  handleUserPwdRecovery,
+}: UserLoginFormPropsType) => {
   const API_URL: string = "http://localhost:8080/api";
 
   return (
@@ -14,26 +21,16 @@ const UserLoginForm = () => {
           <FormInput
             label={"Correo electrónico:"}
             input={"email"}
+            id={"email"}
             text={"Ingresa tu correo electrónico..."}
             isRequired={true}
           />
           <FormInput
             label={"Contraseña:"}
             input={"password"}
+            id={"password"}
             text={"Ingresa tu contraseña..."}
             isRequired={true}
-          />
-        </div>
-        <div className='flex flex-col gap-2 mt-6'>
-          <FormLink
-            pText={"¿No estás registrado? Registrate haciendo "}
-            aText={"click aquí"}
-            href={"#"}
-          />
-          <FormLink
-            pText={"¿Olvidaste tu contraseña? Genera una nueva haciendo "}
-            aText={"click aquí"}
-            href={"#"}
           />
         </div>
 
@@ -41,6 +38,18 @@ const UserLoginForm = () => {
           <ButtonIndex.EnterBtn text={"Ingresar"} />
         </div>
       </form>
+      <div className='flex flex-col gap-2 mt-6'>
+        <FormLink
+          text={"¿No estás registrado? Registrate haciendo "}
+          btnText={"click aquí"}
+          handleClick={handleUserSignup}
+        />
+        <FormLink
+          text={"¿Olvidaste tu contraseña? Genera una nueva haciendo "}
+          btnText={"click aquí"}
+          handleClick={handleUserPwdRecovery}
+        />
+      </div>
     </div>
   );
 };

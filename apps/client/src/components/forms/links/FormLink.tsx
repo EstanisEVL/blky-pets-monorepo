@@ -1,21 +1,25 @@
-import { ReactElement } from "react";
+import { ReactElement, ReactEventHandler } from "react";
 
 type FormLinkPropsType = {
-  pText: string;
-  aText: string;
-  href: string;
+  text: string;
+  btnText: string;
+  handleClick?: ReactEventHandler;
 };
 
-const FormLink = ({ pText, aText, href }: FormLinkPropsType): ReactElement => {
+const FormLink = ({
+  text,
+  btnText,
+  handleClick,
+}: FormLinkPropsType): ReactElement => {
   return (
     <div>
       <p className='font-kanit text-gray-500'>
-        {pText}
-        <a href={href}>
+        {text}
+        <button onClick={handleClick}>
           <span className='font-bold underline hover:text-green-600 hover:decoration-green-600 transition duration-500'>
-            {aText}
+            {btnText}
           </span>
-        </a>
+        </button>
         .
       </p>
     </div>
