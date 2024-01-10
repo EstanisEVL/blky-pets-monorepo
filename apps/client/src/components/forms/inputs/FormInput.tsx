@@ -14,15 +14,15 @@ const FormInput = ({
   isRequired,
 }: FormInputPropsType): ReactElement => {
   return (
-    <div className='flex gap-2 my-2'>
-      <label className='uppercase'>{label}</label>
+    <div className='flex items-center gap-2 my-2 font-kanit'>
+      <label className='uppercase text-xl'>{label}</label>
       <input
         type={input}
         name={input}
         id={input}
         placeholder={text}
         required={isRequired}
-        className='outline-none'
+        className='h-12 outline-none grow ps-2 bg-gray-200 rounded'
       />
     </div>
   );

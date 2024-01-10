@@ -9,7 +9,7 @@ type FormLinkPropsType = {
 const FormLink = ({ pText, aText, href }: FormLinkPropsType): ReactElement => {
   return (
     <div>
-      <p>
+      <p className='font-kanit text-gray-500'>
         {pText}
         <a href={href}>
           <span className='font-bold underline hover:text-green-600 hover:decoration-green-600 transition duration-500'>

@@ -6,6 +6,7 @@ import UserLoginForm from "../../../forms/UserLoginForm";
 const LoginMode = () => {
   const INIT_STATE = "user";
   const [loginMode, setLoginMode] = useState(INIT_STATE);
+
   const handleAdminLogin = () => {
     setLoginMode("admin");
   };
@@ -13,16 +14,19 @@ const LoginMode = () => {
   const handleUserLogin = () => {
     setLoginMode("user");
   };
+
   return (
     <div className='w-full h-full p-4 flex flex-col'>
-      <div className='flex gap-10 mb-6'>
+      <div className='flex gap-10 mb-6 max-w-lg'>
         <ButtonIndex.LoginModalBtn
           handleClick={handleAdminLogin}
-          text={"admin login"}
+          text={"admin"}
+          active={loginMode === "admin" ? true : false}
         />
         <ButtonIndex.LoginModalBtn
           handleClick={handleUserLogin}
-          text={"user login"}
+          text={"user"}
+          active={loginMode === "user" ? true : false}
         />
       </div>
 

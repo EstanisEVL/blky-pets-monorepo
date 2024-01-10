@@ -16,6 +16,7 @@ type CartWidgetBtnPropsType = {
 type LoginModalBtnPropsType = {
   handleClick: () => void;
   text: string;
+  active: boolean;
 };
 
 type CloseBtnPropsType = {
@@ -62,11 +63,16 @@ const ButtonIndex = {
   LoginModalBtn: ({
     handleClick,
     text,
+    active,
   }: LoginModalBtnPropsType): ReactElement => {
     return (
       // Acá se retorna el componente
       <button
-        className='uppercase text-gray-500 hover:text-black transition duration-500'
+        className={`font-kanit uppercase w-full h-12 rounded hover:border-b-black hover:text-black transition duration-500 ${
+          active
+            ? "bg-white text-black"
+            : "bg-gray-200 text-gray-500 border-b-4"
+        }`}
         onClick={handleClick}
       >
         {text}
