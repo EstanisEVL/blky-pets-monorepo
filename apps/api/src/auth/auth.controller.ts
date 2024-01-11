@@ -68,7 +68,7 @@ export class AuthController {
     } catch (err) {
       // agregar logger
       if (err.status === HttpStatus.BAD_REQUEST)
-        throw new BadRequestException(err.response.error);
+        throw new BadRequestException(err.response.message);
 
       throw new InternalServerErrorException(`${err}`);
     }
@@ -175,10 +175,10 @@ export class AuthController {
     } catch (err) {
       // agregar logger
       if (err.status === HttpStatus.NOT_FOUND)
-        throw new NotFoundException(err.response.error);
+        throw new NotFoundException(err.response.message);
 
       if (err.status === HttpStatus.BAD_REQUEST)
-        throw new BadRequestException(err.response.error);
+        throw new BadRequestException(err.response.message);
 
       throw new InternalServerErrorException(`${err}`);
     }
@@ -195,9 +195,9 @@ export class AuthController {
     } catch (err) {
       // agregar logger
       if (err.status === HttpStatus.NOT_FOUND)
-        throw new NotFoundException(err.response.error);
+        throw new NotFoundException(err.response.message);
       if (err.status === HttpStatus.BAD_REQUEST)
-        throw new BadRequestException(err.response.error);
+        throw new BadRequestException(err.response.message);
 
       throw new InternalServerErrorException(`${err}`);
     }

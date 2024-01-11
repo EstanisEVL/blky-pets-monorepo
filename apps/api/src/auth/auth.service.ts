@@ -4,7 +4,6 @@ import {
   NotFoundException,
   UnauthorizedException,
 } from '@nestjs/common';
-import { User } from 'src/users/schemas/users.schema';
 import { createHashValue, isValidPwd } from 'src/utils/encrypt';
 import { CreateUserDto } from 'src/users/dto/create-user.dto';
 import { UsersService } from 'src/users/users.service';
@@ -12,6 +11,7 @@ import { FindUserDto } from 'src/users/dto/find-user.dto';
 import { JwtService } from '@nestjs/jwt';
 import { ConfigService } from '@nestjs/config';
 import { AuthAdminDto } from './dto/auth-admin.dto';
+import { NewUserDto } from 'src/users/dto/new-user.dto';
 
 @Injectable()
 export class AuthService {
@@ -21,7 +21,9 @@ export class AuthService {
     private configService: ConfigService,
   ) {}
 
-  async registerUser(createUserDto: CreateUserDto): Promise<User> {
+  async registerUser(
+    createUserDto: CreateUserDto,
+  ): Promise<NewUserDto | undefined> {
     const hashedPwd = createHashValue(createUserDto.password);
 
     const userInfo = {
@@ -29,9 +31,10 @@ export class AuthService {
       password: hashedPwd,
     };
 
-    const user = this.usersService.create(userInfo);
+    const user = await this.usersService.create(userInfo);
+    const newUser = new NewUserDto(user);
 
-    return user;
+    return newUser;
   }
 
   async validateUser(
