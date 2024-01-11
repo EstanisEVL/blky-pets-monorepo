@@ -7,6 +7,8 @@ type FormInputPropsType = {
   text: string;
   isRequired: boolean;
   message?: string;
+  // Corregir tipado
+  onChange: (e) => void;
 };
 
 const FormInput = ({
@@ -16,6 +18,7 @@ const FormInput = ({
   text,
   isRequired,
   message,
+  onChange,
 }: FormInputPropsType): ReactElement => {
   return (
     <>
@@ -29,6 +32,7 @@ const FormInput = ({
           id={id}
           placeholder={text}
           required={isRequired}
+          onChange={onChange}
           className='h-12 outline-none grow ps-2 bg-gray-200 rounded'
         />
       </div>
