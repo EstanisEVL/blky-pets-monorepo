@@ -7,8 +7,7 @@ type FormInputPropsType = {
   text: string;
   isRequired: boolean;
   message?: string;
-  // Corregir tipado
-  onChange: (e) => void;
+  onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
 };
 
 const FormInput = ({
@@ -22,7 +21,7 @@ const FormInput = ({
 }: FormInputPropsType): ReactElement => {
   return (
     <>
-      <div className='flex items-center gap-2 my-2 font-kanit'>
+      <div className='flex flex-col font-kanit'>
         <label className='uppercase text-xl' htmlFor={id}>
           {label}
         </label>
@@ -37,8 +36,8 @@ const FormInput = ({
         />
       </div>
       {message && (
-        <div>
-          <p className='text-sm text-gray-500 mb-6'>{message}</p>
+        <div className='mb-6'>
+          <p className='text-sm text-gray-500'>{message}</p>
         </div>
       )}
     </>

@@ -136,7 +136,7 @@ const ButtonIndex = {
     return (
       <button
         type='submit'
-        className='w-36 h-9 border border-black text-base uppercase hover:text-green-600 hover:bg-black transition duration-500'
+        className='w-full h-12 border border-black text-base uppercase font-bold hover:text-green-600 hover:bg-black transition duration-500'
       >
         {text}
       </button>
