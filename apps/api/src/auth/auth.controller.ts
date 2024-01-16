@@ -42,20 +42,11 @@ export class AuthController {
   // REFORMULARLA COMO ENDPOINT PARA VALIDAR TOKENS O SÓLO USAR EL GUARD:
   @UseGuards(JwtAuthGuard)
   @Get('current') // GET /auth/current
-  async getCurrentUser(@Req() req: Request): Promise<String> {
+  async getCurrentUser(@Req() req: Request) {
     try {
-      const token = req.headers.authorization.split(' ')[1].toString();
+      const user = req.user;
 
-      if (!token) {
-        throw new HttpException(
-          {
-            status: HttpStatus.NOT_FOUND,
-            error: 'Error - User is not logged in.',
-          },
-          HttpStatus.NOT_FOUND,
-        );
-      }
-      return token;
+      return user;
     } catch (err) {
       if (err.status === HttpStatus.NOT_FOUND) {
         throw new NotFoundException(err.response.message);
@@ -126,16 +117,14 @@ export class AuthController {
 
         await user.save();
 
-        const signedUser = new FindUserDto(user);
-        return signedUser;
+        return { access_token: userInfo.access_token };
       } else {
         const lastConnection = new Date();
         user.last_connection = lastConnection;
 
         await user.save();
 
-        const signedUser = new FindUserDto(user);
-        return { user: signedUser, access_token: userInfo.access_token };
+        return { access_token: userInfo.access_token };
       }
     } catch (err) {
       // agregar logger
