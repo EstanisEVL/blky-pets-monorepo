@@ -45,9 +45,9 @@ const UserLoginForm = ({
           setError(data.message);
         } else {
           // Limpiar formulario y objeto userInfo
+          // Avisar al usuario que el inicio de sesión fue exitoso
           // Cerrar modal de login y cambiar botón de login por botón de cerrar sesión
           setError("");
-          console.log(data);
         }
       })
       .catch((err) => setError(`Error: ${err}`))
