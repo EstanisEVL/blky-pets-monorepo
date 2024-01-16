@@ -41,14 +41,26 @@ export class AuthController {
 
   // REFORMULARLA COMO ENDPOINT PARA VALIDAR TOKENS O SÓLO USAR EL GUARD:
   @UseGuards(JwtAuthGuard)
-  @Get('current') // GET /current
-  async getCurrentUser(@Req() req: Request) {
+  @Get('current') // GET /auth/current
+  async getCurrentUser(@Req() req: Request): Promise<String> {
     try {
-      // Requerir un Bearer token y validarlo
-      // const user = new FindUserDto(req.user);
-      const user = req.user;
-      return user;
-    } catch (err) {}
+      const token = req.headers.authorization.split(' ')[1].toString();
+
+      if (!token) {
+        throw new HttpException(
+          {
+            status: HttpStatus.NOT_FOUND,
+            error: 'Error - User is not logged in.',
+          },
+          HttpStatus.NOT_FOUND,
+        );
+      }
+      return token;
+    } catch (err) {
+      if (err.status === HttpStatus.NOT_FOUND) {
+        throw new NotFoundException(err.response.message);
+      }
+    }
   }
 
   // Register user:
@@ -135,7 +147,7 @@ export class AuthController {
 
   // RECUPERACIÓN DE CONTRASEÑA:
   // PARA USER:
-  @Post('password/new') // POST /password/new
+  @Post('password/new') // POST /auth/password/new
   async sendResetEmail(@Body() emailInputDto: EmailInputDto): Promise<string> {
     try {
       const checkUser = await this.usersService.findByEmail(
@@ -185,7 +197,7 @@ export class AuthController {
   }
 
   // PARA USER:
-  @Post('password/reset') // POST /password/reset
+  @Post('password/reset') // POST /auth/password/reset
   async resetUserPwd(@Body() userLoginDto: UserLoginDto) {
     try {
       return this.authService.createPwd(
