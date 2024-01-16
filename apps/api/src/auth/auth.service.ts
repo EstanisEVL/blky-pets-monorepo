@@ -46,7 +46,6 @@ export class AuthService {
     if (!user) throw new NotFoundException('User not found.');
 
     const isValidComparePwd = isValidPwd(password, user.password);
-    console.log(email, password);
 
     if (!isValidComparePwd)
       throw new UnauthorizedException('Incorrect password.');
