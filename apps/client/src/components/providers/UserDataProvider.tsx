@@ -14,11 +14,15 @@ type ChildrenType = { children?: ReactElement | ReactElement[] };
 
 export const UserDataProvider = ({ children }: ChildrenType) => {
   const [userData, setUserData] = useState<User | null>(null);
+  const token = localStorage.getItem("token");
 
   useEffect(() => {
-    // Llamar al endpoint que verifica tokens y sacar la info desde ahí
     if (!userData) {
-      fetch(`${API_URL}/auth/current`)
+      fetch(`${API_URL}/auth/current`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      })
         .then((res) => res.json())
         .then((data) => {
           setUserData(data);

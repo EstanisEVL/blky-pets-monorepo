@@ -1,4 +1,4 @@
-import { ReactEventHandler, useState } from "react";
+import { ReactEventHandler, useEffect, useState } from "react";
 import ButtonIndex from "../buttons/ButtonIndex";
 import FormInput from "./inputs/FormInput";
 import FormLink from "./links/FormLink";
@@ -21,6 +21,7 @@ const UserLoginForm = ({
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
   const [userInfo, setUserInfo] = useState(INITIAL_USER_STATE);
+  const [token, setToken] = useState<string | null>(null);
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -47,6 +48,8 @@ const UserLoginForm = ({
           // Limpiar formulario y objeto userInfo
           // Avisar al usuario que el inicio de sesión fue exitoso
           // Cerrar modal de login y cambiar botón de login por botón de cerrar sesión
+          setToken(String(data.access_token));
+
           setError("");
         }
       })
@@ -67,6 +70,12 @@ const UserLoginForm = ({
         break;
     }
   };
+
+  useEffect(() => {
+    if (token) {
+      localStorage.setItem("token", token);
+    }
+  }, [token]);
 
   return (
     <div className='min-w-[500px] max-w-md'>
