@@ -3,6 +3,7 @@ import ButtonIndex from "../buttons/ButtonIndex";
 import FormInput from "./inputs/FormInput";
 import FormLink from "./links/FormLink";
 import Title from "../Title";
+import useUserData from "../../hooks/useUserData";
 
 type UserLoginFormPropsType = {
   handleUserSignup: ReactEventHandler;
@@ -14,6 +15,9 @@ const UserLoginForm = ({
   handleUserPwdRecovery,
 }: UserLoginFormPropsType) => {
   const API_URL: string = "http://localhost:8080/api";
+
+  const { loggedIn, setLoggedIn, setAccessToken } = useUserData();
+
   const INITIAL_USER_STATE = {
     email: "",
     password: "",
@@ -45,12 +49,13 @@ const UserLoginForm = ({
         } else if (data.statusCode === 404) {
           setError(data.message);
         } else {
-          // Limpiar formulario y objeto userInfo
-          // Avisar al usuario que el inicio de sesión fue exitoso
-          // Cerrar modal de login y cambiar botón de login por botón de cerrar sesión
           setToken(String(data.access_token));
 
           setError("");
+
+          if (token !== "") {
+            setLoggedIn(true);
+          }
         }
       })
       .catch((err) => setError(`Error: ${err}`))
@@ -71,11 +76,18 @@ const UserLoginForm = ({
     }
   };
 
+  // SEGUIR ACÁ: que se renueve correctamente el access_token
+  // cuando se abre el modal, no debe haber un access_token del localStorage
+  // sólo cuando se manda el submit se tiene que guardar
   useEffect(() => {
-    if (token) {
-      localStorage.setItem("token", token);
+    if (!loggedIn) {
+      localStorage.clear();
     }
-  }, [token]);
+
+    localStorage.setItem("access_token", String(token));
+
+    setAccessToken(true);
+  }, [loggedIn]);
 
   return (
     <div className='min-w-[500px] max-w-md'>

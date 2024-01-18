@@ -5,7 +5,7 @@ import UserLoginForm from "../../../forms/UserLoginForm";
 import UserSignupForm from "../../../forms/UserSignupForm";
 import UserPwdRecoveryForm from "../../../forms/UserPwdRecoveryForm";
 
-const LoginMode = (): ReactElement => {
+const LoginMode = ({}): ReactElement => {
   const INIT_STATE = "user";
   const [loginMode, setLoginMode] = useState(INIT_STATE);
 

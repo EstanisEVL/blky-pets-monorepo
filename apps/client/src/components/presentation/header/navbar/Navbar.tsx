@@ -15,7 +15,7 @@ const Navbar = () => {
 
       <div className='flex items-center gap-x-10 ms-0 me-10'>
         <SearchBar />
-        <div className='flex gap-x-10'>
+        <div className='flex items-center gap-x-10'>
           <Login />
           <CartWidget />
         </div>

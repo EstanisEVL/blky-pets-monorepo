@@ -8,7 +8,7 @@ type DesktopModalPropsType = {
 };
 
 const DesktopModal = ({ content, onBackdropClick }: DesktopModalPropsType) => {
-  // PASAR RENDERS A OTROS COMPONENTES, AGREGAR BOTÓN CERRAR AL ÍNDICE DE BOTONES
+  // PASAR RENDERS A OTROS COMPONENTES
   return createPortal(
     <div
       onClick={onBackdropClick}

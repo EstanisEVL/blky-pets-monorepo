@@ -1,8 +1,8 @@
-import { Product } from "./product.interface";
+import { Cart } from "./cart.interface";
 
 export interface User {
   age: number;
-  carts: Product[];
+  carts: Cart[];
   email: string;
   last_connection: Date;
   name: string;

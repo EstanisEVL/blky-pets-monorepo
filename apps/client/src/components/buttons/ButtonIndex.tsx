@@ -11,6 +11,7 @@ type LoginBtnPropsType = {
 type CartWidgetBtnPropsType = {
   handleClick: () => void;
   icon: string;
+  disabled: boolean;
 };
 
 type LoginModalBtnPropsType = {
@@ -92,10 +93,11 @@ const ButtonIndex = {
   CartWidgetBtn: ({
     handleClick,
     icon,
+    disabled,
   }: CartWidgetBtnPropsType): ReactElement => {
     return (
-      <button onClick={handleClick}>
-        <img src={icon} alt='Cart icon' />
+      <button onClick={handleClick} disabled={disabled}>
+        <img src={icon} alt='Cart icon' className='fill-red-500' />
       </button>
     );
   },
