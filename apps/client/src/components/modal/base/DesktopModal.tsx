@@ -1,6 +1,6 @@
 import { ReactNode } from "react";
 import { createPortal } from "react-dom";
-import ButtonIndex from "../buttons/ButtonIndex";
+import ButtonIndex from "../../buttons/ButtonIndex";
 
 type DesktopModalPropsType = {
   content?: ReactNode;

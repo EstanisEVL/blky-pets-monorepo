@@ -1,7 +1,7 @@
 import { ReactElement, useEffect, useState } from "react";
 import loginIcon from "../../../../assets/login.svg";
 import logoutIcon from "../../../../assets/logout.svg";
-import BaseModalWrapper from "../../../modal/BaseModalWrapper";
+import BaseModalWrapper from "../../../modal/base/BaseModalWrapper";
 import ButtonIndex from "../../../buttons/ButtonIndex";
 import LoginMode from "../../../presentation/header/navbar/LoginMode";
 import useUserData from "../../../../hooks/useUserData";

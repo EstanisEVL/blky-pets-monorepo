@@ -1,7 +1,7 @@
+import { ReactNode } from "react";
 import MediaQuery from "react-responsive";
 import DesktopModal from "./DesktopModal";
 import MobileModal from "./MobileModal";
-import { ReactNode } from "react";
 
 type ResponsiveModalPropsType = {
   content?: ReactNode;

@@ -1,13 +1,16 @@
 import { ReactNode } from "react";
 import { createPortal } from "react-dom";
-import ButtonIndex from "../buttons/ButtonIndex";
+import ButtonIndex from "../../buttons/ButtonIndex";
 
-type MobileModalPropsType = {
+type MobileCartModalPropsType = {
   content?: ReactNode;
   onBackdropClick: () => void;
 };
 
-const MobileModal = ({ content, onBackdropClick }: MobileModalPropsType) => {
+const MobileCartModal = ({
+  content,
+  onBackdropClick,
+}: MobileCartModalPropsType) => {
   return createPortal(
     <div
       onClick={onBackdropClick}
@@ -28,4 +31,4 @@ const MobileModal = ({ content, onBackdropClick }: MobileModalPropsType) => {
   );
 };
 
-export default MobileModal;
+export default MobileCartModal;

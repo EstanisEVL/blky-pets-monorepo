@@ -97,7 +97,11 @@ const ButtonIndex = {
   }: CartWidgetBtnPropsType): ReactElement => {
     return (
       <button onClick={handleClick} disabled={disabled}>
-        <img src={icon} alt='Cart icon' className='fill-red-500' />
+        <img
+          src={icon}
+          alt={"Cart icon"}
+          title={disabled ? "Inicia sesión para ver tu carrito" : "Ver carrito"}
+        />
       </button>
     );
   },
