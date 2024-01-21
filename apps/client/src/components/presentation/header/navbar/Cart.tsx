@@ -7,6 +7,11 @@ const Cart = () => {
 
   return (
     // MEJORAR DISEÑO DE COMPONENTE CART:
+
+    // SEGUIR ACÁ: Agregarle productos al carrito y ver cómo se ven.
+    // Revisar que funcione el backend de agregar y quitar productos del carrito.
+    // Ver algún diseño moderno de contenido de carrito y acomodar la info según dicho diseño
+
     <div>
       <Title text={"Carrito"} />
       {info?.carts.length && (

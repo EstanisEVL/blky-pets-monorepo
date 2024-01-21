@@ -13,7 +13,7 @@ const ResponsiveModal = ({
   onBackdropClick,
 }: ResponsiveModalPropsType) => {
   return (
-    <MediaQuery minWidth={580}>
+    <MediaQuery minWidth={640}>
       {(matches) =>
         matches ? (
           <DesktopModal content={content} onBackdropClick={onBackdropClick} />
