@@ -39,7 +39,6 @@ export class AuthController {
     private mailerService: MailerService,
   ) {}
 
-  // REFORMULARLA COMO ENDPOINT PARA VALIDAR TOKENS O SÓLO USAR EL GUARD:
   @UseGuards(JwtAuthGuard)
   @Get('current') // GET /auth/current
   async getCurrentUser(@Req() req: Request) {

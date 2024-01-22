@@ -68,7 +68,7 @@ export class ProductsController {
   @Get(':id') // GET /products/:id
   async getProductById(@Param('id') id: string) {
     try {
-      const product = await this.productsService.findById(+id);
+      const product = await this.productsService.findById(id);
 
       if (!product)
         throw new HttpException(

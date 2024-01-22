@@ -11,6 +11,7 @@ import { PassportModule } from '@nestjs/passport';
 import { LocalStrategy } from './strategies/local.strategy';
 import { JwtModule } from '@nestjs/jwt';
 import { JwtStrategy } from './strategies/jwt.strategy';
+import { Product, ProductSchema } from 'src/products/schemas/products.schemas';
 
 @Module({
   imports: [
@@ -39,6 +40,7 @@ import { JwtStrategy } from './strategies/jwt.strategy';
         schema: CartSchema,
       },
     ]),
+    MongooseModule.forFeature([{ name: Product.name, schema: ProductSchema }]),
   ],
   providers: [AuthService, LocalStrategy, JwtStrategy, CartsService],
   controllers: [AuthController],

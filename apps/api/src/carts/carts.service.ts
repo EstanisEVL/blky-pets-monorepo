@@ -2,10 +2,14 @@ import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Cart } from './schemas/carts.schemas';
 import { Model } from 'mongoose';
+import { Product } from 'src/products/schemas/products.schemas';
 
 @Injectable()
 export class CartsService {
-  constructor(@InjectModel(Cart.name) private cartModel: Model<Cart>) {}
+  constructor(
+    @InjectModel(Cart.name) private cartModel: Model<Cart>,
+    @InjectModel(Product.name) private productModel: Model<Product>,
+  ) {}
 
   async findAll() {
     try {
@@ -17,11 +21,11 @@ export class CartsService {
     }
   }
 
-  // Agregar populate al método y al schema:
   async findById(id: string) {
     try {
-      const cart = await this.cartModel.findById({ _id: id });
-
+      const cart = await this.cartModel
+        .findById({ _id: id })
+        .populate('products');
       return cart;
     } catch (err) {
       return err;
@@ -43,6 +47,21 @@ export class CartsService {
       const deletedCart = await this.cartModel.deleteOne({ _id: id });
 
       return deletedCart;
+    } catch (err) {
+      return err;
+    }
+  }
+
+  async addProduct(cid: string, pid: string) {
+    try {
+      const cart = await this.cartModel.findById({ _id: cid });
+      const product = await this.productModel.findById({ _id: pid });
+
+      cart.products.push(product);
+
+      await cart.save();
+
+      return cart;
     } catch (err) {
       return err;
     }

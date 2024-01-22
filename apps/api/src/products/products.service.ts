@@ -20,7 +20,7 @@ export class ProductsService {
   }
 
   // Revisar si los ids son numeros o ObjectId de Mongo:
-  async findById(id: number) {
+  async findById(id: string) {
     try {
       const data = await this.productModel.findById({ _id: id });
 

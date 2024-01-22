@@ -10,10 +10,11 @@ export class Cart {
   @Prop({
     type: [
       {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'ProductDocument',
+        type: mongoose.Types.ObjectId,
+        ref: 'Product',
       },
     ],
+    default: [],
   })
   products: Product[];
 }

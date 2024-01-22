@@ -29,7 +29,7 @@ export class Product {
   @Prop()
   img: string;
 
-  @Prop()
+  @Prop({ default: 1 })
   quantity: number;
 }
 
