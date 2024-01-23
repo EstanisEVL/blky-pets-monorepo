@@ -17,6 +17,7 @@ import { CartsService } from './carts.service';
 import { Cart } from './schemas/carts.schemas';
 import { CreateCartDto } from './dto/create-cart.dto';
 import { ProductsService } from 'src/products/products.service';
+import { ProductInterface } from 'src/interfaces/product.interface';
 
 @ApiTags('Carts')
 @Controller('carts')
@@ -135,24 +136,23 @@ export class CartsController {
         );
 
       const productInCart = cart.products.find(
-        (product) => String(product._id) === String(pid),
+        (product: ProductInterface) => String(product._id) === String(pid),
       );
 
       if (productInCart) {
-        // Llamar al product service y actualizar la cantidad del producto en el carrito:
-        productInCart.quantity++;
-
-        // Se guarda el modelo desde el servicio, acá no:
-        await cart.save();
-        // console.log(productInCart.quantity);
+        const updatedCart = await this.cartsService.updateProductFromCart(
+          cid,
+          pid,
+          'add',
+        );
 
         return {
           message: 'Product quantity updated.',
-          cart,
+          updatedCart,
         };
       } else {
         const updatedCart = await this.cartsService.addProduct(cid, pid);
-        return { message: 'Product added to cart.' };
+        return { message: 'Product added to cart.', updatedCart };
       }
     } catch (err) {
       if (err.status === HttpStatus.NOT_FOUND)
@@ -162,10 +162,8 @@ export class CartsController {
     }
   }
 
-  // - updateProductFromCart / PUT /:cid/products/:pid
-
-  // - removeProductFromCart / DELETE /:cid/products/:pid
-  @Delete('/:cid/products/:pid')
+  // - removeProductFromCart
+  @Delete('/:cid/products/:pid') // DELETE /:cid/products/:pid
   async removeProductFromCart(
     @Param('cid') cid: string,
     @Param('pid') pid: string,
@@ -183,7 +181,7 @@ export class CartsController {
         );
 
       const productIndex = cart.products.findIndex(
-        (product) => String(product._id) === String(pid),
+        (product: ProductInterface) => String(product._id) === String(pid),
       );
 
       if (productIndex === -1)
@@ -196,16 +194,17 @@ export class CartsController {
         );
 
       const productInCart = cart.products.find(
-        (product) => String(product._id) === String(pid),
+        (product: ProductInterface) => String(product._id) === String(pid),
       );
 
       if (productInCart && productInCart.quantity > 1) {
-        // Llamar al servicio para actualizar la cantidad del producto
-        // productInCart.quantity--;
+        const updatedCart = await this.cartsService.updateProductFromCart(
+          cid,
+          pid,
+          'remove',
+        );
 
-        // await cart.save();
-
-        return { message: 'Product quantity updated.' };
+        return { message: 'Product quantity updated.', updatedCart };
       } else {
         cart.products.splice(productIndex, 1);
 

@@ -3,6 +3,7 @@ import { InjectModel } from '@nestjs/mongoose';
 import { Cart } from './schemas/carts.schemas';
 import { Model } from 'mongoose';
 import { Product } from 'src/products/schemas/products.schemas';
+import { ProductInterface } from 'src/interfaces/product.interface';
 
 @Injectable()
 export class CartsService {
@@ -62,6 +63,29 @@ export class CartsService {
       await cart.save();
 
       return cart;
+    } catch (err) {
+      return err;
+    }
+  }
+
+  async updateProductFromCart(cid: string, pid: string, operation: string) {
+    try {
+      const cart = await this.cartModel.findById({ _id: cid });
+      const productIndex = cart.products.findIndex(
+        (product: ProductInterface) => String(product._id) === String(pid),
+      );
+
+      if (operation === 'add') {
+        cart.products[productIndex].quantity++;
+      }
+
+      if (operation === 'remove') {
+        cart.products[productIndex].quantity--;
+      }
+
+      cart.markModified('products');
+
+      return await cart.save();
     } catch (err) {
       return err;
     }

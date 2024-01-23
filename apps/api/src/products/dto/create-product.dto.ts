@@ -3,8 +3,6 @@ import { Product } from '../schemas/products.schemas';
 export class CreateProductDto {
   constructor(product: Product, cid: number | null = null) {
     this.cid = cid;
-
-    // this.id = product.id;
     this.title = product.title;
     this.description = product.description;
     this.code = product.code;
