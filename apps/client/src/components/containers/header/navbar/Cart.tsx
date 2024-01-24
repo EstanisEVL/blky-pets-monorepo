@@ -84,12 +84,10 @@ const Cart = () => {
       },
     })
       .then((res) => res.json())
-      .then((data) => console.log(data))
+      .then((data) => setCart(data.updatedCart))
       .catch((err) => setError(err))
       .finally(() => setLoading(false));
   };
-
-  // Que no se borre todo el carrito cuando sólo se remueve un producto
 
   return (
     // MEJORAR DISEÑO DE COMPONENTE CART:
@@ -121,7 +119,9 @@ const Cart = () => {
             })
           ) : (
             // QUE SÓLO AVISE QUE ESTÁ VACÍO CUANDO NO HAY PRODUCTOS EN EL CARRITO
-            <h3>El carrito está vacío.</h3>
+            <div className='flex justify-center'>
+              <h3 className='text-lg font-kanit'>El carrito está vacío.</h3>
+            </div>
           )}
         </div>
       </div>
@@ -134,7 +134,7 @@ const Cart = () => {
       )}
 
       {/* CAMBIAR A COMPONENTE DETALLE DE COMPRA */}
-      {fullPrice && (
+      {cart?.products.length !== 0 && (
         <div className='w-full flex justify-end mt-10'>
           <p className='font-kanit'>
             Total de tu compra:{" "}
