@@ -256,8 +256,6 @@ export class CartsController {
         productIndex,
       );
 
-      console.log(updatedCart);
-
       return { message: 'Product deleted from cart.', updatedCart };
     } catch (err) {
       if (err.status === HttpStatus.NOT_FOUND)
