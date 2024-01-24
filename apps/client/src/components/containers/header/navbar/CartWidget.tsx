@@ -3,7 +3,7 @@ import cartIcon from "../../../../assets/cart.svg";
 import useUserData from "../../../../hooks/useUserData";
 import ButtonIndex from "../../../buttons/ButtonIndex";
 import BaseCartModalWrapper from "../../../modal/cart/BaseCartModalWrapper";
-import Cart from "../../../presentation/header/navbar/Cart";
+import Cart from "./Cart";
 
 const CartWidget = () => {
   const { loggedIn } = useUserData();

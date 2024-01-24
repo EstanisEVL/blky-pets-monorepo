@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import useUserData from "../../../../hooks/useUserData";
 import Title from "../../../Title";
 import { Cart as CartInterface } from "../../../../interfaces/cart.interface";
-import ProductInCartDetail from "./ProductInCartDetail";
+import ProductInCartDetail from "../../../presentation/header/navbar/ProductInCartDetail";
 import ButtonIndex from "../../../buttons/ButtonIndex";
 
 const API_URL: string = "http://localhost:8080/api";
@@ -75,7 +75,18 @@ const Cart = () => {
     const cid = info?.carts[0]._id;
     const pid = e.currentTarget.getAttribute("data-product-id");
 
-    console.log(cid, pid);
+    fetch(`${API_URL}/carts/${cid}/products/${pid}/delete`, {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+        "Access-Control-Allow-Origin": "*",
+      },
+    })
+      .then((res) => res.json())
+      .then((data) => console.log(data))
+      .catch((err) => setError(err))
+      .finally(() => setLoading(false));
   };
 
   // Que no se borre todo el carrito cuando sólo se remueve un producto
@@ -124,7 +135,7 @@ const Cart = () => {
 
       {/* CAMBIAR A COMPONENTE DETALLE DE COMPRA */}
       {fullPrice && (
-        <div>
+        <div className='w-full flex justify-end mt-10'>
           <p className='font-kanit'>
             Total de tu compra:{" "}
             <span className='font-bold'>

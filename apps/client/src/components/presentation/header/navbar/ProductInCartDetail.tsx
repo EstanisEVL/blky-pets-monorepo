@@ -17,7 +17,7 @@ const ProductInCartDetail = ({
   return (
     <div key={product._id} className='flex justify-between items-center gap-4'>
       <div className='w-1/6'>
-        <img className='w-full' src={product.img} />
+        <img className='w-full rounded' src={product.img} />
       </div>
       <div className='w-1/6'>
         <h3 className='font-kanit'>{product.title}</h3>
