@@ -10,6 +10,7 @@ const API_URL: string = "http://localhost:8080/api";
 const Cart = () => {
   const { userData } = useUserData();
   const info = userData;
+  // Corregir: pasar cart a un contexto y usarlo desde ahí
   const [cart, setCart] = useState<CartInterface | undefined>();
   const [loading, setLoading] = useState(false);
 
@@ -105,6 +106,7 @@ const Cart = () => {
               );
             })
           ) : (
+            // QUE SÓLO AVISE QUE ESTÁ VACÍO CUANDO NO HAY PRODUCTOS EN EL CARRITO
             <h3>El carrito está vacío.</h3>
           )}
         </div>
