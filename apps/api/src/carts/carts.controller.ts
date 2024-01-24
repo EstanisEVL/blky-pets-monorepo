@@ -206,11 +206,12 @@ export class CartsController {
 
         return { message: 'Product quantity updated.', updatedCart };
       } else {
-        cart.products.splice(productIndex, 1);
+        const updatedCart = await this.cartsService.deleteProductFromCart(
+          cid,
+          productIndex,
+        );
 
-        await cart.save();
-
-        return { message: 'Product deleted from cart.' };
+        return { message: 'Product deleted from cart.', updatedCart };
       }
     } catch (err) {
       if (err.status === HttpStatus.NOT_FOUND)
