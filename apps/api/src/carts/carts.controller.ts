@@ -251,9 +251,14 @@ export class CartsController {
           HttpStatus.NOT_FOUND,
         );
 
-      await this.cartsService.deleteProductFromCart(cid, productIndex);
+      const updatedCart = await this.cartsService.deleteProductFromCart(
+        cid,
+        productIndex,
+      );
 
-      return { message: 'Product deleted from cart.' };
+      console.log(updatedCart);
+
+      return { message: 'Product deleted from cart.', updatedCart };
     } catch (err) {
       if (err.status === HttpStatus.NOT_FOUND)
         throw new NotFoundException(err.response.error);

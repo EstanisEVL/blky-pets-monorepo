@@ -97,7 +97,7 @@ export class CartsService {
 
       cart.products.splice(productIndex, 1);
 
-      await cart.save();
+      return await cart.save();
     } catch (err) {
       return err;
     }
