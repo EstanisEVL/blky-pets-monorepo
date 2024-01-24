@@ -163,7 +163,7 @@ export class CartsController {
   }
 
   // - removeProductFromCart
-  @Delete('/:cid/products/:pid') // DELETE /:cid/products/:pid
+  @Delete('/:cid/products/:pid') // DELETE /api/carts/:cid/products/:pid
   async removeProductFromCart(
     @Param('cid') cid: string,
     @Param('pid') pid: string,
@@ -212,6 +212,48 @@ export class CartsController {
 
         return { message: 'Product deleted from cart.' };
       }
+    } catch (err) {
+      if (err.status === HttpStatus.NOT_FOUND)
+        throw new NotFoundException(err.response.error);
+
+      throw new InternalServerErrorException(`${err}`);
+    }
+  }
+
+  // - deleteProductFromCart
+  @Delete('/:cid/products/:pid/delete') // DELETE /api/carts/:cid/products/:pid
+  async deleteProductFromCart(
+    @Param('cid') cid: string,
+    @Param('pid') pid: string,
+  ) {
+    try {
+      const cart = await this.cartsService.findById(cid);
+
+      if (!cart)
+        throw new HttpException(
+          {
+            status: HttpStatus.NOT_FOUND,
+            error: 'Error - Cart not found.',
+          },
+          HttpStatus.NOT_FOUND,
+        );
+
+      const productIndex = cart.products.findIndex(
+        (product: ProductInterface) => String(product._id) === String(pid),
+      );
+
+      if (productIndex === -1)
+        throw new HttpException(
+          {
+            status: HttpStatus.NOT_FOUND,
+            error: 'Error - Product not in cart.',
+          },
+          HttpStatus.NOT_FOUND,
+        );
+
+      await this.cartsService.deleteProductFromCart(cid, productIndex);
+
+      return { message: 'Product deleted from cart.' };
     } catch (err) {
       if (err.status === HttpStatus.NOT_FOUND)
         throw new NotFoundException(err.response.error);

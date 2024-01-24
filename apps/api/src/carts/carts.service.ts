@@ -90,4 +90,16 @@ export class CartsService {
       return err;
     }
   }
+
+  async deleteProductFromCart(cid: string, productIndex: number) {
+    try {
+      const cart = await this.cartModel.findById({ _id: cid });
+
+      cart.products.splice(productIndex, 1);
+
+      await cart.save();
+    } catch (err) {
+      return err;
+    }
+  }
 }
