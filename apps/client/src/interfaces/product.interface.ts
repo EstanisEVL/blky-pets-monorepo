@@ -8,6 +8,7 @@ export interface Product {
   stock: number;
   title: string;
   _id: string;
+  quantity: number;
 }
 
 export type CreateProduct = Omit<Product, "_id" | "status">;

@@ -50,6 +50,29 @@ type EnterBtnPropsType = {
   text: string;
 };
 
+type PurchaseBtnPropsType = {
+  // handleClick: () => void;
+  text: string;
+};
+
+type AddBtnPropsType = {
+  handleClick: (e: React.MouseEvent<HTMLButtonElement>) => void;
+  pid: string;
+  icon: string;
+};
+
+type RemoveBtnPropsType = {
+  handleClick: (e: React.MouseEvent<HTMLButtonElement>) => void;
+  pid: string;
+  icon: string;
+};
+
+type DeleteBtnPropsType = {
+  handleClick: (e: React.MouseEvent<HTMLButtonElement>) => void;
+  pid: string;
+  icon: string;
+};
+
 // Pasar cada botón a su propio componente y llamarlos desde este índice
 
 const ButtonIndex = {
@@ -145,6 +168,50 @@ const ButtonIndex = {
         className='w-full h-12 border border-black text-base uppercase font-bold hover:text-green-600 hover:bg-black transition duration-500'
       >
         {text}
+      </button>
+    );
+  },
+
+  PurchaseBtn: ({ text }: PurchaseBtnPropsType) => {
+    return (
+      <button className='w-full h-12 rounded border border-green-600 text-base bg-white text-green-600 uppercase font-bold hover:text-white hover:bg-green-600  transition duration-500'>
+        {text}
+      </button>
+    );
+  },
+
+  AddBtn: ({ icon, pid, handleClick }: AddBtnPropsType) => {
+    return (
+      <button
+        className='w-12 h-12 rounded border border-green-600 text-green-600 hover:bg-green-600 hover:text-white transition duration-500'
+        data-product-id={pid}
+        onClick={handleClick}
+      >
+        {icon}
+      </button>
+    );
+  },
+
+  RemoveBtn: ({ icon, pid, handleClick }: RemoveBtnPropsType) => {
+    return (
+      <button
+        className='w-12 h-12 rounded border border-red-600 text-red-600 hover:bg-red-600 hover:text-white transition duration-500'
+        data-product-id={pid}
+        onClick={handleClick}
+      >
+        {icon}
+      </button>
+    );
+  },
+
+  DeleteBtn: ({ icon, pid, handleClick }: DeleteBtnPropsType) => {
+    return (
+      <button
+        className='w-12 h-12 rounded border border-gray-600 text-gray-600 hover:bg-gray-600 hover:text-white transition duration-500'
+        data-product-id={pid}
+        onClick={handleClick}
+      >
+        {icon}
       </button>
     );
   },
