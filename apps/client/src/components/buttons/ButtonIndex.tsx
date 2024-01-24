@@ -183,7 +183,7 @@ const ButtonIndex = {
   AddBtn: ({ icon, pid, handleClick }: AddBtnPropsType) => {
     return (
       <button
-        className='w-12 h-12 rounded border border-green-600 text-green-600 hover:bg-green-600 hover:text-white transition duration-500'
+        className='w-12 h-12 font-extrabold rounded border border-green-600 text-green-600 hover:bg-green-600 hover:text-white transition duration-500'
         data-product-id={pid}
         onClick={handleClick}
       >
@@ -195,7 +195,7 @@ const ButtonIndex = {
   RemoveBtn: ({ icon, pid, handleClick }: RemoveBtnPropsType) => {
     return (
       <button
-        className='w-12 h-12 rounded border border-red-600 text-red-600 hover:bg-red-600 hover:text-white transition duration-500'
+        className='w-12 h-12 font-extrabold rounded border border-red-600 text-red-600 hover:bg-red-600 hover:text-white transition duration-500'
         data-product-id={pid}
         onClick={handleClick}
       >
@@ -207,7 +207,7 @@ const ButtonIndex = {
   DeleteBtn: ({ icon, pid, handleClick }: DeleteBtnPropsType) => {
     return (
       <button
-        className='w-12 h-12 rounded border border-gray-600 text-gray-600 hover:bg-gray-600 hover:text-white transition duration-500'
+        className='w-12 h-12 font-extrabold rounded border border-gray-600 text-gray-600 hover:bg-gray-600 hover:text-white transition duration-500'
         data-product-id={pid}
         onClick={handleClick}
       >

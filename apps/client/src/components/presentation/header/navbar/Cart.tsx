@@ -12,7 +12,12 @@ const Cart = () => {
   const info = userData;
   // Corregir: pasar cart a un contexto y usarlo desde ahí
   const [cart, setCart] = useState<CartInterface | undefined>();
+  const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
+  const fullPrice = cart?.products.reduce(
+    (acc, product) => acc + product.quantity * product.price,
+    0
+  );
 
   useEffect(() => {
     const cid = info?.carts[0]._id;
@@ -25,7 +30,7 @@ const Cart = () => {
         .then((data) => {
           setCart(data);
         })
-        .catch((err) => console.log(err))
+        .catch((err) => setError(err))
         .finally(() => setLoading(false));
     }
   }, []);
@@ -44,9 +49,8 @@ const Cart = () => {
     })
       .then((res) => res.json())
       .then((data) => setCart(data.updatedCart))
-      // Agregar estado de error y un loading para el finally()
-      .catch((err) => console.log(err))
-      .finally(() => console.log("Producto agregado."));
+      .catch((err) => setError(err))
+      .finally(() => setLoading(false));
   };
 
   const removeProduct = (e: React.MouseEvent<HTMLButtonElement>) => {
@@ -63,9 +67,8 @@ const Cart = () => {
     })
       .then((res) => res.json())
       .then((data) => setCart(data.updatedCart))
-      // Agregar estado de error y un loading para el finally()
-      .catch((err) => console.log(err))
-      .finally(() => console.log("Producto quitado."));
+      .catch((err) => setError(err))
+      .finally(() => setLoading(false));
   };
 
   const deleteProduct = (e: React.MouseEvent<HTMLButtonElement>) => {
@@ -93,7 +96,7 @@ const Cart = () => {
 
         <div className='flex flex-col gap-6 overflow-y-scroll'>
           {/* AGREGAR EL LOADER PARA QUE NO MUESTRE QUE EL CARRITO ESTÁ VACÍO SI NO CARGÓ */}
-          {!loading && cart && cart?.products ? (
+          {!loading && cart && cart.products.length ? (
             cart.products.map((product) => {
               return (
                 <ProductInCartDetail
@@ -111,6 +114,28 @@ const Cart = () => {
           )}
         </div>
       </div>
+
+      {/* CAMBIAR ERROR A COMPONENTE ERROR REUTILIZABLE */}
+      {error && (
+        <div className='flex justify-center my-4'>
+          <p className='text-red-500'>{error}</p>
+        </div>
+      )}
+
+      {/* CAMBIAR A COMPONENTE DETALLE DE COMPRA */}
+      {fullPrice && (
+        <div>
+          <p className='font-kanit'>
+            Total de tu compra:{" "}
+            <span className='font-bold'>
+              {new Intl.NumberFormat("en-US", {
+                style: "currency",
+                currency: "USD",
+              }).format(Number(fullPrice))}
+            </span>
+          </p>
+        </div>
+      )}
 
       <div className='mt-20 text-center'>
         <ButtonIndex.PurchaseBtn text={"Comprar"} />
