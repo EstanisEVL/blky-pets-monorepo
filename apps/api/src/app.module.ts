@@ -14,6 +14,7 @@ import GlobalMiddlewares from './middlewares/global.middlewares';
 import { DatabaseModule } from './database/database.module';
 import { AuthModule } from './auth/auth.module';
 import { MailerModule } from '@nestjs-modules/mailer';
+import { TicketsModule } from './tickets/tickets.module';
 
 @Module({
   imports: [
@@ -40,6 +41,7 @@ import { MailerModule } from '@nestjs-modules/mailer';
     CartsModule,
     ProductsModule,
     AuthModule,
+    TicketsModule,
   ],
   controllers: [AppController],
   providers: [AppService],

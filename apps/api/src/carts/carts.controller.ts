@@ -20,6 +20,9 @@ import { CreateCartDto } from './dto/create-cart.dto';
 import { ProductsService } from 'src/products/products.service';
 import { ProductInterface } from 'src/interfaces/product.interface';
 import { Product } from 'src/products/schemas/products.schemas';
+import { CreateTicketDto } from 'src/tickets/dto/create-ticket.dto';
+import { TicketsService } from 'src/tickets/tickets.service';
+import { TicketInterface } from 'src/interfaces/ticket.interface';
 
 @ApiTags('Carts')
 @Controller('carts')
@@ -27,6 +30,7 @@ export class CartsController {
   constructor(
     private readonly cartsService: CartsService,
     private readonly productsService: ProductsService,
+    private readonly ticketsService: TicketsService,
   ) {}
 
   // ROL DE ADMIN:
@@ -115,7 +119,7 @@ export class CartsController {
   // PARA USER
   // - purchaseProducts
   @Post('/:cid/purchase') // POST /api/carts/:cid/purchase
-  async purchaseProducts(@Param('cid') cid: string) {
+  async purchaseProducts(@Param('cid') cid: string, @Body() userEmail: string) {
     try {
       const cart = await this.cartsService.findById(cid);
 
@@ -167,7 +171,13 @@ export class CartsController {
         });
       }
 
+      const ticketData: TicketInterface = new CreateTicketDto({
+        purchase_datetime: new Date(),
+        amount: fullPrice,
+        purchaser: userEmail,
+      });
       // Crear ticket de compra
+      const newTicket = await this.ticketsService.create(ticketData);
 
       // Actualizar stock del producto
 
@@ -175,7 +185,7 @@ export class CartsController {
 
       // Vaciar carrito y guardarlo (desde el servicio)
 
-      return 'Purchase succesfully completed.';
+      return { message: 'Purchase succesfully completed.', newTicket };
     } catch (err) {
       if (err.status === HttpStatus.BAD_REQUEST)
         throw new BadRequestException(err.response.error);
