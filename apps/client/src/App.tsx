@@ -1,8 +1,7 @@
+import { Toaster } from "react-hot-toast";
 import Footer from "./components/presentation/footer/Footer";
 import Header from "./components/presentation/header/Header";
 import Main from "./components/presentation/main/Main";
-
-// SI ES USUARIO, TRAER SU CARRITO
 
 // SI ES ADMIN, MOSTRAR TODOS LOS USUARIOS EXISTENTES EN LA BASE DE DATOS
 
@@ -18,6 +17,7 @@ function App() {
       <Header />
       <Main />
       <Footer />
+      <Toaster position='bottom-right' />
     </>
   );
 }
