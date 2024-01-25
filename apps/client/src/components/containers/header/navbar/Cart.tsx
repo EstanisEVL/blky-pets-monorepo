@@ -92,6 +92,7 @@ const Cart = () => {
 
   const confirmPurchase = () => {
     const cid = info?.carts[0]._id;
+    const email = { email: String(info?.email) };
 
     if (cart?.products.length === 0) {
       setError("Error - Cart is empty");
@@ -106,6 +107,7 @@ const Cart = () => {
         Accept: "application/json",
         "Access-Control-Allow-Origin": "*",
       },
+      body: JSON.stringify(email),
     })
       .then((res) => res.json())
       .then((data) => console.log(data))
