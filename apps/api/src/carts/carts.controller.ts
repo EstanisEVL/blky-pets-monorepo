@@ -118,8 +118,9 @@ export class CartsController {
 
   // PARA USER
   // - purchaseProducts
+  // Corregir tipado de userEmail
   @Post('/:cid/purchase') // POST /api/carts/:cid/purchase
-  async purchaseProducts(@Param('cid') cid: string, @Body() userEmail: string) {
+  async purchaseProducts(@Param('cid') cid: string, @Body() userEmail) {
     try {
       const cart = await this.cartsService.findById(cid);
 
@@ -172,20 +173,38 @@ export class CartsController {
       }
 
       const ticketData: TicketInterface = new CreateTicketDto({
+        code: `${Math.random().toString(20).substring(2, 10).toUpperCase()}`,
         purchase_datetime: new Date(),
         amount: fullPrice,
-        purchaser: userEmail,
+        purchaser: userEmail.email,
       });
-      // Crear ticket de compra
-      const newTicket = await this.ticketsService.create(ticketData);
 
-      // Actualizar stock del producto
+      const newTicket = await this.ticketsService.create(ticketData);
+      /*
+      // SEGUIR ACÁ: Actualizar stock del producto
+      for (const product of productToUpdate) {
+          const pid = product.pid;
+          const productQuantity = Number(product.quantity);
+
+          const productInStock = await ProductService.getProduct(null, pid);
+          const newStock = Number(productInStock.stock) - productQuantity;
+
+          await ProductService.updateProduct(pid, { stock: newStock });
+        }
 
       // Enviar email de confirmación
+      sendMail(
+        newTicket.purchaser,
+        newTicket.amount,
+        newTicket.purchase_datetime
+      );
 
       // Vaciar carrito y guardarlo (desde el servicio)
+      cart.products = [];
+      await cart.save(); 
+      */
 
-      return { message: 'Purchase succesfully completed.', newTicket };
+      return { message: 'Purchase succesfully completed.' };
     } catch (err) {
       if (err.status === HttpStatus.BAD_REQUEST)
         throw new BadRequestException(err.response.error);
