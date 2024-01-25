@@ -52,7 +52,7 @@ type EnterBtnPropsType = {
 };
 
 type PurchaseBtnPropsType = {
-  // handleClick: () => void;
+  handleClick: () => void;
   text: string;
 };
 
@@ -177,9 +177,12 @@ const ButtonIndex = {
     );
   },
 
-  PurchaseBtn: ({ text }: PurchaseBtnPropsType) => {
+  PurchaseBtn: ({ text, handleClick }: PurchaseBtnPropsType) => {
     return (
-      <button className='w-full h-12 rounded border border-green-600 text-base bg-white text-green-600 uppercase font-bold hover:text-white hover:bg-green-600  transition duration-500'>
+      <button
+        className='w-full h-12 rounded border border-green-600 text-base bg-white text-green-600 uppercase font-bold hover:text-white hover:bg-green-600  transition duration-500'
+        onClick={handleClick}
+      >
         {text}
       </button>
     );

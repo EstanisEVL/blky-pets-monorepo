@@ -35,6 +35,7 @@ const Cart = () => {
     }
   }, []);
 
+  // Pasar todos los métodos a un archivo separado (al contexto?):
   const addProduct = (e: React.MouseEvent<HTMLButtonElement>) => {
     const cid = info?.carts[0]._id;
     const pid = e.currentTarget.getAttribute("data-product-id");
@@ -85,6 +86,29 @@ const Cart = () => {
     })
       .then((res) => res.json())
       .then((data) => setCart(data.updatedCart))
+      .catch((err) => setError(err))
+      .finally(() => setLoading(false));
+  };
+
+  const confirmPurchase = () => {
+    const cid = info?.carts[0]._id;
+
+    if (cart?.products.length === 0) {
+      setError("Error - Cart is empty");
+
+      return;
+    }
+
+    fetch(`${API_URL}/carts/${cid}/purchase`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+        "Access-Control-Allow-Origin": "*",
+      },
+    })
+      .then((res) => res.json())
+      .then((data) => console.log(data))
       .catch((err) => setError(err))
       .finally(() => setLoading(false));
   };
@@ -149,7 +173,10 @@ const Cart = () => {
       )}
 
       <div className='mt-20 text-center'>
-        <ButtonIndex.PurchaseBtn text={"Comprar"} />
+        <ButtonIndex.PurchaseBtn
+          text={"Comprar"}
+          handleClick={confirmPurchase}
+        />
       </div>
     </div>
   );
