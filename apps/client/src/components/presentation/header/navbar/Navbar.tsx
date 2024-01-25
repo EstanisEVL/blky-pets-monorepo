@@ -7,7 +7,9 @@ import Brand from "./Brand";
 
 const Navbar = () => {
   return (
-    <nav className='flex justify-between items-center bg-neutral-900 h-24'>
+    <nav
+      className={`w-full h-24 flex justify-between items-center bg-neutral-900 transition duration-500`}
+    >
       <div className='flex gap-x-24 ms-10 me-0'>
         <Brand />
         <Categories categories={navbarCategories} textColor={"text-slate-50"} />

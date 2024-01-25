@@ -4,6 +4,8 @@ import ButtonIndex from "../../buttons/ButtonIndex";
 
 // AJUSTAR MAX HEIGHT Y MAX WIDTH SEGÚN MEDIA QUERY
 
+// Que el botón de agregar esté desabilitado si no hay cid:
+
 type ProductCardProps = {
   product: Product;
   handleClick: (e: React.MouseEvent<HTMLButtonElement>) => void;

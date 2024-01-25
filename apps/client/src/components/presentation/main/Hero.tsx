@@ -9,7 +9,7 @@ type HeroProps = {
 
 const Hero = ({ img, h1Text, pText, btnText }: HeroProps) => {
   return (
-    <div className='w-full min-h-max relative font-kanit'>
+    <div className='w-full min-h-max relative font-kanit pt-40'>
       <img src={img} alt={"two dogs looking at BLKY PETS collar collection"} />
       <div className='w-full absolute bottom-8 flex justify-center'>
         <div className='flex-col text-center uppercase'>

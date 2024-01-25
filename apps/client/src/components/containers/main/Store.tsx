@@ -21,6 +21,11 @@ const Store = () => {
     const cid = info?.carts[0]._id;
     const pid = e.currentTarget.getAttribute("data-product-id");
 
+    // SEGUIR ACÁ: Que deshabilite al botón de agregar si no hay cid:
+    // O agregar alertas elegantes para cuando se agrega o no hay cid:
+    // Ver librería Toast
+    if (!cid) return;
+
     fetch(`${API_URL}/carts/${cid}/products/${pid}`, {
       method: "POST",
       headers: {
