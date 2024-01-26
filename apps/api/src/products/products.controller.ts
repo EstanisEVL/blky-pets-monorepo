@@ -97,7 +97,7 @@ export class ProductsController {
   ) {
     try {
       const updatedProduct = await this.productsService.updateById(
-        +id,
+        id,
         updateProductDto,
       );
 

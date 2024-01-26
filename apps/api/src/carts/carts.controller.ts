@@ -141,6 +141,7 @@ export class CartsController {
       let fullPrice: number = 0;
 
       // Refactorizar con funciones de alto orden de JS:
+      // Un map que devuelva un nuevo arreglo productToUpdate, borrar el de la linea 140 y declararlo como contenedor del map de productsToPurchase
       for (const product of productsToPurchase) {
         const pid = String(product._id);
         const productQuantity = Number(product.quantity);
@@ -180,31 +181,27 @@ export class CartsController {
       });
 
       const newTicket = await this.ticketsService.create(ticketData);
+
+      productToUpdate.map(async (product) => {
+        const pid = String(product.pid);
+        const productQuantity = Number(product.quantity);
+
+        const productInStock = await this.productsService.findById(pid);
+        const newStock = Number(productInStock.stock) - Number(productQuantity);
+
+        await this.productsService.updateById(pid, { stock: newStock });
+      });
       /*
-      // SEGUIR ACÁ: Actualizar stock del producto
-      for (const product of productToUpdate) {
-          const pid = product.pid;
-          const productQuantity = Number(product.quantity);
-
-          const productInStock = await ProductService.getProduct(null, pid);
-          const newStock = Number(productInStock.stock) - productQuantity;
-
-          await ProductService.updateProduct(pid, { stock: newStock });
-        }
-
-      // Enviar email de confirmación
+      // Enviar ticket en el email de confirmación
       sendMail(
         newTicket.purchaser,
         newTicket.amount,
         newTicket.purchase_datetime
       );
-
-      // Vaciar carrito y guardarlo (desde el servicio)
-      cart.products = [];
-      await cart.save(); 
       */
+      const updatedCart = await this.cartsService.emptyCart(cid);
 
-      return { message: 'Purchase succesfully completed.' };
+      return { message: 'Purchase succesfully completed.', updatedCart };
     } catch (err) {
       if (err.status === HttpStatus.BAD_REQUEST)
         throw new BadRequestException(err.response.error);

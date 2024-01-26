@@ -102,4 +102,16 @@ export class CartsService {
       return err;
     }
   }
+
+  async emptyCart(cid: string) {
+    try {
+      const cart = await this.cartModel.findById({ _id: cid });
+
+      cart.products = [];
+
+      return await cart.save();
+    } catch (err) {
+      return err;
+    }
+  }
 }
