@@ -110,7 +110,7 @@ const Cart = () => {
       body: JSON.stringify(email),
     })
       .then((res) => res.json())
-      .then((data) => console.log(data))
+      .then((data) => setCart(data.updatedCart))
       .catch((err) => setError(err))
       .finally(() => setLoading(false));
   };
