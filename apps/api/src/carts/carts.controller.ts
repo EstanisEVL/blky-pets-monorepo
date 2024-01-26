@@ -23,6 +23,7 @@ import { Product } from 'src/products/schemas/products.schemas';
 import { CreateTicketDto } from 'src/tickets/dto/create-ticket.dto';
 import { TicketsService } from 'src/tickets/tickets.service';
 import { TicketInterface } from 'src/interfaces/ticket.interface';
+import { MailerService } from '@nestjs-modules/mailer';
 
 @ApiTags('Carts')
 @Controller('carts')
@@ -31,6 +32,7 @@ export class CartsController {
     private readonly cartsService: CartsService,
     private readonly productsService: ProductsService,
     private readonly ticketsService: TicketsService,
+    private readonly mailerService: MailerService,
   ) {}
 
   // ROL DE ADMIN:
@@ -191,14 +193,22 @@ export class CartsController {
 
         await this.productsService.updateById(pid, { stock: newStock });
       });
-      /*
-      // Enviar ticket en el email de confirmación
-      sendMail(
-        newTicket.purchaser,
-        newTicket.amount,
-        newTicket.purchase_datetime
-      );
-      */
+
+      this.mailerService
+        .sendMail({
+          to: newTicket.purchaser,
+          from: 'noreply@blky-pets.com',
+          subject: 'BLKY Pets - Purchase confirmation',
+          html: `
+          <h1>BLKY PETS</h1>
+          <h2>We hope you enjoy your purchase!</h2>
+          <p>Order full price: ${newTicket.amount}</p>
+          <p>Your purchase was made on ${newTicket.purchase_datetime}</p>
+        `,
+        })
+        .then(() => {})
+        .catch(() => {});
+
       const updatedCart = await this.cartsService.emptyCart(cid);
 
       return { message: 'Purchase succesfully completed.', updatedCart };
