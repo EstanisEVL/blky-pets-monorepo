@@ -9,9 +9,9 @@ type BannerPropsType = {
 const Banner = ({ height, fsize, text, color, bgColor }: BannerPropsType) => {
   return (
     <section
-      className={`w-full ${height} font-semibold flex justify-center items-center ${bgColor} ${color}`}
+      className={`px-4 sm:px-0 w-full ${height} flex justify-center items-center ${bgColor} ${color}`}
     >
-      <p className={`${fsize}`}>{text}</p>
+      <p className={`${fsize} font-kanit font-semibold text-center`}>{text}</p>
     </section>
   );
 };

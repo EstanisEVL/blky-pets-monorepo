@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-import Banner from "../Banner";
-import Navbar from "./navbar/Navbar";
+import Banner from "../../presentation/Banner";
+import Navbar from "../../presentation/header/navbar/Navbar";
 
 const Header = () => {
   const [scrolled, setScrolled] = useState(false);
@@ -25,10 +25,10 @@ const Header = () => {
     <header className={"w-full fixed top-0 z-20"}>
       {scrolled ? null : (
         <Banner
-          height={"h-16"}
-          fsize={"text-lg"}
+          height={"h-20 sm:h-16"}
+          fsize={"text-sm sm:text-lg"}
           text={
-            "Envío gratis a todo el país en compras mayores a $6.000 | Hasta 3 cuotas sin interés con todos los bancos | Retiros gratis por Saavedra, CABA"
+            "Free shipping nationwide on purchases over $60 | Up to 3 interest-free fees with all banks | Free pick-up in Saavedra, CABA"
           }
           color={"text-black-500"}
           bgColor={"bg-yellow-300"}

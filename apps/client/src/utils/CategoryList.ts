@@ -17,29 +17,23 @@ import dogCategoryImg from "../assets/dog-category.jpg";
 import catCategoryImg from "../assets/cat-category.jpg";
 
 export const navbarCategories = [
-  { id: 1, title: "TIENDA" },
-  { id: 2, title: "REVENDEDORES" },
-  { id: 3, title: "NOSOTROS" },
-  { id: 4, title: "CONTACTO" },
+  { id: 1, title: "STORE" },
+  { id: 2, title: "CONTACT" },
 ];
 
 export const sitemapProductCategories = [
-  { id: 1, title: "PERROS" },
-  { id: 2, title: "GATOS" },
-  { id: 3, title: "HUMANOS" },
+  { id: 1, title: "DOGS" },
+  { id: 2, title: "CATS" },
+  { id: 3, title: "PEOPLE" },
 ];
 
 export const sitemapHelpCategories = [
-  { id: 1, title: "PRODUCTOS" },
-  { id: 2, title: "DEVOLUCIONES" },
-  { id: 3, title: "FORMAS DE ENVÍO" },
+  { id: 1, title: "PRODUCTS" },
+  { id: 2, title: "RETURNS" },
+  { id: 3, title: "SHIPPING" },
 ];
 
-export const sitemapAboutCategories = [
-  { id: 1, title: "NUESTRA HISTORIA" },
-  { id: 2, title: "CONTACTO" },
-  { id: 3, title: "SER REVENDEDOR" },
-];
+export const sitemapAboutCategories = [{ id: 1, title: "CONTACT" }];
 
 export const socialsFollow = [
   { id: 1, title: "facebook", src: facebookIcon },
@@ -76,7 +70,7 @@ export const categoryBanners = [
     id: 2,
     title: "cat banner",
     h2Text: "chew toys",
-    pText: "for all types of cats",
+    pText: "for all cat breeds",
     btnText: "view all",
     src: catCategoryImg,
   },

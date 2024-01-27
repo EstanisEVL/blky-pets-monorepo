@@ -1,19 +1,31 @@
-import bigBannerImg from "../../../assets/big-banner.jpg";
 import ButtonIndex from "../../buttons/ButtonIndex";
 
-// SIMPLIFICAR CANTIDAD DE COMPONENTES DE PRESENTACIÓN Y HACERLO REUTILIZABLE
+type BigImgBannerPropsType = {
+  image: string;
+  height: string;
+  title: string;
+  text: string;
+  btnText: string;
+};
 
-const BigImgBanner = () => {
+const BigImgBanner = ({
+  image,
+  height,
+  title,
+  text,
+  btnText,
+}: BigImgBannerPropsType) => {
   return (
-    <div className='py-10 flex-col justify-center relative'>
-      <img src={bigBannerImg} alt='' />
-      <div className='absolute bottom-16 left-1/2'>
-        <div className='text-center font-kanit mb-6'>
-          <h3 className='uppercase text-3xl'>{"blu lagoon"}</h3>
-          <p className='uppercase text-lg'>{"new print"}</p>
+    <div
+      className={`my-10 h-[${height}] flex flex-col justify-center items-center bg-[url('../..${image}')] bg-cover bg-no-repeat`}
+    >
+      <div className='w-full sm:top-2/3 flex flex-col items-center'>
+        <div className='text-center font-kanit mt-40 mb-6'>
+          <h3 className='uppercase font-medium text-3xl'>{title}</h3>
+          <p className='uppercase text-lg'>{text}</p>
         </div>
         <div className='flex justify-center'>
-          <ButtonIndex.BigBannerBtn text={"shop now"} />
+          <ButtonIndex.BigBannerBtn text={btnText} />
         </div>
       </div>
     </div>

@@ -1,20 +1,23 @@
 import ButtonIndex from "../../buttons/ButtonIndex";
 
 type HeroProps = {
-  img: string;
+  height: string;
   h1Text: string;
   pText: string;
   btnText: string;
 };
 
-const Hero = ({ img, h1Text, pText, btnText }: HeroProps) => {
+const Hero = ({ height, h1Text, pText, btnText }: HeroProps) => {
   return (
-    <div className='w-full min-h-max relative font-kanit pt-40'>
-      <img src={img} alt={"two dogs looking at BLKY PETS collar collection"} />
-      <div className='w-full absolute bottom-8 flex justify-center'>
+    <div
+      className={`mt-[160px] h-[${height}] flex flex-col justify-end bg-[url('../../../src/assets/hero.jpg')] bg-cover bg-center bg-no-repeat`}
+    >
+      <div className='mb-10 w-full flex justify-center'>
         <div className='flex-col text-center uppercase'>
-          <h1 className='text-3xl text-black '>{h1Text}</h1>
-          <p className='text-lg mb-6'>{pText}</p>
+          <h1 className='text-lg sm:text-3xl font-medium sm:font-normal font-kanit text-black '>
+            {h1Text}
+          </h1>
+          <p className='text-sm sm:text-lg font-kanit mb-6'>{pText}</p>
           <ButtonIndex.HeroBtn text={btnText} />
         </div>
       </div>

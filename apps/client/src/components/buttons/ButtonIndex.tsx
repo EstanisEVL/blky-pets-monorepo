@@ -136,7 +136,7 @@ const ButtonIndex = {
   // Falta el onClick:
   BigBannerBtn: ({ text }: BigBannerBtnPropsType): ReactElement => {
     return (
-      <button className='w-32 h-9 uppercase text-base font-kanit bg-zinc-900 text-white hover:bg-white hover:text-zinc-900 transition duration-500'>
+      <button className='w-32 h-9 uppercase text-base font-kanit text-zinc-900 bg-white border border-zinc-900 hover:text-white hover:bg-zinc-900  transition duration-500'>
         {text}
       </button>
     );

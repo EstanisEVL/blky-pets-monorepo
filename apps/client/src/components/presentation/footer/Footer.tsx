@@ -6,13 +6,17 @@ import Socials from "./Socials";
 
 const Footer = () => {
   return (
-    <footer className='w-full min-h-80 px-20 pt-16 flex justify-between font-kanit bg-neutral-900'>
-      <SiteMap />
-      <div className='h-full flex-col'>
+    <footer className='w-full min-h-80 px-20 pt-16 flex flex-col gap-y-10 sm:flex-row sm:flex-wrap justify-between font-kanit bg-neutral-900'>
+      <div className='order-1'>
+        <SiteMap />
+      </div>
+      <div className='order-3 sm:order-2 h-full flex-col'>
         <Socials />
         <Copyright />
       </div>
-      <PayMethods h3={"Medios de pago"} payments={paymentMethods} />
+      <div className='order-2 sm:order-3'>
+        <PayMethods h3={"Payment methods"} payments={paymentMethods} />
+      </div>
     </footer>
   );
 };

@@ -8,7 +8,7 @@ type SocialsCol = {
 const SocialsCol = ({ h3, socials }: SocialsCol) => {
   return (
     <div>
-      <div className='flex-col text-white'>
+      <div className='flex-col sm:text-center text-white'>
         <h3 className='text-2xl mb-2'>{h3}</h3>
         <div className='flex gap-x-4'>
           {socials.map((social) => {

@@ -3,7 +3,7 @@ import CategoryBanner from "./CategoryBanner";
 
 const Categories = () => {
   return (
-    <div className='py-10 flex justify-center gap-x-6'>
+    <div className='py-10 flex flex-col sm:flex-row justify-center gap-y-6 sm:gap-x-6'>
       {categoryBanners.map((category) => {
         return (
           <CategoryBanner
