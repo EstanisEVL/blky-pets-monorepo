@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import Banner from "../../presentation/Banner";
-import Navbar from "../../presentation/header/navbar/Navbar";
+import ResponsiveNavbar from "../../presentation/header/navbar/ResponsiveNavbar";
 
 const Header = () => {
   const [scrolled, setScrolled] = useState(false);
@@ -35,7 +35,7 @@ const Header = () => {
         />
       )}
 
-      <Navbar />
+      <ResponsiveNavbar />
     </header>
   );
 };

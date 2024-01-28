@@ -8,9 +8,11 @@ type Categories = {
 
 const Categories = ({ categories, textColor }: Categories) => {
   return (
-    <ul className={`flex items-center gap-x-10 ${textColor}`}>
+    <ul
+      className={`flex flex-col sm:flex-row sm:items-center gap-y-10 sm:gap-x-10 ${textColor}`}
+    >
       {categories.map((category) => {
-        return <CategoriesLink key={category.id} category={category.title} />;
+        return <CategoriesLink key={category.id} category={category} />;
       })}
     </ul>
   );

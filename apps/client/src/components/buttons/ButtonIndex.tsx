@@ -3,6 +3,11 @@
 import { ReactElement } from "react";
 
 // Resumir tipados
+type HamburguerBtnPropsType = {
+  handleClick: () => void;
+  icon: string;
+};
+
 type LoginBtnPropsType = {
   handleClick: () => void;
   icon: string;
@@ -77,6 +82,17 @@ type DeleteBtnPropsType = {
 // Pasar cada botón a su propio componente y llamarlos desde este índice
 
 const ButtonIndex = {
+  HamburguerBtn: ({ icon, handleClick }: HamburguerBtnPropsType) => {
+    return (
+      <button
+        className='w-12 h-12 rounded border border-white text-white hover:bg-white hover:text-neutral-900 transition duration-500'
+        onClick={handleClick}
+      >
+        {icon}
+      </button>
+    );
+  },
+
   LoginBtn: ({ handleClick, icon }: LoginBtnPropsType): ReactElement => {
     return (
       // Acá se retorna el componente

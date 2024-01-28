@@ -19,7 +19,7 @@ const SearchInput = ({ input, handleChange }: SearchInputProp) => {
         placeholder='What are you looking for?'
         autoComplete='off'
         aria-label='Search'
-        className='pr-3 pl-10 h-12 w-72 rounded placeholder-gray-500 border-none outline-none'
+        className='pr-3 pl-10 h-12 w-full rounded placeholder-gray-500 border-none outline-none'
         value={input}
         onChange={(e) => handleChange(e.target.value)}
       />

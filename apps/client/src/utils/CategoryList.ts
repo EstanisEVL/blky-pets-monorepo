@@ -17,8 +17,8 @@ import dogCategoryImg from "../assets/dog-category.jpg";
 import catCategoryImg from "../assets/cat-category.jpg";
 
 export const navbarCategories = [
-  { id: 1, title: "STORE" },
-  { id: 2, title: "CONTACT" },
+  { id: 1, title: "STORE", href: "#store" },
+  { id: 2, title: "COLLECTIONS", href: "#collections" },
 ];
 
 export const sitemapProductCategories = [

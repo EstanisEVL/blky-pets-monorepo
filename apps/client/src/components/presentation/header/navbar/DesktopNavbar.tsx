@@ -5,7 +5,7 @@ import Login from "../../../containers/header/navbar/Login";
 import SearchBar from "../../../containers/header/navbar/SearchBar";
 import Brand from "./Brand";
 
-const Navbar = () => {
+const DesktopNavbar = () => {
   return (
     <nav
       className={`w-full h-24 flex justify-between items-center bg-neutral-900 transition duration-500`}
@@ -26,4 +26,4 @@ const Navbar = () => {
   );
 };
 
-export default Navbar;
+export default DesktopNavbar;

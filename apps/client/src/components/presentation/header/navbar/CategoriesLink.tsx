@@ -1,13 +1,15 @@
 // AGREGAR REACT-ROUTER-DOM LINK O NAVLINK
 
-type CategoryLink = {
-  category: string;
+import { Category } from "../../../../interfaces/category.interface";
+
+type CategoryLinkPropsType = {
+  category: Category;
 };
 
-const CategoriesLink = ({ category }: CategoryLink) => {
+const CategoriesLink = ({ category }: CategoryLinkPropsType) => {
   return (
     <li className='text-xl'>
-      <a href='#'>{category}</a>
+      <a href={category.href}>{category.title}</a>
     </li>
   );
 };

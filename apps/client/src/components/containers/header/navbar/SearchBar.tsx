@@ -25,7 +25,7 @@ const SearchBar = () => {
 
   return (
     <div className='flex-col relative'>
-      <form action=''>
+      <form>
         <SearchInput input={input} handleChange={handleChange} />
       </form>
       <SearchResults results={results} />

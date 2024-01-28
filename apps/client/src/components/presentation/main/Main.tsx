@@ -1,8 +1,7 @@
 import Store from "../../containers/main/Store";
 import Banner from "../Banner";
 import Hero from "./Hero";
-
-import Categories from "../header/navbar/Categories";
+import BannerCategories from "../header/navbar/BannerCategories";
 import BigImgBanner from "./BigImgBanner";
 import Carousel from "../../containers/main/Carousel";
 import Newsletter from "./Newsletter";
@@ -17,7 +16,7 @@ const Main = () => {
         pText={"For full color dogs"}
         btnText={"View all"}
       />
-      <Categories />
+      <BannerCategories />
       <Banner
         height={"h-20 sm:h-36"}
         fsize={"text-sm sm:text-4xl"}
