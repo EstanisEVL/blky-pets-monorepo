@@ -3,9 +3,9 @@ import CarouselArrow from "../../presentation/main/CarouselArrow";
 import CarouselBody from "../../presentation/main/CarouselBody";
 import useProducts from "../../../hooks/useProducts";
 
-const Carousel = () => {
+const MobileCarousel = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [lastIndex, setLastIndex] = useState(4);
+  const [lastIndex, setLastIndex] = useState(1);
   const { products } = useProducts();
 
   const slides = products.slice(currentIndex, lastIndex);
@@ -22,16 +22,16 @@ const Carousel = () => {
         ? startIndex + 1
         : 0
       : condition
-      ? startIndex - 1
-      : products.length - 4;
+        ? startIndex - 1
+        : products.length - 4;
 
     const nextLastIndex = next
       ? condition
         ? endIndex + 1
         : 4
       : condition
-      ? endIndex - 1
-      : products.length;
+        ? endIndex - 1
+        : products.length;
 
     setCurrentIndex(nextCurrentIndex);
     setLastIndex(nextLastIndex);
@@ -58,4 +58,4 @@ const Carousel = () => {
   );
 };
 
-export default Carousel;
+export default MobileCarousel;

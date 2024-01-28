@@ -47,7 +47,7 @@ const Store = () => {
 
   return (
     <section id='store'>
-      <div className='flex justify-between mx-10 mt-16 font-kanit'>
+      <div className='flex flex-col items-center sm:items-stretch sm:flex-row justify-between sm:mx-10 mt-16 font-kanit'>
         <StoreTitle title={"productos"} text={"/ Todos los productos"} />
         <StoreFilters />
       </div>

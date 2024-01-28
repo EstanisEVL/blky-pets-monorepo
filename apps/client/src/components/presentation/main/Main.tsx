@@ -3,8 +3,8 @@ import Banner from "../Banner";
 import Hero from "./Hero";
 import BannerCategories from "../header/navbar/BannerCategories";
 import BigImgBanner from "./BigImgBanner";
-import Carousel from "../../containers/main/Carousel";
 import Newsletter from "./Newsletter";
+import ResponsiveCarousel from "../../containers/main/ResponsiveCarousel";
 
 const Main = () => {
   return (
@@ -32,7 +32,7 @@ const Main = () => {
         text={"new print"}
         btnText={"shop now"}
       />
-      <Carousel />
+      <ResponsiveCarousel />
       <Banner
         height={"h-20 sm:h-36"}
         fsize={"text-sm sm:text-4xl"}
