@@ -3,7 +3,6 @@ import Banner from "../Banner";
 import Hero from "./Hero";
 
 import Categories from "../header/navbar/Categories";
-import bigBannerImg from "../../../assets/big-banner.jpg";
 import BigImgBanner from "./BigImgBanner";
 import Carousel from "../../containers/main/Carousel";
 import Newsletter from "./Newsletter";
@@ -12,7 +11,8 @@ const Main = () => {
   return (
     <main>
       <Hero
-        height={"578px"}
+        height={"h-[578px]"}
+        bgImage={"bg-[url('../../../src/assets/hero.jpg')]"}
         h1Text={"New collar prints"}
         pText={"For full color dogs"}
         btnText={"View all"}
@@ -27,8 +27,8 @@ const Main = () => {
       />
 
       <BigImgBanner
-        image={bigBannerImg}
-        height={"578px"}
+        bgImage={`bg-[url('../../../src/assets/big-banner.jpg')]`}
+        height={"h-[578px]"}
         title={"blu lagoon"}
         text={"new print"}
         btnText={"shop now"}

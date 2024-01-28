@@ -2,15 +2,16 @@ import ButtonIndex from "../../buttons/ButtonIndex";
 
 type HeroProps = {
   height: string;
+  bgImage: string;
   h1Text: string;
   pText: string;
   btnText: string;
 };
 
-const Hero = ({ height, h1Text, pText, btnText }: HeroProps) => {
+const Hero = ({ height, bgImage, h1Text, pText, btnText }: HeroProps) => {
   return (
     <div
-      className={`mt-[160px] h-[${height}] flex flex-col justify-end bg-[url('../../../src/assets/hero.jpg')] bg-cover bg-center bg-no-repeat`}
+      className={`mt-[160px] ${height} ${bgImage} flex flex-col justify-end  bg-cover bg-center bg-no-repeat`}
     >
       <div className='mb-10 w-full flex justify-center'>
         <div className='flex-col text-center uppercase'>
