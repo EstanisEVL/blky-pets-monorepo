@@ -20,7 +20,7 @@ const MobileNavbar = () => {
           <ButtonIndex.HamburguerBtn icon={"≡"} handleClick={handleOpen} />
         </div>
       </nav>
-      <BaseMenuWrapper isVisible={open} />
+      <BaseMenuWrapper isVisible={open} setVisible={setOpen} />
     </>
   );
 };

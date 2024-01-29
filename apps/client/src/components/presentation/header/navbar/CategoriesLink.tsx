@@ -1,17 +1,20 @@
-// AGREGAR REACT-ROUTER-DOM LINK O NAVLINK
-
-// CAMBIAR HREF POR NAVIGATE (SI ES QUE CORRESPONDE PARA SPA)
-
 import { Category } from "../../../../interfaces/category.interface";
 
 type CategoryLinkPropsType = {
   category: Category;
+  setVisible: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
-const CategoriesLink = ({ category }: CategoryLinkPropsType) => {
+const CategoriesLink = ({ category, setVisible }: CategoryLinkPropsType) => {
+  const handleClick = () => {
+    setVisible(false);
+  };
+
   return (
     <li className='text-xl'>
-      <a href={category.href}>{category.title}</a>
+      <a onClick={handleClick} href={category.href}>
+        {category.title}
+      </a>
     </li>
   );
 };
