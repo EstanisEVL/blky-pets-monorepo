@@ -6,7 +6,7 @@ import Categories from "../../../containers/main/Categories";
 
 const MobileMenu = () => {
   return (
-    <div className='h-screen px-16 flex flex-col gap-y-10 items-center bg-neutral-900 transiton duration-500'>
+    <div className='h-screen p-16 flex flex-col gap-y-10 items-center bg-neutral-900 transiton duration-500'>
       <div className='w-full'>
         <Categories categories={navbarCategories} textColor={"text-slate-50"} />
       </div>

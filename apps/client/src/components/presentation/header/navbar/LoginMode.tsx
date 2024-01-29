@@ -26,8 +26,8 @@ const LoginMode = ({}): ReactElement => {
   };
 
   return (
-    <div className='w-full h-full p-4 flex flex-col'>
-      <div className='flex gap-10 mb-6 max-w-lg'>
+    <div className='min-w-full sm:w-full sm:h-full p-4 flex flex-col items-center sm:items-stretch'>
+      <div className='w-full flex justify-between gap-16 sm:gap-10 mb-6 sm:max-w-lg'>
         <ButtonIndex.LoginModalBtn
           handleClick={handleAdminLogin}
           text={"admin"}
@@ -40,7 +40,7 @@ const LoginMode = ({}): ReactElement => {
         />
       </div>
 
-      <div className='flex flex-col justify-center items-center grow'>
+      <div className='w-full flex flex-col justify-center items-center grow'>
         {loginMode === "admin" && <AdminLoginForm />}
         {loginMode === "user" && (
           <UserLoginForm

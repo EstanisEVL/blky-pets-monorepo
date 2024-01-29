@@ -64,8 +64,8 @@ const UserPwdRecoveryForm = ({
   };
 
   return (
-    <div className='min-w-[500px] max-w-md'>
-      <Title text={"Recuperar contraseña"} />
+    <div className='w-full sm:min-w-[500px] sm:max-w-md'>
+      <Title text={"Reset password"} />
 
       {loading ? (
         // CAMBIAR A COMPONENTE LOADING REUTILIZABLE:
@@ -74,15 +74,13 @@ const UserPwdRecoveryForm = ({
         <form onSubmit={handleSubmit}>
           <div className='flex flex-col gap-6 mt-6'>
             <FormInput
-              label={"Correo electrónico:"}
+              label={"Email"}
               input={"email"}
               id={"email"}
-              text={"Ingresa tu correo electrónico..."}
+              text={"Email"}
               isRequired={true}
               onChange={handleChange}
-              message={
-                "Ingresa tu correo electrónico y te enviaremos un link para reestablecer tu contraseña."
-              }
+              message={"Enter your email to reset password."}
             />
           </div>
           {/* REVISAR ESTADO ERROR, SI SE PUEDE CAMBIAR POR UN BOOLEANO Y ENVIAR UN MENSAJE ACORDE A CADA ERROR DE OTRA FORMA */}
@@ -94,20 +92,20 @@ const UserPwdRecoveryForm = ({
           )}
 
           <div className='flex justify-center mt-10'>
-            <ButtonIndex.EnterBtn text={"Recibir email"} />
+            <ButtonIndex.EnterBtn text={"Reset password"} />
           </div>
         </form>
       )}
 
       <div className='flex flex-col items-end gap-2 mt-6'>
         <FormLink
-          text={"¿Ya tienes tu usuario? Inicia sesión haciendo "}
-          btnText={"click aquí"}
+          text={"Already have an account? "}
+          btnText={"Log in"}
           handleClick={handleUserLogin}
         />
         <FormLink
-          text={"¿No estás registrado? Registrate haciendo "}
-          btnText={"click aquí"}
+          text={"No account? "}
+          btnText={"Create one"}
           handleClick={handleUserSignup}
         />
       </div>

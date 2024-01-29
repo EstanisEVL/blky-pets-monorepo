@@ -76,9 +76,6 @@ const UserLoginForm = ({
     }
   };
 
-  // SEGUIR ACÁ: que se renueve correctamente el access_token
-  // cuando se abre el modal, no debe haber un access_token del localStorage
-  // sólo cuando se manda el submit se tiene que guardar
   useEffect(() => {
     if (!loggedIn) {
       localStorage.clear();
@@ -90,8 +87,8 @@ const UserLoginForm = ({
   }, [loggedIn]);
 
   return (
-    <div className='min-w-[500px] max-w-md'>
-      <Title text={"Iniciar sesión"} />
+    <div className='w-full sm:min-w-[500px] sm:max-w-md'>
+      <Title text={"User login"} />
       {loading ? (
         // CAMBIAR A COMPONENTE LOADING REUTILIZABLE:
         <div>Loading...</div>
@@ -99,18 +96,18 @@ const UserLoginForm = ({
         <form onSubmit={handleSubmit}>
           <div className='flex flex-col gap-6 mt-6'>
             <FormInput
-              label={"Correo electrónico:"}
+              label={"Email"}
               input={"email"}
               id={"email"}
-              text={"Ingresa tu correo electrónico..."}
+              text={"Email"}
               isRequired={true}
               onChange={handleChange}
             />
             <FormInput
-              label={"Contraseña:"}
+              label={"Password"}
               input={"password"}
               id={"password"}
-              text={"Ingresa tu contraseña..."}
+              text={"Password"}
               isRequired={true}
               onChange={handleChange}
             />
@@ -125,20 +122,20 @@ const UserLoginForm = ({
           )}
 
           <div className='flex justify-center mt-10'>
-            <ButtonIndex.EnterBtn text={"Ingresar"} />
+            <ButtonIndex.EnterBtn text={"Login"} />
           </div>
         </form>
       )}
 
       <div className='flex flex-col items-end gap-2 mt-6'>
         <FormLink
-          text={"¿No estás registrado? Registrate haciendo "}
-          btnText={"click aquí"}
+          text={"No account? "}
+          btnText={"Create one"}
           handleClick={handleUserSignup}
         />
         <FormLink
-          text={"¿Olvidaste tu contraseña? Genera una nueva haciendo "}
-          btnText={"click aquí"}
+          text={"Forgot your password? "}
+          btnText={"Reset it here"}
           handleClick={handleUserPwdRecovery}
         />
       </div>

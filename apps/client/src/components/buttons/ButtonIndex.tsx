@@ -123,7 +123,7 @@ const ButtonIndex = {
   CloseBtn: ({ handleClick, icon }: CloseBtnPropsType): ReactElement => {
     return (
       <button
-        className='bg-black text-white min-h-12 min-w-12 rounded-full hover:bg-gray-500 hover:text-black transition duration-500 flex justify-center items-center'
+        className='border border-black text-black min-h-12 min-w-12 rounded-full hover:bg-black hover:text-white transition duration-500 flex justify-center items-center'
         onClick={handleClick}
       >
         {icon}

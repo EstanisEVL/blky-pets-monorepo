@@ -58,8 +58,8 @@ const AdminLoginForm = () => {
   };
 
   return (
-    <div className='min-w-[500px] max-w-md'>
-      <Title text={"Iniciar sesión (admin)"} />
+    <div className='w-full sm:min-w-[500px] sm:max-w-md'>
+      <Title text={"Admin login"} />
 
       {loading ? (
         // CAMBIAR A COMPONENTE LOADING REUTILIZABLE:
@@ -68,18 +68,18 @@ const AdminLoginForm = () => {
         <form onSubmit={handleSubmit}>
           <div className='flex flex-col gap-6 mt-6'>
             <FormInput
-              label={"Correo electrónico:"}
+              label={"Email"}
               input={"email"}
               id={"email"}
-              text={"Ingresa tu correo electrónico"}
+              text={"Email"}
               isRequired={true}
               onChange={handleChange}
             />
             <FormInput
-              label={"Contraseña:"}
+              label={"Password"}
               input={"password"}
               id={"password"}
-              text={"Ingresa tu contraseña"}
+              text={"Password"}
               isRequired={true}
               onChange={handleChange}
             />
@@ -94,7 +94,7 @@ const AdminLoginForm = () => {
           )}
 
           <div className='flex justify-center mt-10'>
-            <ButtonIndex.EnterBtn text={"Ingresar"} />
+            <ButtonIndex.EnterBtn text={"Login"} />
           </div>
         </form>
       )}

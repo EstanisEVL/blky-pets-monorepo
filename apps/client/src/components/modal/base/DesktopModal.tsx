@@ -16,7 +16,7 @@ const DesktopModal = ({ content, onBackdropClick }: DesktopModalPropsType) => {
     >
       <div
         onClick={(e) => e.stopPropagation()}
-        className='bg-white rounded select-none w-1/2 flex flex-col items-center justify-center relative'
+        className='bg-white rounded select-none w-1/2 h-full flex flex-col items-center justify-center relative'
       >
         <div className='absolute top-0 right-0 m-4'>
           <ButtonIndex.CloseBtn handleClick={onBackdropClick} icon={"X"} />

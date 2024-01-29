@@ -21,8 +21,8 @@ const FormInput = ({
 }: FormInputPropsType): ReactElement => {
   return (
     <>
-      <div className='flex flex-col font-kanit'>
-        <label className='uppercase text-xl' htmlFor={id}>
+      <div className={"sm:max-w-full flex flex-col font-kanit"}>
+        <label className='uppercase text-base sm:text-xl' htmlFor={id}>
           {label}
         </label>
         <input
@@ -32,12 +32,12 @@ const FormInput = ({
           placeholder={text}
           required={isRequired}
           onChange={onChange}
-          className='h-12 outline-none grow ps-2 bg-gray-200 rounded'
+          className='h-12 outline-none ps-2 bg-gray-200 rounded'
         />
       </div>
       {message && (
         <div className='mb-6'>
-          <p className='text-sm text-gray-500'>{message}</p>
+          <p className='text-xs sm:text-sm text-gray-500'>{message}</p>
         </div>
       )}
     </>

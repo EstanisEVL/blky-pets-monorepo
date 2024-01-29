@@ -1,5 +1,7 @@
 // AGREGAR REACT-ROUTER-DOM LINK O NAVLINK
 
+// CAMBIAR HREF POR NAVIGATE (SI ES QUE CORRESPONDE PARA SPA)
+
 import { Category } from "../../../../interfaces/category.interface";
 
 type CategoryLinkPropsType = {

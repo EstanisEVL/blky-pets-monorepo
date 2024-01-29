@@ -53,7 +53,7 @@ const Store = () => {
       </div>
 
       {/* AGREGAR EL LOADER A PARTIR DE ACÁ */}
-      <div className='flex justify-center flex-wrap gap-6'>
+      <div className='flex flex-row flex-wrap justify-center gap-6'>
         {products?.map((product: Product) => {
           return (
             <ProductCard

@@ -77,59 +77,71 @@ const UserSignupForm = ({ handleUserLogin }: UserSignupFormPropsType) => {
   };
 
   return (
-    <div className='min-w-[500px] max-w-md'>
-      <Title text={"Registro"} />
+    <div className='w-full sm:min-w-[500px] sm:max-w-md'>
+      <Title text={"Create account"} />
       {loading ? (
         // CAMBIAR A COMPONENTE LOADING REUTILIZABLE:
         <div>Loading...</div>
       ) : (
-        <form onSubmit={handleSubmit}>
-          <div className='flex flex-col gap-4 min-w-sm'>
-            <FormInput
-              label={"Nombre"}
-              input={"text"}
-              id={"first_name"}
-              text={"Ingresa tu nombre..."}
-              isRequired={true}
-              onChange={handleChange}
-            />
+        <form className='w-full' onSubmit={handleSubmit}>
+          <div className='flex flex-col min-w-sm gap-2 sm:gap-4'>
+            <div className='w-full flex justify-between sm:flex-col sm:gap-4'>
+              <div className='max-w-40 sm:max-w-full'>
+                <FormInput
+                  label={"Name"}
+                  input={"text"}
+                  id={"first_name"}
+                  text={"Name"}
+                  isRequired={true}
+                  onChange={handleChange}
+                />
+              </div>
+
+              <div className='max-w-40 sm:max-w-full'>
+                <FormInput
+                  label={"Last name"}
+                  input={"text"}
+                  id={"last_name"}
+                  text={"Last name"}
+                  isRequired={true}
+                  onChange={handleChange}
+                />
+              </div>
+            </div>
+
+            <div className='flex justify-between sm:flex-col sm:gap-4'>
+              <div className='max-w-40 sm:max-w-full'>
+                <FormInput
+                  label={"Email"}
+                  input={"email"}
+                  id={"email"}
+                  text={"Email"}
+                  isRequired={true}
+                  onChange={handleChange}
+                />
+              </div>
+
+              <div className='max-w-40 sm:max-w-full'>
+                <FormInput
+                  label={"Age"}
+                  input={"number"}
+                  id={"age"}
+                  text={"Age"}
+                  isRequired={true}
+                  onChange={handleChange}
+                />
+              </div>
+            </div>
 
             <FormInput
-              label={"Apellido"}
-              input={"text"}
-              id={"last_name"}
-              text={"Ingresa tu apellido..."}
-              isRequired={true}
-              onChange={handleChange}
-            />
-
-            <FormInput
-              label={"Correo electrónico"}
-              input={"email"}
-              id={"email"}
-              text={"Ingresa tu correo electrónico..."}
-              isRequired={true}
-              onChange={handleChange}
-            />
-
-            <FormInput
-              label={"Edad"}
-              input={"number"}
-              id={"age"}
-              text={"Ingresa tu edad..."}
-              isRequired={true}
-              onChange={handleChange}
-            />
-
-            <FormInput
-              label={"Contraseña"}
+              label={"Password"}
               input={"password"}
               id={"password"}
-              text={"Ingresa tu contraseña..."}
+              text={"Password"}
               isRequired={true}
               onChange={handleChange}
               message={
-                "La contraseña debe tener al menos 8 caracteres, y contener por lo menos una minúscula, una mayúscula, un número y un caracter especial (@$!%*?&)."
+                "Your password must contain at least 8 characters, and at least one lowercase, one uppercase, one number and one special character (@$!%*?&)."
               }
             />
 
@@ -141,16 +153,16 @@ const UserSignupForm = ({ handleUserLogin }: UserSignupFormPropsType) => {
               </div>
             )}
             <div className='flex justify-center'>
-              <ButtonIndex.EnterBtn text={"Enviar"} />
+              <ButtonIndex.EnterBtn text={"Create account"} />
             </div>
           </div>
         </form>
       )}
 
-      <div className='text-end mt-6'>
+      <div className='text-end mt-2 sm:mt-6'>
         <FormLink
-          text={"¿Ya tienes tu usuario? Inicia sesión haciendo "}
-          btnText={"click aquí"}
+          text={"Already have an account? "}
+          btnText={"Log in"}
           handleClick={handleUserLogin}
         />
       </div>
