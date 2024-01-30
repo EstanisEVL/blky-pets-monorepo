@@ -65,6 +65,7 @@ type AddBtnPropsType = {
   handleClick: (e: React.MouseEvent<HTMLButtonElement>) => void;
   pid: string;
   icon: string;
+  inProductCard: boolean;
 };
 
 type RemoveBtnPropsType = {
@@ -204,10 +205,12 @@ const ButtonIndex = {
     );
   },
 
-  AddBtn: ({ icon, pid, handleClick }: AddBtnPropsType) => {
+  AddBtn: ({ icon, pid, handleClick, inProductCard }: AddBtnPropsType) => {
     return (
       <button
-        className='w-6 sm:w-12 h-6 sm:h-12 flex justify-center items-center font-extrabold rounded border border-green-600 text-green-600 hover:bg-green-600 hover:text-white transition duration-500'
+        className={`${
+          inProductCard ? "w-12 h-12" : "w-6 h-6"
+        }  sm:w-12 sm:h-12 flex justify-center items-center font-extrabold rounded border border-green-600 text-green-600 hover:bg-green-600 hover:text-white transition duration-500`}
         data-product-id={pid}
         onClick={handleClick}
       >

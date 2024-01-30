@@ -32,6 +32,7 @@ const ProductCard = ({
             icon={"Add"}
             pid={product._id}
             handleClick={handleClick}
+            inProductCard={true}
           />
         </div>
       </div>

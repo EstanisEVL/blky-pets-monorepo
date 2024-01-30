@@ -24,7 +24,7 @@ const Store = () => {
     const pid = e.currentTarget.getAttribute("data-product-id");
 
     if (!cid) {
-      toast.error("Inicia sesión para agregar el producto al carrito.");
+      toast.error("Log in to add a product to your cart.");
       return;
     }
 
@@ -42,7 +42,11 @@ const Store = () => {
       .then((data) => setCart(data.updatedCart))
       // Agregar estado de error y un loading para el finally()
       .catch((err) => toast.error(err))
-      .finally(() => setLoading(false));
+      .finally(() => {
+        toast.success("Product succesfully added to your cart.");
+
+        setLoading(false);
+      });
   };
 
   return (
