@@ -18,13 +18,13 @@ const MobileCartModal = ({
     >
       <div
         onClick={(e) => e.stopPropagation()}
-        className='bg-white rounded select-none w-full h-2/3 flex flex-col items-center justify-center relative'
+        className='bg-white rounded select-none w-full h-5/6 flex flex-col items-center justify-center relative'
       >
-        <div className='absolute top-0 mt-10'>
+        <div className='absolute top-0 mt-4'>
           <ButtonIndex.CloseBtn handleClick={onBackdropClick} icon={"X"} />
         </div>
 
-        <div>{content}</div>
+        <div className='w-full h-full overflow-y-scroll mb-4'>{content}</div>
       </div>
     </div>,
     document.getElementById("modal-root")!

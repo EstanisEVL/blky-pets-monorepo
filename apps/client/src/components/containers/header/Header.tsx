@@ -27,9 +27,7 @@ const Header = () => {
         <Banner
           height={"h-20 sm:h-16"}
           fsize={"text-sm sm:text-lg"}
-          text={
-            "Free shipping nationwide on purchases over $60 | Up to 3 interest-free fees with all banks | Free pick-up in Saavedra, CABA"
-          }
+          text={"FREE worldwide Shipping on orders over $100 🎉"}
           color={"text-black-500"}
           bgColor={"bg-yellow-300"}
         />

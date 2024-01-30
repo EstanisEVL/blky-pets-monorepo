@@ -2,8 +2,9 @@ import { useEffect, useState } from "react";
 import useUserData from "../../../../hooks/useUserData";
 import Title from "../../../Title";
 import { Cart as CartInterface } from "../../../../interfaces/cart.interface";
-import ProductInCartDetail from "../../../presentation/header/navbar/ProductInCartDetail";
+import ProductInCartDetail from "../../../presentation/header/cart/ProductInCartDetail";
 import ButtonIndex from "../../../buttons/ButtonIndex";
+import CartPurchaseTotal from "../../../presentation/header/cart/CartPurchaseTotal";
 
 const API_URL: string = "http://localhost:8080/api";
 
@@ -116,20 +117,18 @@ const Cart = () => {
   };
 
   return (
-    // MEJORAR DISEÑO DE COMPONENTE CART:
-
-    <div className='h-full w-4/6 py-8 flex flex-col'>
-      <div className='flex justify-between'>
-        <p className='font-kanit'>{info?.name}</p>
-        <p className='font-kanit'>{info?.email}</p>
+    <div className='w-full h-full sm:w-4/6 p-8 sm:p-0 sm:py-8 flex flex-col'>
+      <div className='mt-12 sm:ms-0 flex flex-wrap gap-y-4 justify-between'>
+        <p className='sm:text-lg font-kanit font-medium'>{info?.name}</p>
+        <p className='sm:text-lg font-kanit'>{info?.email}</p>
       </div>
 
-      <div className='mt-10'>
-        <div className='mb-10'>
-          <Title text={"Carrito"} />
+      <div className='h-96 max-h-96 mt-4 sm:mt-10'>
+        <div className='mb-4 sm:mb-10'>
+          <Title text={"Cart"} />
         </div>
 
-        <div className='flex flex-col gap-6 overflow-y-scroll'>
+        <div className='max-h-56 sm:max-h-72 flex flex-col gap-6 overflow-y-scroll'>
           {/* AGREGAR EL LOADER PARA QUE NO MUESTRE QUE EL CARRITO ESTÁ VACÍO SI NO CARGÓ */}
           {!loading && cart && cart.products.length ? (
             cart.products.map((product) => {
@@ -146,7 +145,7 @@ const Cart = () => {
           ) : (
             // QUE SÓLO AVISE QUE ESTÁ VACÍO CUANDO NO HAY PRODUCTOS EN EL CARRITO
             <div className='flex justify-center'>
-              <h3 className='text-lg font-kanit'>El carrito está vacío.</h3>
+              <h3 className='sm:text-lg font-kanit'>Your cart is empty.</h3>
             </div>
           )}
         </div>
@@ -159,26 +158,10 @@ const Cart = () => {
         </div>
       )}
 
-      {/* CAMBIAR A COMPONENTE DETALLE DE COMPRA */}
-      {cart?.products.length !== 0 && (
-        <div className='w-full flex justify-end mt-10'>
-          <p className='font-kanit'>
-            Total de tu compra:{" "}
-            <span className='font-bold'>
-              {new Intl.NumberFormat("en-US", {
-                style: "currency",
-                currency: "USD",
-              }).format(Number(fullPrice))}
-            </span>
-          </p>
-        </div>
-      )}
+      {cart?.products.length !== 0 && <CartPurchaseTotal amount={fullPrice} />}
 
-      <div className='mt-20 text-center'>
-        <ButtonIndex.PurchaseBtn
-          text={"Comprar"}
-          handleClick={confirmPurchase}
-        />
+      <div className='mt-4 sm:mt-20 text-center'>
+        <ButtonIndex.PurchaseBtn text={"Buy"} handleClick={confirmPurchase} />
       </div>
     </div>
   );

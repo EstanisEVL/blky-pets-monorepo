@@ -15,14 +15,19 @@ const ProductInCartDetail = ({
   handleDelete,
 }: ProductInCartDetailPropsType) => {
   return (
-    <div key={product._id} className='flex justify-between items-center gap-4'>
-      <div className='w-1/6'>
-        <img className='w-full rounded' src={product.img} />
+    <div key={product._id} className='flex justify-between items-center'>
+      <div className='w-1/4 sm:w-1/6 flex justify-start'>
+        <img
+          className='w-12 sm:w-full h-12 sm:h-auto rounded'
+          src={product.img}
+        />
       </div>
-      <div className='w-1/6'>
-        <h3 className='font-kanit'>{product.title}</h3>
+
+      <div className='hidden sm:block sm:w-1/6 sm:text-center'>
+        <h3 className='sm:text-base font-kanit'>{product.title}</h3>
       </div>
-      <div className='w-2/6 flex justify-between items-center'>
+
+      <div className='w-1/4 sm:w-2/6 flex justify-between items-center'>
         <div>
           <ButtonIndex.RemoveBtn
             icon={"-"}
@@ -44,8 +49,8 @@ const ProductInCartDetail = ({
         </div>
       </div>
 
-      <div className='w-1/6'>
-        <p className='font-kanit text-center'>
+      <div className='w-1/4 sm:w-1/6 flex justify-center'>
+        <p className='font-kanit text-center text-base'>
           {new Intl.NumberFormat("en-US", {
             style: "currency",
             currency: "USD",
@@ -53,7 +58,7 @@ const ProductInCartDetail = ({
         </p>
       </div>
 
-      <div className='w-1/6'>
+      <div className='w-1/4 sm:w-1/6 flex justify-center'>
         <ButtonIndex.DeleteBtn
           icon={"x"}
           pid={product._id}

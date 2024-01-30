@@ -3,6 +3,8 @@ import CarouselArrow from "../../presentation/main/CarouselArrow";
 import CarouselBody from "../../presentation/main/CarouselBody";
 import useProducts from "../../../hooks/useProducts";
 
+// CORREGIR: cuando llega al final o se va desde la primera tarjeta, se rompe el responsive.
+
 const MobileCarousel = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [lastIndex, setLastIndex] = useState(1);
