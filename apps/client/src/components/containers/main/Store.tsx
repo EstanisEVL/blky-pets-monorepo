@@ -39,12 +39,14 @@ const Store = () => {
       },
     })
       .then((res) => res.json())
-      .then((data) => setCart(data.updatedCart))
+      .then((data) => {
+        setCart(data.updatedCart);
+
+        toast.success("Product succesfully added to your cart.");
+      })
       // Agregar estado de error y un loading para el finally()
       .catch((err) => toast.error(err))
       .finally(() => {
-        toast.success("Product succesfully added to your cart.");
-
         setLoading(false);
       });
   };
