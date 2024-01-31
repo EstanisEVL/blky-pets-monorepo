@@ -1,10 +1,6 @@
 import { ReactElement } from "react";
 import { Product } from "../../../interfaces/product.interface";
 
-// revisar si sigue lanzando error al recargar el sitio con el índice del carrusel en un valor mayor a 0
-
-// AJUSTAR MAX HEIGHT Y MAX WIDTH SEGÚN MEDIA QUERY
-
 type CarouselSlideProps = {
   product: Product;
 };

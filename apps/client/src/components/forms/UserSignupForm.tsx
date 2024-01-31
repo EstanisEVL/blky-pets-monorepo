@@ -20,15 +20,12 @@ const UserSignupForm = ({ handleUserLogin }: UserSignupFormPropsType) => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
   const [userInfo, setUserInfo] = useState(INITIAL_USER_STATE);
-  // SEGUIR ACÁ: CORREGIR ERRORES Y MEJORAR FUNCIONAMIENTO:
-  // AGREGAR ESTADO SUCCESS Y HACER QUE RENDERICE EL LOGIN UNA VEZ QUE EL USUARIO SE REGISTRA
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     setLoading(true);
 
-    // Pasar la petición a un contexto e importarla acá o que eso se haga desde el login
     fetch(`${API_URL}/auth/sign-up`, {
       method: "POST",
       headers: {
@@ -43,9 +40,6 @@ const UserSignupForm = ({ handleUserLogin }: UserSignupFormPropsType) => {
         if (data.statusCode === 400) {
           setError(data.message);
         } else {
-          // Limpiar formulario y objeto userInfo
-          // Ir al login tras avisarle al usuario que el registro fue exitoso y ahora debe iniciar sesión
-
           setError("");
           console.log(data);
         }
@@ -80,7 +74,6 @@ const UserSignupForm = ({ handleUserLogin }: UserSignupFormPropsType) => {
     <div className='w-full sm:min-w-[500px] sm:max-w-md'>
       <Title text={"Create account"} />
       {loading ? (
-        // CAMBIAR A COMPONENTE LOADING REUTILIZABLE:
         <div>Loading...</div>
       ) : (
         <form className='w-full' onSubmit={handleSubmit}>
@@ -145,8 +138,6 @@ const UserSignupForm = ({ handleUserLogin }: UserSignupFormPropsType) => {
               }
             />
 
-            {/* REVISAR ESTADO ERROR, SI SE PUEDE CAMBIAR POR UN BOOLEANO Y ENVIAR UN MENSAJE ACORDE A CADA ERROR DE OTRA FORMA */}
-            {/* CAMBIAR ERROR A COMPONENTE ERROR REUTILIZABLE */}
             {error && (
               <div className='flex justify-center my-4'>
                 <p className='text-red-500'>{error}</p>

@@ -11,7 +11,6 @@ const DesktopCartModal = ({
   content,
   onBackdropClick,
 }: DesktopCartModalPropsType) => {
-  // PASAR RENDERS A OTROS COMPONENTES
   return createPortal(
     <div
       onClick={onBackdropClick}

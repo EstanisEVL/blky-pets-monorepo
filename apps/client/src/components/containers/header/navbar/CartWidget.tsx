@@ -8,7 +8,6 @@ import Cart from "./Cart";
 const CartWidget = () => {
   const { loggedIn } = useUserData();
   const [open, setOpen] = useState(false);
-  // Pasar al contexto del carrito y setearlo desde ahí cuando tiene productos
   const [hasProducts, setHasProducts] = useState(false);
 
   const toggleModal = () => {

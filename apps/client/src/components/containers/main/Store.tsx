@@ -15,7 +15,6 @@ const Store = () => {
   const { products } = useProducts();
   const { userData } = useUserData();
   const info = userData;
-  // Corregir: pasar cart a un contexto y usarlo desde ahí
   const [cart, setCart] = useState<Cart | undefined>();
   const [loading, setLoading] = useState(false);
 
@@ -44,7 +43,6 @@ const Store = () => {
 
         toast.success("Product succesfully added to your cart.");
       })
-      // Agregar estado de error y un loading para el finally()
       .catch((err) => toast.error(err))
       .finally(() => {
         setLoading(false);
@@ -58,7 +56,6 @@ const Store = () => {
         <StoreFilters />
       </div>
 
-      {/* AGREGAR EL LOADER A PARTIR DE ACÁ */}
       <div className='flex flex-row flex-wrap justify-center gap-6'>
         {products?.map((product: Product) => {
           return (

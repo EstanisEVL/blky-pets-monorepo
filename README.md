@@ -9,14 +9,9 @@ Feel free to explore the project to experience how I seamlessly integrated those
 - [Installation](#installation)
 - [Usage](#usage)
 - [Features](#features)
-- [Contributing](#contributing)
-- [Testing](#testing)
-- [License](#license)
 - [Acknowledgments](#acknowledgments)
 - [Contact](#contact)
-- [Changelog](#changelog)
-- [Known Issues](#known-issues)
-- [FAQ](#faq)
+- [Disclaimer](#disclaimer)
 
 ## Installation
 
@@ -81,12 +76,10 @@ Feel free to explore the project to experience how I seamlessly integrated those
 
 4.  **Run the Application:**
 
-    - Start the backend:
-
     To run the application locally, ensure you have [Turbo](https://turbo.build/repo/docs) installed as a dev dependency. If not, you can install it globally:
 
     ```bash
-    npm install -g create-turbo
+    npm install turbo --global
     ```
 
     Then in the root folder of the project (where both the server and client folders are located), use the following command:
@@ -103,27 +96,69 @@ Feel free to explore the project to experience how I seamlessly integrated those
 
 [Explain how to use the project, including examples or code snippets]
 
+### Important notes
+
+- This project is a showcase and learning resource, not intended for commercial use.
+
+- Respect the usage restrictions mentioned in the Disclaimer section.
+
+- Any feedback or questions are welcome. Feel free to open an issue or reach out.
+
 ## Features
 
-- [Feature 1]
-- [Feature 2]
-- ...
+### Authentication System
+
+- **Login and Signup:** Users can create accounts, log in, and securely authenticate using the authentication system implemented.
+
+- **Password Recovery:** Forgot your password? The project includes a secure password recovery system to help users regain access to their accounts.
+
+### E-commerce Functionality
+
+- **Product Catalog:** Explore a diverse range of products presented in a user-friendly catalog. The frontend, built with React.js and styled using Tailwind CSS, ensures an engaging shopping experience.
+
+- **Shopping Cart Interaction:** Add products to your cart, update quantities, and remove items. The frontend interacts with the backend, powered by Nest.js and MongoDB, to manage cart data securely.
+
+- **Buying Process:** Experience a streamlined buying process. Select items and finalize your purchase with the implemented buying system getting a the corresponding confirmation email containing your purchase details.
+
+### Responsive Design
+
+- The entire application is designed to be responsive, ensuring a consistent and enjoyable experience across various devices and screen sizes.
+
+### Multi-Environment Support
+
+- The project supports three environments: development, QA, and production, each with its specific configuration to ensure seamless functionality.
+
+### Technologies Used
+
+- **Frontend:** React.js, Vite, TypeScript, Tailwind CSS
+- **Backend:** Nest.js, MongoDB
+- **Additional Tools:**
+  - turbo: for monorepo management
+  - react-responsive: for building responsive UI components in React.
+  - react-hot-toast: to display messages to users.
+  - jwt (JSON Web Tokens): for communication between the frontend and backend, facilitating authentication and authorization.
+  - swagger: to document and visualize API specifications.
+  - bcrypt: for securely storing user passwords in the database.
+  - nodemailer: to send emails, utilized for implementing password recovery and purchase confirmation.
+  - passport: for authenticating users.
 
 ## Acknowledgments
 
-[Give credit to third-party libraries, tools, or resources]
+I would like to express my to [Frida](https://ar.linkedin.com/in/fridavlucius) for her contribution to this project. She crafted the stunning design using Figma, providing a detailed prototype that served as the foundation for the visual elements of the app.
+
+Her creativity and design expertise played a pivotal role in shaping the user interface and overall aesthetic of this showcase.
+
+Go check out [her work](https://www.behance.net/fridavlucius)!
 
 ## Contact
 
-[Provide your contact information or ways for others to reach out]
+Feel free to reach out if you have any questions, feedback, or just want to connect. I'm open to collaboration and discussions.
 
-## Changelog
+- **Email:** [estanislaovl@gmail.com]
+- **LinkedIn:** [https://ar.linkedin.com/in/estanisevl]
+- **GitHub:** [https://github.com/EstanisEVL]
 
-[Keep a record of changes made in each version]
-
-## Known Issues
-
-[Highlight any known issues or limitations]
+Looking forward to hearing from you!
 
 ## Disclaimer
 

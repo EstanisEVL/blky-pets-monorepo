@@ -35,7 +35,6 @@ const AdminLoginForm = () => {
         } else if (data.statusCode === 404) {
           setError(data.message);
         } else {
-          // Limpiar formulario y objeto userInfo
           console.log(data);
         }
       })
@@ -62,7 +61,6 @@ const AdminLoginForm = () => {
       <Title text={"Admin login"} />
 
       {loading ? (
-        // CAMBIAR A COMPONENTE LOADING REUTILIZABLE:
         <div>Loading...</div>
       ) : (
         <form onSubmit={handleSubmit}>
@@ -85,8 +83,6 @@ const AdminLoginForm = () => {
             />
           </div>
 
-          {/* REVISAR ESTADO ERROR, SI SE PUEDE CAMBIAR POR UN BOOLEANO Y ENVIAR UN MENSAJE ACORDE A CADA ERROR DE OTRA FORMA */}
-          {/* CAMBIAR ERROR A COMPONENTE ERROR REUTILIZABLE */}
           {error && (
             <div className='flex justify-center my-4'>
               <p className='text-red-500'>{error}</p>

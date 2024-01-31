@@ -32,7 +32,6 @@ const UserLoginForm = ({
 
     setLoading(true);
 
-    // Pasar la petición a un contexto e importarla acá o que eso se haga desde el login
     fetch(`${API_URL}/auth/login`, {
       method: "POST",
       headers: {
@@ -90,7 +89,6 @@ const UserLoginForm = ({
     <div className='w-full sm:min-w-[500px] sm:max-w-md'>
       <Title text={"User login"} />
       {loading ? (
-        // CAMBIAR A COMPONENTE LOADING REUTILIZABLE:
         <div>Loading...</div>
       ) : (
         <form onSubmit={handleSubmit}>
@@ -113,8 +111,6 @@ const UserLoginForm = ({
             />
           </div>
 
-          {/* REVISAR ESTADO ERROR, SI SE PUEDE CAMBIAR POR UN BOOLEANO Y ENVIAR UN MENSAJE ACORDE A CADA ERROR DE OTRA FORMA */}
-          {/* CAMBIAR ERROR A COMPONENTE ERROR REUTILIZABLE */}
           {error && (
             <div className='flex justify-center my-4'>
               <p className='text-red-500'>{error}</p>

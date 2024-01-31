@@ -1,8 +1,5 @@
-// Revisar si se puede incluir dos tipos en uno o renombrar de forma reutilizable:
-
 import { ReactElement } from "react";
 
-// Resumir tipados
 type HamburguerBtnPropsType = {
   handleClick: () => void;
   icon: string;
@@ -32,27 +29,22 @@ type CloseBtnPropsType = {
 };
 
 type BigBannerBtnPropsType = {
-  // handleClick: () => void;
   text: string;
 };
 
 type ShowMoreBtnPropsType = {
-  // handleClick: () => void;
   text: string;
 };
 
 type HeroBtnPropsType = {
-  // handleClick: () => void;
   text: string;
 };
 
 type CategoryBtnPropsType = {
-  // handleClick: () => void;
   text: string;
 };
 
 type EnterBtnPropsType = {
-  // handleClick: () => void;
   text: string;
 };
 
@@ -80,8 +72,6 @@ type DeleteBtnPropsType = {
   icon: string;
 };
 
-// Pasar cada botón a su propio componente y llamarlos desde este índice
-
 const ButtonIndex = {
   HamburguerBtn: ({ icon, handleClick }: HamburguerBtnPropsType) => {
     return (
@@ -96,7 +86,6 @@ const ButtonIndex = {
 
   LoginBtn: ({ handleClick, icon }: LoginBtnPropsType): ReactElement => {
     return (
-      // Acá se retorna el componente
       <button onClick={handleClick}>
         <img src={icon} alt='Login icon' />
       </button>
@@ -108,7 +97,6 @@ const ButtonIndex = {
     active,
   }: LoginModalBtnPropsType): ReactElement => {
     return (
-      // Acá se retorna el componente
       <button
         className={`font-kanit uppercase w-full h-12 rounded hover:border-b-black hover:text-black transition duration-500 ${
           active
@@ -150,7 +138,6 @@ const ButtonIndex = {
       </button>
     );
   },
-  // Falta el onClick:
   BigBannerBtn: ({ text }: BigBannerBtnPropsType): ReactElement => {
     return (
       <button className='w-32 h-9 uppercase text-base font-kanit text-zinc-900 bg-white border border-zinc-900 hover:text-white hover:bg-zinc-900  transition duration-500'>
@@ -158,7 +145,6 @@ const ButtonIndex = {
       </button>
     );
   },
-  // Falta el onClick:
   ShowMoreBtn: ({ text }: ShowMoreBtnPropsType): ReactElement => {
     return (
       <button className='w-36 h-9 border border-gray-500 text-base uppercase hover:text-white hover:bg-gray-500 transition duration-500'>
@@ -166,7 +152,6 @@ const ButtonIndex = {
       </button>
     );
   },
-  // Falta el onClick:
   HeroBtn: ({ text }: HeroBtnPropsType): ReactElement => {
     return (
       <button className='w-28 h-9 border border-gray-500 text-base uppercase hover:text-white hover:bg-gray-500 transition duration-500'>
@@ -174,7 +159,6 @@ const ButtonIndex = {
       </button>
     );
   },
-  // Falta el onClick:
   CategoryBtn: ({ text }: CategoryBtnPropsType): ReactElement => {
     return (
       <button className='w-32 h-9 uppercase text-base border border-gray-900 hover:text-white hover:bg-gray-900 transition duration-500'>
@@ -182,7 +166,6 @@ const ButtonIndex = {
       </button>
     );
   },
-  // El onClick tiene que activar el submit:
   EnterBtn: ({ text }: EnterBtnPropsType) => {
     return (
       <button

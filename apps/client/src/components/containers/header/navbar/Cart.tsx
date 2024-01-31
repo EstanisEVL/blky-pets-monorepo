@@ -11,7 +11,6 @@ const API_URL: string = "http://localhost:8080/api";
 const Cart = () => {
   const { userData } = useUserData();
   const info = userData;
-  // Corregir: pasar cart a un contexto y usarlo desde ahí
   const [cart, setCart] = useState<CartInterface | undefined>();
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
@@ -36,7 +35,6 @@ const Cart = () => {
     }
   }, []);
 
-  // Pasar todos los métodos a un archivo separado (al contexto?):
   const addProduct = (e: React.MouseEvent<HTMLButtonElement>) => {
     const cid = info?.carts[0]._id;
     const pid = e.currentTarget.getAttribute("data-product-id");
@@ -129,7 +127,6 @@ const Cart = () => {
         </div>
 
         <div className='max-h-56 sm:max-h-72 flex flex-col gap-6 overflow-y-scroll'>
-          {/* AGREGAR EL LOADER PARA QUE NO MUESTRE QUE EL CARRITO ESTÁ VACÍO SI NO CARGÓ */}
           {!loading && cart && cart.products.length ? (
             cart.products.map((product) => {
               return (
@@ -143,7 +140,6 @@ const Cart = () => {
               );
             })
           ) : (
-            // QUE SÓLO AVISE QUE ESTÁ VACÍO CUANDO NO HAY PRODUCTOS EN EL CARRITO
             <div className='flex justify-center'>
               <h3 className='sm:text-lg font-kanit'>Your cart is empty.</h3>
             </div>
@@ -151,7 +147,6 @@ const Cart = () => {
         </div>
       </div>
 
-      {/* CAMBIAR ERROR A COMPONENTE ERROR REUTILIZABLE */}
       {error && (
         <div className='flex justify-center my-4'>
           <p className='text-red-500'>{error}</p>

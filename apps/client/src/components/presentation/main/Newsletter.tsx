@@ -1,5 +1,4 @@
 import ButtonIndex from "../../buttons/ButtonIndex";
-// AGREGAR FUNCIONAMIENTO Y PASAR LOS COMPONENTES DE PRESENTACIÓN A SUBCOMPONENTES
 
 const Newsletter = () => {
   return (
