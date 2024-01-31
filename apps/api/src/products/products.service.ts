@@ -19,7 +19,6 @@ export class ProductsService {
     }
   }
 
-  // Revisar si los ids son numeros o ObjectId de Mongo:
   async findById(id: string) {
     try {
       const data = await this.productModel.findById({ _id: id });
@@ -40,7 +39,6 @@ export class ProductsService {
     }
   }
 
-  // createProduct
   async create(createProductDto: CreateProductDto) {
     try {
       const product = await this.productModel.create(createProductDto);
@@ -50,7 +48,7 @@ export class ProductsService {
       return err;
     }
   }
-  // updateProductById
+
   async updateById(id: string, updatedProductDto: UpdateProductDto) {
     try {
       const updatedProduct = await this.productModel.findByIdAndUpdate(
@@ -64,7 +62,7 @@ export class ProductsService {
       return err;
     }
   }
-  // deleteProductById
+
   async deleteById(id: number) {
     try {
       const deletedProduct = await this.productModel.findByIdAndDelete({

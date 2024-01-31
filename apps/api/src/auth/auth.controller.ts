@@ -40,7 +40,7 @@ export class AuthController {
   ) {}
 
   @UseGuards(JwtAuthGuard)
-  @Get('current') // GET /auth/current
+  @Get('current') // GET /api/auth/current
   async getCurrentUser(@Req() req: Request) {
     try {
       const user = req.user;
@@ -53,8 +53,7 @@ export class AuthController {
     }
   }
 
-  // Register user:
-  @Post('sign-up') // POST /auth/sign-up
+  @Post('sign-up') // POST /api/auth/sign-up
   async create(@Body() createUserDto: CreateUserDto) {
     try {
       const checkUser = await this.usersService.findByEmail(
@@ -64,11 +63,8 @@ export class AuthController {
       if (checkUser)
         throw new BadRequestException('Error - User already exists.');
 
-      // Corregir errores de validaciones pasándolas a un middleware
-
       return this.authService.registerUser(createUserDto);
     } catch (err) {
-      // agregar logger
       if (err.status === HttpStatus.BAD_REQUEST)
         throw new BadRequestException(err.response.message);
 
@@ -76,9 +72,8 @@ export class AuthController {
     }
   }
 
-  // Admin login:
   @UseGuards(LocalAuthGuard)
-  @Post('admin-login') // POST /auth/admin-login
+  @Post('admin-login') // POST /api/auth/admin-login
   async logAdminIn(@Req() req: Request) {
     try {
       const admin = req.user;
@@ -87,7 +82,6 @@ export class AuthController {
 
       return { admin, users };
     } catch (err) {
-      // agregar logger
       if (err.status === HttpStatus.NOT_FOUND)
         throw new NotFoundException(err.response.message);
       if (err.status === HttpStatus.UNAUTHORIZED)
@@ -96,9 +90,8 @@ export class AuthController {
     }
   }
 
-  // User login:
   @UseGuards(LocalAuthGuard)
-  @Post('login') // POST /auth/login
+  @Post('login') // POST /api/auth/login
   async logUserIn(@Req() req: Request) {
     try {
       const userInfo = await this.authService.login(req.user);
@@ -126,16 +119,13 @@ export class AuthController {
         return { access_token: userInfo.access_token };
       }
     } catch (err) {
-      // agregar logger
       if (err.status === HttpStatus.UNAUTHORIZED)
         throw new UnauthorizedException(err.response.message);
       throw new InternalServerErrorException(`${err}`);
     }
   }
 
-  // RECUPERACIÓN DE CONTRASEÑA:
-  // PARA USER:
-  @Post('password/new') // POST /auth/password/new
+  @Post('password/new') // POST /api/auth/password/new
   async sendResetEmail(@Body() emailInputDto: EmailInputDto): Promise<string> {
     try {
       const checkUser = await this.usersService.findByEmail(
@@ -152,28 +142,8 @@ export class AuthController {
         );
       }
 
-      //Envía el mail de recuperación, agregar helper:
-      // const token = generateMailToken(checkUser.email);
-      // Cambiar RESET_URL del env para producción
-      // const link = `${this.configService.get<string>("RESET_URL")}/api/auth/password/reset/${token}`
-
-      // await this.mailerService.sendMail({
-      //   to: checkUser.email,
-      //   from: this.configService.get<string>("MAILER_USER"),
-      //   subject: "Re-establecer contraseña",
-      //   html: `
-      //     <div>
-      //       <h1>¡Hola, ${checkUser.email}!</h1>
-      //       <h2>Para reestablecer tu contraseña haz click en el siguiente botón:</h2>
-      //       <a href=${link}>REESTABLECER CONTRASEÑA</a>
-      //       <p>Recuerda que el link para reestablecer tu contraseña expira en 1 hora.</p>
-      //     </div>
-      //   `,
-      // });
-
       return 'Recovery password sent';
     } catch (err) {
-      // agregar logger
       if (err.status === HttpStatus.NOT_FOUND)
         throw new NotFoundException(err.response.message);
 
@@ -184,8 +154,7 @@ export class AuthController {
     }
   }
 
-  // PARA USER:
-  @Post('password/reset') // POST /auth/password/reset
+  @Post('password/reset') // POST /api/auth/password/reset
   async resetUserPwd(@Body() userLoginDto: UserLoginDto) {
     try {
       return this.authService.createPwd(
@@ -193,7 +162,6 @@ export class AuthController {
         userLoginDto.password,
       );
     } catch (err) {
-      // agregar logger
       if (err.status === HttpStatus.NOT_FOUND)
         throw new NotFoundException(err.response.message);
       if (err.status === HttpStatus.BAD_REQUEST)

@@ -35,7 +35,6 @@ export class CartsController {
     private readonly mailerService: MailerService,
   ) {}
 
-  // ROL DE ADMIN:
   @Get() // GET /api/carts
   async getCarts(): Promise<Cart[]> {
     try {
@@ -43,13 +42,10 @@ export class CartsController {
 
       return data;
     } catch (err) {
-      // agregar logger
-
       throw new InternalServerErrorException(`${err}`);
     }
   }
 
-  // PARA ADMIN Y USER
   @Post() // POST /api/carts
   async createCart(@Body() createCartDto: CreateCartDto) {
     try {
@@ -57,14 +53,10 @@ export class CartsController {
 
       return data;
     } catch (err) {
-      // agregar logger
-
       throw new InternalServerErrorException(`${err}`);
     }
   }
 
-  // PARA ADMIN Y USER (SÓLO EL PROPIO)
-  // Agregar validador de mongoId:
   @Get(':id') // GET /api/carts/:id
   async getCart(@Param('id') id: string) {
     try {
@@ -81,7 +73,6 @@ export class CartsController {
 
       return cart;
     } catch (err) {
-      // agregar logger
       if (err.status === HttpStatus.NOT_FOUND)
         throw new NotFoundException(err.response.error);
 
@@ -89,8 +80,6 @@ export class CartsController {
     }
   }
 
-  // ROL DE ADMIN
-  // Agregar validador de mongoId:
   @Delete(':id') // DELETE /api/carts/:id
   @HttpCode(204)
   async deleteCartById(@Param('id') id: string) {
@@ -110,7 +99,6 @@ export class CartsController {
 
       return deletedCart;
     } catch (err) {
-      // agregar logger
       if (err.status === HttpStatus.NOT_FOUND)
         throw new NotFoundException(err.response.error);
 
@@ -118,9 +106,6 @@ export class CartsController {
     }
   }
 
-  // PARA USER
-  // - purchaseProducts
-  // Corregir tipado de userEmail
   @Post('/:cid/purchase') // POST /api/carts/:cid/purchase
   async purchaseProducts(@Param('cid') cid: string, @Body() userEmail) {
     try {
@@ -142,8 +127,6 @@ export class CartsController {
       const productToUpdate = [];
       let fullPrice: number = 0;
 
-      // Refactorizar con funciones de alto orden de JS:
-      // Un map que devuelva un nuevo arreglo productToUpdate, borrar el de la linea 140 y declararlo como contenedor del map de productsToPurchase
       for (const product of productsToPurchase) {
         const pid = String(product._id);
         const productQuantity = Number(product.quantity);
@@ -272,7 +255,6 @@ export class CartsController {
     }
   }
 
-  // - removeProductFromCart
   @Delete('/:cid/products/:pid') // DELETE /api/carts/:cid/products/:pid
   async removeProductFromCart(
     @Param('cid') cid: string,
@@ -331,7 +313,6 @@ export class CartsController {
     }
   }
 
-  // - deleteProductFromCart
   @Delete('/:cid/products/:pid/delete') // DELETE /api/carts/:cid/products/:pid
   async deleteProductFromCart(
     @Param('cid') cid: string,

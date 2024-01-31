@@ -15,8 +15,6 @@ import { CartsService } from 'src/carts/carts.service';
 import { ProductsService } from 'src/products/products.service';
 import { UserLoginDto } from 'src/auth/dto/auth-login.dto';
 
-// Pasar validaciones a un middleware
-
 @ApiTags('Users')
 @Controller('users')
 export class UsersController {
@@ -26,8 +24,7 @@ export class UsersController {
     private readonly productsService: ProductsService,
   ) {}
 
-  // PARA EL ADMIN:
-  @Get() // GET /users
+  @Get() // GET /api/users
   async getUsers(): Promise<FindUserDto[]> {
     try {
       const data = await this.usersService.findAll();
@@ -36,14 +33,11 @@ export class UsersController {
 
       return users;
     } catch (err) {
-      // Agregar logger
-
       throw new InternalServerErrorException(`${err}`);
     }
   }
 
-  // PARA EL ADMIN:
-  @Delete() // DELETE /users
+  @Delete() // DELETE /api/users
   async delete() {
     try {
       const currentDate: Date = new Date();
@@ -61,28 +55,12 @@ export class UsersController {
           HttpStatus.NOT_FOUND,
         );
       } else {
-        // Crear un nuevo arreglo de carritos de usuarios inactivos
-        // const userCarts = inactiveUsers.map((user) =>
-        //   user.carts.map((cart) => String(cart._id)),
-        // );
-
         const userEmails = inactiveUsers.map((user) => user.email);
-
-        // Borrar carritos
-        // for(const cart of userCarts) {
-
-        // }
-
-        // Enviar mail de aviso a cada usuario
-        // for(const user of userEmails) {
-
-        // }
 
         const data = await this.usersService.delete(limitDate);
         return data;
       }
     } catch (err) {
-      // agregar logger
       if (err.status === HttpStatus.NOT_FOUND)
         throw new NotFoundException(err.response.error);
 

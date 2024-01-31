@@ -24,20 +24,18 @@ import { UpdateProductDto } from './dto/update-product.dto';
 export class ProductsController {
   constructor(private readonly productsService: ProductsService) {}
 
-  @Get() // Get /products
+  @Get() // Get /api/products
   async getProducts(): Promise<Product[]> {
     try {
       const products = await this.productsService.findAll();
 
       return products;
     } catch (err) {
-      // agregar logger
       throw new InternalServerErrorException(`${err}`);
     }
   }
 
-  // PARA ADMIN:
-  @Post() // POST /products
+  @Post() // POST /api/products
   async createProduct(@Body() createProductDto: CreateProductDto) {
     try {
       const checkProduct = await this.productsService.findByCode(
@@ -58,14 +56,13 @@ export class ProductsController {
         );
       }
     } catch (err) {
-      // agregar logger
       if (err.status === HttpStatus.BAD_REQUEST)
         throw new BadRequestException(err.response.error);
       throw new InternalServerErrorException(`${err}`);
     }
   }
 
-  @Get(':id') // GET /products/:id
+  @Get(':id') // GET /api/products/:id
   async getProductById(@Param('id') id: string) {
     try {
       const product = await this.productsService.findById(id);
@@ -81,7 +78,6 @@ export class ProductsController {
 
       return product;
     } catch (err) {
-      // agregar logger
       if (err.status === HttpStatus.NOT_FOUND)
         throw new NotFoundException(err.response.error);
 
@@ -89,8 +85,7 @@ export class ProductsController {
     }
   }
 
-  // PARA ADMIN:
-  @Put(':id') // PUT /products/:id
+  @Put(':id') // PUT /api/products/:id
   async updateProductById(
     @Param('id') @Body() id: string,
     updateProductDto: UpdateProductDto,
@@ -113,15 +108,13 @@ export class ProductsController {
         return updatedProduct;
       }
     } catch (err) {
-      // agregar logger
       if (err.status === HttpStatus.NOT_FOUND)
         throw new NotFoundException(err.response.error);
       throw new InternalServerErrorException(`${err}`);
     }
   }
 
-  // PARA ADMIN:
-  @Delete(':id') // DELETE /products/:id
+  @Delete(':id') // DELETE /api/products/:id
   @HttpCode(204)
   async deleteProductById(@Param('id') id: string) {
     try {
@@ -139,7 +132,6 @@ export class ProductsController {
         return deletedProduct;
       }
     } catch (err) {
-      // agregar logger
       if (err.status === HttpStatus.NOT_FOUND)
         throw new NotFoundException(err.response.error);
       throw new InternalServerErrorException(`${err}`);

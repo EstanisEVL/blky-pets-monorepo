@@ -5,7 +5,7 @@ import { Cart } from '../../carts/schemas/carts.schemas';
 
 export type UserDocument = HydratedDocument<User>;
 
-@Schema() // { timestamps: true }
+@Schema()
 export class User {
   @Prop({ required: true })
   first_name: string;
