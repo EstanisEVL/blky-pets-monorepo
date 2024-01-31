@@ -6,6 +6,20 @@
     },
     "build": {
       "dependsOn": ["^build"],
+      "env": [
+        "PORT",
+        "NODE_ENV",
+        "MONGO_URL",
+        "JWT_SECRET",
+        "JWT_EXPIRES",
+        "ADMIN_EMAIL",
+        "ADMIN_PWD",
+        "RESET_URL",
+        "MAILER_SERVICE",
+        "MAILER_HOST",
+        "MAILER_USER",
+        "MAILER_PWD"
+      ],
       "outputs": ["dist/**"]
     },
     "type-check": {}
