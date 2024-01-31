@@ -15,9 +15,14 @@ import { DatabaseModule } from './database/database.module';
 import { AuthModule } from './auth/auth.module';
 import { MailerModule } from '@nestjs-modules/mailer';
 import { TicketsModule } from './tickets/tickets.module';
+import { ServeStaticModule } from '@nestjs/serve-static';
+import { join } from 'path';
 
 @Module({
   imports: [
+    ServeStaticModule.forRoot({
+      rootPath: join(__dirname, '../..', 'client', 'dist'),
+    }),
     ConfigModule.forRoot({
       envFilePath: `${process.cwd()}/.env.${
         process.env.NODE_ENV || 'development'
