@@ -45,6 +45,7 @@ const ProductInCartDetail = ({
             icon={"+"}
             pid={product._id}
             handleClick={handleAdd}
+            inProductCard={false}
           />
         </div>
       </div>

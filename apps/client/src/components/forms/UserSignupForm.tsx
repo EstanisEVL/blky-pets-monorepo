@@ -2,14 +2,14 @@ import { ReactEventHandler, useState } from "react";
 import FormLink from "./links/FormLink";
 import FormInput from "./inputs/FormInput";
 import ButtonIndex from "../buttons/ButtonIndex";
-import Title from "../Title";
+import Title from "../presentation/Title";
 
 type UserSignupFormPropsType = {
   handleUserLogin: ReactEventHandler;
 };
 
 const UserSignupForm = ({ handleUserLogin }: UserSignupFormPropsType) => {
-  const API_URL: string = "http://localhost:8080/api";
+  const URL: string = String(import.meta.env.VITE_API_URL);
   const INITIAL_USER_STATE = {
     first_name: "",
     last_name: "",
@@ -26,7 +26,7 @@ const UserSignupForm = ({ handleUserLogin }: UserSignupFormPropsType) => {
 
     setLoading(true);
 
-    fetch(`${API_URL}/auth/sign-up`, {
+    fetch(`${URL}/auth/sign-up`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

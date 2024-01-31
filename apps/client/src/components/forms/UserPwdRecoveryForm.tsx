@@ -2,7 +2,8 @@ import { ReactEventHandler, useState } from "react";
 import FormLink from "./links/FormLink";
 import ButtonIndex from "../buttons/ButtonIndex";
 import FormInput from "./inputs/FormInput";
-import Title from "../Title";
+import Title from "../presentation/Title";
+import toast from "react-hot-toast";
 
 type UserPwdRecoveryFormPropsType = {
   handleUserLogin: ReactEventHandler;
@@ -13,7 +14,7 @@ const UserPwdRecoveryForm = ({
   handleUserLogin,
   handleUserSignup,
 }: UserPwdRecoveryFormPropsType) => {
-  const API_URL: string = "http://localhost:8080/api";
+  const URL: string = String(import.meta.env.VITE_API_URL);
   const INITIAL_USER_STATE = {
     email: "",
   };
@@ -26,7 +27,7 @@ const UserPwdRecoveryForm = ({
 
     setLoading(true);
 
-    fetch(`${API_URL}/auth/password/new`, {
+    fetch(`${URL}/auth/password/new`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -42,6 +43,10 @@ const UserPwdRecoveryForm = ({
         } else if (data.statusCode === 404) {
           setError(data.message);
         } else {
+          toast.success(
+            "Please check your email address to continue with the password recovery process."
+          );
+
           setError("");
           console.log(data);
         }

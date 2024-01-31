@@ -2,7 +2,7 @@ import { ReactElement, useEffect, useState } from "react";
 import { User } from "../../interfaces/user.interface";
 import Contexts from "../../contexts/Contexts";
 
-const API_URL: string = "http://localhost:8080/api";
+const URL: string = String(import.meta.env.VITE_API_URL);
 
 export type UseUserDataContextType = {
   loggedIn: boolean;
@@ -30,7 +30,7 @@ export const UserDataProvider = ({ children }: ChildrenType) => {
     if (!userData && accessToken) {
       let token = localStorage.getItem("access_token");
 
-      fetch(`${API_URL}/auth/current`, {
+      fetch(`${URL}/auth/current`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },

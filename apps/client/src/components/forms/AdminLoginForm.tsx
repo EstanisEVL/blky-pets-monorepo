@@ -1,10 +1,10 @@
 import { useState } from "react";
 import ButtonIndex from "../buttons/ButtonIndex";
 import FormInput from "./inputs/FormInput";
-import Title from "../Title";
+import Title from "../presentation/Title";
 
 const AdminLoginForm = () => {
-  const API_URL: string = "http://localhost:8080/api";
+  const URL: string = String(import.meta.env.VITE_API_URL);
   const INITIAL_ADMIN_STATE = {
     email: "",
     password: "",
@@ -19,7 +19,7 @@ const AdminLoginForm = () => {
 
     setLoading(true);
 
-    fetch(`${API_URL}/auth/admin-login`, {
+    fetch(`${URL}/auth/admin-login`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

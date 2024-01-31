@@ -9,7 +9,7 @@ import StoreFilters from "../../presentation/main/StoreFilters";
 import StoreTitle from "../../presentation/main/StoreTitle";
 import toast from "react-hot-toast";
 
-const API_URL: string = "http://localhost:8080/api";
+const URL: string = String(import.meta.env.VITE_API_URL);
 
 const Store = () => {
   const { products } = useProducts();
@@ -29,7 +29,7 @@ const Store = () => {
 
     setLoading(true);
 
-    fetch(`${API_URL}/carts/${cid}/products/${pid}`, {
+    fetch(`${URL}/carts/${cid}/products/${pid}`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -52,8 +52,8 @@ const Store = () => {
   return (
     <section id='store'>
       <div className='flex flex-col items-center sm:items-stretch sm:flex-row justify-between sm:mx-10 mt-16 font-kanit'>
-        <StoreTitle title={"productos"} text={"/ Todos los productos"} />
-        <StoreFilters />
+        <StoreTitle title={"Our products"} text={"/ All products"} />
+        <StoreFilters title={"filter"} text={"dropdown filter"} />
       </div>
 
       <div className='flex flex-row flex-wrap justify-center gap-6'>

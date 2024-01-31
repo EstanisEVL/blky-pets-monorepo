@@ -3,8 +3,8 @@ import { fetchData } from "../../helpers/fetchData";
 import Contexts from "../../contexts/Contexts";
 import { Product } from "../../interfaces/product.interface";
 
-const API_URL: string = "http://localhost:8080/api";
-const apiData = fetchData(`${API_URL}/products`);
+const URL: string = String(import.meta.env.VITE_API_URL);
+const apiData = fetchData(`${URL}/products`);
 
 export type UseProductsContextType = {
   products: Product[];

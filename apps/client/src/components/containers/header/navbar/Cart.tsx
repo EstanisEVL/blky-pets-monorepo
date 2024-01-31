@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react";
 import useUserData from "../../../../hooks/useUserData";
-import Title from "../../../Title";
+import Title from "../../../presentation/Title";
 import { Cart as CartInterface } from "../../../../interfaces/cart.interface";
 import ProductInCartDetail from "../../../presentation/header/cart/ProductInCartDetail";
 import ButtonIndex from "../../../buttons/ButtonIndex";
 import CartPurchaseTotal from "../../../presentation/header/cart/CartPurchaseTotal";
 
-const API_URL: string = "http://localhost:8080/api";
+const URL: string = String(import.meta.env.VITE_API_URL);
 
 const Cart = () => {
   const { userData } = useUserData();
@@ -25,7 +25,7 @@ const Cart = () => {
     if (cid) {
       setLoading(true);
 
-      fetch(`${API_URL}/carts/${cid}`)
+      fetch(`${URL}/carts/${cid}`)
         .then((res) => res.json())
         .then((data) => {
           setCart(data);
@@ -39,7 +39,7 @@ const Cart = () => {
     const cid = info?.carts[0]._id;
     const pid = e.currentTarget.getAttribute("data-product-id");
 
-    fetch(`${API_URL}/carts/${cid}/products/${pid}`, {
+    fetch(`${URL}/carts/${cid}/products/${pid}`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -57,7 +57,7 @@ const Cart = () => {
     const cid = info?.carts[0]._id;
     const pid = e.currentTarget.getAttribute("data-product-id");
 
-    fetch(`${API_URL}/carts/${cid}/products/${pid}`, {
+    fetch(`${URL}/carts/${cid}/products/${pid}`, {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",
@@ -75,7 +75,7 @@ const Cart = () => {
     const cid = info?.carts[0]._id;
     const pid = e.currentTarget.getAttribute("data-product-id");
 
-    fetch(`${API_URL}/carts/${cid}/products/${pid}/delete`, {
+    fetch(`${URL}/carts/${cid}/products/${pid}/delete`, {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",
@@ -99,7 +99,7 @@ const Cart = () => {
       return;
     }
 
-    fetch(`${API_URL}/carts/${cid}/purchase`, {
+    fetch(`${URL}/carts/${cid}/purchase`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
