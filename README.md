@@ -94,8 +94,6 @@ Feel free to explore the project to experience how I seamlessly integrated those
 
 ## Usage
 
-[Explain how to use the project, including examples or code snippets]
-
 ### Important notes
 
 - This project is a showcase and learning resource, not intended for commercial use.
@@ -154,9 +152,9 @@ Go check out [her work](https://www.behance.net/fridavlucius)!
 
 Feel free to reach out if you have any questions, feedback, or just want to connect. I'm open to collaboration and discussions.
 
-- **Email:** [estanislaovl@gmail.com]
-- **LinkedIn:** [https://ar.linkedin.com/in/estanisevl]
-- **GitHub:** [https://github.com/EstanisEVL]
+- **[Email:]**(estanislaovl@gmail.com)
+- **[LinkedIn]:**(https://ar.linkedin.com/in/estanisevl)
+- **[GitHub]:**(https://github.com/EstanisEVL)
 
 Looking forward to hearing from you!
 
