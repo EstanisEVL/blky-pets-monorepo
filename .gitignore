@@ -4,3 +4,4 @@
 /apps/api/.env.*
 
 /correcciones.txt
+.vercel

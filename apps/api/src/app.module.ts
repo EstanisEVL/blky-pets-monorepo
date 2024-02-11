@@ -22,6 +22,7 @@ import { join } from 'path';
   imports: [
     ServeStaticModule.forRoot({
       rootPath: join(__dirname, '../..', 'client', 'dist'),
+      exclude: ['api/*'],
     }),
     ConfigModule.forRoot({
       envFilePath: `${process.cwd()}/.env.${
