@@ -20,6 +20,7 @@ import { join } from 'path';
 
 @Module({
   imports: [
+    DatabaseModule,
     ServeStaticModule.forRoot({
       rootPath: join(__dirname, '../..', 'client', 'dist'),
       exclude: ['api/*'],
@@ -42,7 +43,6 @@ import { join } from 'path';
         },
       },
     }),
-    DatabaseModule,
     UsersModule,
     CartsModule,
     ProductsModule,

@@ -4,7 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "turbo dev",
+    "build": "dotenv -- turbo run build",
+    "dev": "dotenv -- turbo run dev",
+    "start": "dotenv -- node apps/api/dist/main",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
@@ -14,6 +16,7 @@
     "apps/*"
   ],
   "devDependencies": {
+    "dotenv-cli": "^7.3.0",
     "turbo": "^1.11.3"
   }
 }

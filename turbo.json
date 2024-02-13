@@ -1,11 +1,10 @@
 {
   "$schema": "https://turbo.build/schema.json",
+  "globalDotEnv": [".env"],
   "pipeline": {
     "dev": {
-      "cache": false
-    },
-    "build": {
-      "dependsOn": ["^build"],
+      "cache": false,
+      "dotEnv": [".env"],
       "env": [
         "PORT",
         "NODE_ENV",
@@ -18,9 +17,28 @@
         "MAILER_SERVICE",
         "MAILER_HOST",
         "MAILER_USER",
-        "MAILER_PWD"
-      ],
-      "outputs": ["dist/**"]
+        "MAILER_PWD",
+        "VITE_API_URL"
+      ]
+    },
+    "build": {
+      "dependsOn": ["^build"],
+      "outputs": ["dist/**"],
+      "env": [
+        "PORT",
+        "NODE_ENV",
+        "MONGO_URL",
+        "JWT_SECRET",
+        "JWT_EXPIRES",
+        "ADMIN_EMAIL",
+        "ADMIN_PWD",
+        "RESET_URL",
+        "MAILER_SERVICE",
+        "MAILER_HOST",
+        "MAILER_USER",
+        "MAILER_PWD",
+        "VITE_API_URL"
+      ]
     },
     "type-check": {}
   }

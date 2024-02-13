@@ -1,7 +1,10 @@
 /node_modules
+/temp
 
 /apps/api/dist
 /apps/api/.env.*
 
 /correcciones.txt
+.turbo
 .vercel
+/.env
