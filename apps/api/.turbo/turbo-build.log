@@ -1,4 +1,4 @@
 
 > blky-pets-api@0.0.1 build
-> nest build
+> npx @nestjs/cli build
 
