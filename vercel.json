@@ -7,11 +7,11 @@
   },
   "routes": [
     {
-      "src": "/",
+      "src": "/(.*)",
       "dest": "apps/client/dist"
     },
     {
-      "src": "/.*",
+      "src": "/api/(.*)",
       "dest": "apps/api/src/main.ts"
     }
   ]
