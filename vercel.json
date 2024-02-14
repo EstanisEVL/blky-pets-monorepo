@@ -5,6 +5,7 @@
       "maxDuration": 10
     }
   },
+  "outputDirectory": "apps/client/dist",
   "routes": [
     {
       "src": "/",
