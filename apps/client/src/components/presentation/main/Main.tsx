@@ -6,6 +6,8 @@ import BigImgBanner from "./BigImgBanner";
 import Newsletter from "./Newsletter";
 import ResponsiveCarousel from "../../containers/main/ResponsiveCarousel";
 
+//
+
 const Main = () => {
   return (
     <main>
