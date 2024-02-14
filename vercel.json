@@ -1,0 +1,18 @@
+{
+  "functions": {
+    "apps/api/src/main.ts": {
+      "memory": 1024,
+      "maxDuration": 10
+    }
+  },
+  "routes": [
+    {
+      "src": "/",
+      "dest": "apps/client/dist"
+    },
+    {
+      "src": "/.*",
+      "dest": "apps/api/src/main.ts"
+    }
+  ]
+}
