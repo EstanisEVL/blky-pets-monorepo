@@ -1,7 +1,8 @@
 {
   "name": "blky-pets-api",
   "version": "0.0.1",
-  "description": "",
+  "description": "BLKY PETS API",
+  "main": "main.js",
   "author": "",
   "private": true,
   "license": "UNLICENSED",
