@@ -13,7 +13,7 @@ const Main = () => {
     <main>
       <Hero
         height={"h-[578px]"}
-        bgImage={"bg-[url('../../../src/assets/hero.jpg')]"}
+        bgImage={"bg-[url('https://i.ibb.co/7zJg8KP/hero.jpg')]"}
         h1Text={"New collar prints"}
         pText={"For full color dogs"}
         btnText={"View all"}
@@ -28,7 +28,7 @@ const Main = () => {
       />
 
       <BigImgBanner
-        bgImage={`bg-[url('../../../src/assets/big-banner.jpg')]`}
+        bgImage={`bg-[url('https://i.ibb.co/4jTLtDY/big-banner.jpg')]`}
         height={"h-[578px]"}
         title={"blu lagoon"}
         text={"new print"}

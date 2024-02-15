@@ -13,9 +13,6 @@ import rapipagolImg from "../assets/rapipago.png";
 import pagofacilImg from "../assets/pagofacil.png";
 import banelcoImg from "../assets/banelco.png";
 
-import dogCategoryImg from "../assets/dog-category.jpg";
-import catCategoryImg from "../assets/cat-category.jpg";
-
 export const navbarCategories = [
   { id: 1, title: "STORE", href: "#store" },
   { id: 2, title: "COLLECTIONS", href: "#collections" },
@@ -64,7 +61,7 @@ export const categoryBanners = [
     h2Text: "neo collar",
     pText: "waterproof material",
     btnText: "shop now",
-    src: dogCategoryImg,
+    src: "https://i.ibb.co/cyZgs4r/dog-category.jpg",
   },
   {
     id: 2,
@@ -72,6 +69,6 @@ export const categoryBanners = [
     h2Text: "chew toys",
     pText: "for all cat breeds",
     btnText: "view all",
-    src: catCategoryImg,
+    src: "https://i.ibb.co/YTnGrTv/cat-category.jpg",
   },
 ];
