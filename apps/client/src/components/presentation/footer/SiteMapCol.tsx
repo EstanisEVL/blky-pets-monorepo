@@ -11,7 +11,7 @@ const SiteMapCol = ({ h3, categories }: SiteMapCol) => {
       <h3 className='text-2xl font-medium sm:font-normal mb-4'>{h3}</h3>
       {categories.map((category) => {
         return (
-          <a href='#' key={category.id}>
+          <a href={category.href} key={category.id}>
             <p className='text-lg mb-2'>{category.title}</p>
           </a>
         );

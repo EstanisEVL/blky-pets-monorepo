@@ -1,13 +1,13 @@
 import { ReactElement } from "react";
 
-type HamburguerBtnPropsType = {
+type ClickAndIconBtnPropsType = {
   handleClick: () => void;
   icon: string;
 };
 
-type LoginBtnPropsType = {
+type ClickAndTextBtnPropsType = {
   handleClick: () => void;
-  icon: string;
+  text: string;
 };
 
 type CartWidgetBtnPropsType = {
@@ -23,33 +23,7 @@ type LoginModalBtnPropsType = {
   active: boolean;
 };
 
-type CloseBtnPropsType = {
-  handleClick: () => void;
-  icon: string;
-};
-
-type BigBannerBtnPropsType = {
-  text: string;
-};
-
-type ShowMoreBtnPropsType = {
-  text: string;
-};
-
-type HeroBtnPropsType = {
-  text: string;
-};
-
-type CategoryBtnPropsType = {
-  text: string;
-};
-
-type EnterBtnPropsType = {
-  text: string;
-};
-
-type PurchaseBtnPropsType = {
-  handleClick: () => void;
+type TextBtnPropsType = {
   text: string;
 };
 
@@ -60,20 +34,14 @@ type AddBtnPropsType = {
   inProductCard: boolean;
 };
 
-type RemoveBtnPropsType = {
-  handleClick: (e: React.MouseEvent<HTMLButtonElement>) => void;
-  pid: string;
-  icon: string;
-};
-
-type DeleteBtnPropsType = {
+type DeleteAndRemoveBtnPropsType = {
   handleClick: (e: React.MouseEvent<HTMLButtonElement>) => void;
   pid: string;
   icon: string;
 };
 
 const ButtonIndex = {
-  HamburguerBtn: ({ icon, handleClick }: HamburguerBtnPropsType) => {
+  HamburguerBtn: ({ icon, handleClick }: ClickAndIconBtnPropsType) => {
     return (
       <button
         className='w-12 h-12 rounded border border-white text-white hover:bg-white hover:text-neutral-900 transition duration-500'
@@ -84,7 +52,7 @@ const ButtonIndex = {
     );
   },
 
-  LoginBtn: ({ handleClick, icon }: LoginBtnPropsType): ReactElement => {
+  LoginBtn: ({ handleClick, icon }: ClickAndIconBtnPropsType): ReactElement => {
     return (
       <button onClick={handleClick}>
         <img src={icon} alt='Login icon' />
@@ -109,7 +77,7 @@ const ButtonIndex = {
       </button>
     );
   },
-  CloseBtn: ({ handleClick, icon }: CloseBtnPropsType): ReactElement => {
+  CloseBtn: ({ handleClick, icon }: ClickAndIconBtnPropsType): ReactElement => {
     return (
       <button
         className='border border-black text-black min-h-12 min-w-12 rounded-full hover:bg-black hover:text-white transition duration-500 flex justify-center items-center'
@@ -138,35 +106,35 @@ const ButtonIndex = {
       </button>
     );
   },
-  BigBannerBtn: ({ text }: BigBannerBtnPropsType): ReactElement => {
+  BigBannerBtn: ({ text }: TextBtnPropsType): ReactElement => {
     return (
       <button className='w-32 h-9 uppercase text-base font-kanit text-zinc-900 bg-white border border-zinc-900 hover:text-white hover:bg-zinc-900  transition duration-500'>
         {text}
       </button>
     );
   },
-  ShowMoreBtn: ({ text }: ShowMoreBtnPropsType): ReactElement => {
+  ShowMoreBtn: ({ text }: TextBtnPropsType): ReactElement => {
     return (
       <button className='w-36 h-9 border border-gray-500 text-base uppercase hover:text-white hover:bg-gray-500 transition duration-500'>
         {text}
       </button>
     );
   },
-  HeroBtn: ({ text }: HeroBtnPropsType): ReactElement => {
+  HeroBtn: ({ text }: TextBtnPropsType): ReactElement => {
     return (
       <button className='w-28 h-9 border border-gray-500 text-base uppercase hover:text-white hover:bg-gray-500 transition duration-500'>
         {text}
       </button>
     );
   },
-  CategoryBtn: ({ text }: CategoryBtnPropsType): ReactElement => {
+  CategoryBtn: ({ text }: TextBtnPropsType): ReactElement => {
     return (
       <button className='w-32 h-9 uppercase text-base border border-gray-900 hover:text-white hover:bg-gray-900 transition duration-500'>
         {text}
       </button>
     );
   },
-  EnterBtn: ({ text }: EnterBtnPropsType) => {
+  EnterBtn: ({ text }: TextBtnPropsType) => {
     return (
       <button
         type='submit'
@@ -177,7 +145,7 @@ const ButtonIndex = {
     );
   },
 
-  PurchaseBtn: ({ text, handleClick }: PurchaseBtnPropsType) => {
+  PurchaseBtn: ({ text, handleClick }: ClickAndTextBtnPropsType) => {
     return (
       <button
         className='w-full h-12 rounded border border-green-600 text-base bg-white text-green-600 uppercase font-bold hover:text-white hover:bg-green-600  transition duration-500'
@@ -202,7 +170,7 @@ const ButtonIndex = {
     );
   },
 
-  RemoveBtn: ({ icon, pid, handleClick }: RemoveBtnPropsType) => {
+  RemoveBtn: ({ icon, pid, handleClick }: DeleteAndRemoveBtnPropsType) => {
     return (
       <button
         className='w-6 sm:w-12 h-6 sm:h-12 flex justify-center items-center font-extrabold rounded border border-red-600 text-red-600 hover:bg-red-600 hover:text-white transition duration-500'
@@ -214,7 +182,7 @@ const ButtonIndex = {
     );
   },
 
-  DeleteBtn: ({ icon, pid, handleClick }: DeleteBtnPropsType) => {
+  DeleteBtn: ({ icon, pid, handleClick }: DeleteAndRemoveBtnPropsType) => {
     return (
       <button
         className='w-6 sm:w-12 h-6 sm:h-12 flex justify-center items-center font-extrabold rounded border border-gray-600 text-gray-600 hover:bg-gray-600 hover:text-white transition duration-500'

@@ -1,8 +1,13 @@
-const Copyright = () => {
+type CopyrightPropsType = {
+  brand: string;
+  disclaimer: string;
+};
+
+const Copyright = ({ brand, disclaimer }: CopyrightPropsType) => {
   return (
     <div className='my-20 text-white text-md uppercase'>
       <p className='text-sm sm:text-base'>
-        BLKY PETS &copy; {new Date().getFullYear()} | All rights reserved.
+        {brand} &copy; {new Date().getFullYear()} {disclaimer}
       </p>
     </div>
   );

@@ -12,7 +12,7 @@ const Footer = () => {
       </div>
       <div className='order-3 sm:order-2 h-full flex-col'>
         <Socials />
-        <Copyright />
+        <Copyright brand={"BLKY PETS"} disclaimer={"| All rights reserved."} />
       </div>
       <div className='order-2 sm:order-3'>
         <PayMethods h3={"Payment methods"} payments={paymentMethods} />

@@ -19,18 +19,18 @@ export const navbarCategories = [
 ];
 
 export const sitemapProductCategories = [
-  { id: 1, title: "DOGS" },
-  { id: 2, title: "CATS" },
-  { id: 3, title: "PEOPLE" },
+  { id: 1, title: "DOGS", href: "#collections" },
+  { id: 2, title: "CATS", href: "#collections" },
+  { id: 3, title: "PEOPLE", href: "#collections" },
 ];
 
 export const sitemapHelpCategories = [
-  { id: 1, title: "PRODUCTS" },
-  { id: 2, title: "RETURNS" },
-  { id: 3, title: "SHIPPING" },
+  { id: 1, title: "PRODUCTS", href: "#" },
+  { id: 2, title: "RETURNS", href: "#" },
+  { id: 3, title: "SHIPPING", href: "#" },
 ];
 
-export const sitemapAboutCategories = [{ id: 1, title: "CONTACT" }];
+export const sitemapAboutCategories = [{ id: 1, title: "CONTACT", href: "#" }];
 
 export const socialsFollow = [
   { id: 1, title: "facebook", src: facebookIcon },
