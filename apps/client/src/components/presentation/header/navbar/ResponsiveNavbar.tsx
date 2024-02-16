@@ -2,10 +2,30 @@ import MediaQuery from "react-responsive";
 import DesktopNavbar from "./DesktopNavbar";
 import MobileNavbar from "./MobileNavbar";
 
-const ResponsiveNavbar = () => {
+type ResponsiveNavbarPropsType = {
+  isVisible: boolean;
+  setVisible: React.Dispatch<React.SetStateAction<boolean>>;
+  handleClick: () => void;
+};
+
+const ResponsiveNavbar = ({
+  isVisible,
+  setVisible,
+  handleClick,
+}: ResponsiveNavbarPropsType) => {
   return (
     <MediaQuery minWidth={640}>
-      {(matches) => (matches ? <DesktopNavbar /> : <MobileNavbar />)}
+      {(matches) =>
+        matches ? (
+          <DesktopNavbar setVisible={setVisible} />
+        ) : (
+          <MobileNavbar
+            isVisible={isVisible}
+            setVisible={setVisible}
+            handleClick={handleClick}
+          />
+        )
+      }
     </MediaQuery>
   );
 };

@@ -3,7 +3,12 @@ import Banner from "../../presentation/Banner";
 import ResponsiveNavbar from "../../presentation/header/navbar/ResponsiveNavbar";
 
 const Header = () => {
+  const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+
+  const handleOpen = () => {
+    setOpen(!open);
+  };
 
   const handleScroll = () => {
     if (window.scrollY >= 64) {
@@ -33,7 +38,11 @@ const Header = () => {
         />
       )}
 
-      <ResponsiveNavbar />
+      <ResponsiveNavbar
+        isVisible={open}
+        setVisible={setOpen}
+        handleClick={handleOpen}
+      />
     </header>
   );
 };
