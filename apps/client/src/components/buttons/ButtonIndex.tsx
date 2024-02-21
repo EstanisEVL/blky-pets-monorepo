@@ -1,44 +1,13 @@
 import { ReactElement } from "react";
-
-type ClickAndIconBtnPropsType = {
-  handleClick: () => void;
-  icon: string;
-};
-
-type ClickAndTextBtnPropsType = {
-  handleClick: () => void;
-  text: string;
-};
-
-type CartWidgetBtnPropsType = {
-  handleClick: () => void;
-  icon: string;
-  disabled: boolean;
-  hasProducts: boolean;
-};
-
-type LoginModalBtnPropsType = {
-  handleClick: () => void;
-  text: string;
-  active: boolean;
-};
-
-type TextBtnPropsType = {
-  text: string;
-};
-
-type AddBtnPropsType = {
-  handleClick: (e: React.MouseEvent<HTMLButtonElement>) => void;
-  pid: string;
-  icon: string;
-  inProductCard: boolean;
-};
-
-type DeleteAndRemoveBtnPropsType = {
-  handleClick: (e: React.MouseEvent<HTMLButtonElement>) => void;
-  pid: string;
-  icon: string;
-};
+import {
+  ClickAndIconBtnPropsType,
+  LoginModalBtnPropsType,
+  CartWidgetBtnPropsType,
+  TextBtnPropsType,
+  ClickAndTextBtnPropsType,
+  AddBtnPropsType,
+  DeleteAndRemoveBtnPropsType,
+} from "./button.types";
 
 const ButtonIndex = {
   HamburguerBtn: ({ icon, handleClick }: ClickAndIconBtnPropsType) => {
@@ -59,6 +28,7 @@ const ButtonIndex = {
       </button>
     );
   },
+
   LoginModalBtn: ({
     handleClick,
     text,
@@ -77,6 +47,7 @@ const ButtonIndex = {
       </button>
     );
   },
+
   CloseBtn: ({ handleClick, icon }: ClickAndIconBtnPropsType): ReactElement => {
     return (
       <button
@@ -87,6 +58,7 @@ const ButtonIndex = {
       </button>
     );
   },
+
   CartWidgetBtn: ({
     handleClick,
     icon,
@@ -101,11 +73,12 @@ const ButtonIndex = {
         <img
           src={icon}
           alt={"Cart icon"}
-          title={disabled ? "Inicia sesión para ver tu carrito" : "Ver carrito"}
+          title={disabled ? "Log in to see your cart." : "Open cart."}
         />
       </button>
     );
   },
+
   BigBannerBtn: ({ text }: TextBtnPropsType): ReactElement => {
     return (
       <button className='w-32 h-9 uppercase text-base font-kanit text-zinc-900 bg-white border border-zinc-900 hover:text-white hover:bg-zinc-900  transition duration-500'>
@@ -113,6 +86,7 @@ const ButtonIndex = {
       </button>
     );
   },
+
   ShowMoreBtn: ({ text }: TextBtnPropsType): ReactElement => {
     return (
       <button className='w-36 h-9 border border-gray-500 text-base uppercase hover:text-white hover:bg-gray-500 transition duration-500'>
@@ -120,6 +94,7 @@ const ButtonIndex = {
       </button>
     );
   },
+
   HeroBtn: ({ text }: TextBtnPropsType): ReactElement => {
     return (
       <button className='w-28 h-9 border border-gray-500 text-base uppercase hover:text-white hover:bg-gray-500 transition duration-500'>
@@ -127,6 +102,7 @@ const ButtonIndex = {
       </button>
     );
   },
+
   CategoryBtn: ({ text }: TextBtnPropsType): ReactElement => {
     return (
       <button className='w-32 h-9 uppercase text-base border border-gray-900 hover:text-white hover:bg-gray-900 transition duration-500'>
@@ -134,6 +110,7 @@ const ButtonIndex = {
       </button>
     );
   },
+
   EnterBtn: ({ text }: TextBtnPropsType) => {
     return (
       <button

@@ -1,11 +1,11 @@
-import searchIcon from "../../../../assets/search.svg";
+import searchIcon from "../../../../assets/search/search.svg";
 
-type SearchInputProp = {
+type SearchInputPropsType = {
   input: string;
   handleChange: (value: string) => void;
 };
 
-const SearchInput = ({ input, handleChange }: SearchInputProp) => {
+const SearchInput = ({ input, handleChange }: SearchInputPropsType) => {
   return (
     <div className='relative flex items-center'>
       <img

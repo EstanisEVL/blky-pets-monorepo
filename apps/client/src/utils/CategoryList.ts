@@ -1,17 +1,8 @@
-import facebookIcon from "../assets/facebook.svg";
-import instagramIcon from "../assets/instagram.svg";
-import tiktokIcon from "../assets/tiktok.svg";
-import whatsappIcon from "../assets/whatsapp.svg";
-import emailIcon from "../assets/email.svg";
-
-import visaImg from "../assets/visa.png";
-import mastercardImg from "../assets/mastercard.png";
-import amexImg from "../assets/amex.png";
-import cabalImg from "../assets/cabal.png";
-import mepaImg from "../assets/mepa.png";
-import rapipagolImg from "../assets/rapipago.png";
-import pagofacilImg from "../assets/pagofacil.png";
-import banelcoImg from "../assets/banelco.png";
+import facebookIcon from "../assets/socials/facebook.svg";
+import instagramIcon from "../assets/socials/instagram.svg";
+import tiktokIcon from "../assets/socials/tiktok.svg";
+import whatsappIcon from "../assets/contact/whatsapp.svg";
+import emailIcon from "../assets/contact/email.svg";
 
 export const navbarCategories = [
   { id: 1, title: "STORE", href: "#store" },
@@ -44,14 +35,22 @@ export const socialsContact = [
 ];
 
 export const paymentMethods = [
-  { id: 1, title: "visa", src: visaImg },
-  { id: 2, title: "mastercard", src: mastercardImg },
-  { id: 3, title: "american express", src: amexImg },
-  { id: 4, title: "cabal", src: cabalImg },
-  { id: 5, title: "mercado pago", src: mepaImg },
-  { id: 6, title: "rapipago", src: rapipagolImg },
-  { id: 7, title: "pagofacil", src: pagofacilImg },
-  { id: 8, title: "banelco", src: banelcoImg },
+  { id: 1, title: "visa", src: "https://i.ibb.co/tQ9wR91/visa.png" },
+  {
+    id: 2,
+    title: "mastercard",
+    src: "https://i.ibb.co/VQRHkb4/mastercard.png",
+  },
+  {
+    id: 3,
+    title: "american express",
+    src: "https://i.ibb.co/m8trf0q/amex.png",
+  },
+  { id: 4, title: "cabal", src: "https://i.ibb.co/B63SnrN/cabal.png" },
+  { id: 5, title: "mercado pago", src: "https://i.ibb.co/k1fSgbQ/mepa.png" },
+  { id: 6, title: "rapipago", src: "https://i.ibb.co/B4cnv3v/rapipago.png" },
+  { id: 7, title: "pagofacil", src: "https://i.ibb.co/xjYX6k7/pagofacil.png" },
+  { id: 8, title: "banelco", src: "https://i.ibb.co/7kBZ8Gy/banelco.png" },
 ];
 
 export const categoryBanners = [

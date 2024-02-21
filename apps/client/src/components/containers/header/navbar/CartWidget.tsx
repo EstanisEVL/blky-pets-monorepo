@@ -1,5 +1,5 @@
 import { useState } from "react";
-import cartIcon from "../../../../assets/cart.svg";
+import cartIcon from "../../../../assets/cart/cart.svg";
 import useUserData from "../../../../hooks/useUserData";
 import ButtonIndex from "../../../buttons/ButtonIndex";
 import BaseCartModalWrapper from "../../../modal/cart/BaseCartModalWrapper";

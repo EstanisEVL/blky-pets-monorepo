@@ -1,6 +1,4 @@
 import { ReactElement } from "react";
-import leftArrowIcon from "../../../assets/left-arrow.svg";
-import rightArrowIcon from "../../../assets/right-arrow.svg";
 
 type CarouselArrowPropType = {
   direction: string;
@@ -18,10 +16,7 @@ const CarouselArrow = ({
         direction && direction === "left" ? "left-0" : "right-0"
       } z-10`}
     >
-      <img
-        src={direction && direction === "left" ? leftArrowIcon : rightArrowIcon}
-        alt=''
-      />
+      <img src={direction && direction === "left" ? "<" : ">"} alt='' />
     </button>
   );
 };
