@@ -24,14 +24,29 @@ export const sitemapHelpCategories = [
 export const sitemapAboutCategories = [{ id: 1, title: "CONTACT", href: "#" }];
 
 export const socialsFollow = [
-  { id: 1, title: "facebook", src: facebookIcon },
-  { id: 2, title: "instagram", src: instagramIcon },
-  { id: 3, title: "tiktok", src: tiktokIcon },
+  {
+    id: 1,
+    title: "facebook",
+    src: facebookIcon,
+    link: "https://www.facebook.com/BLKYpets/",
+  },
+  {
+    id: 2,
+    title: "instagram",
+    src: instagramIcon,
+    link: "https://www.instagram.com/blkypets/?hl=es",
+  },
+  { id: 3, title: "tiktok", src: tiktokIcon, link: "https://www.tiktok.com/" },
 ];
 
 export const socialsContact = [
-  { id: 1, title: "whatsapp", src: whatsappIcon },
-  { id: 2, title: "email", src: emailIcon },
+  {
+    id: 1,
+    title: "whatsapp",
+    src: whatsappIcon,
+    link: "https://www.whatsapp.com/",
+  },
+  { id: 2, title: "email", src: emailIcon, link: "mailto:blkypets@gmail.com" },
 ];
 
 export const paymentMethods = [

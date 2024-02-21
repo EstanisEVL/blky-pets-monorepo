@@ -13,12 +13,11 @@ const SocialsCol = ({ h3, socials }: SocialsCol) => {
         <div className='flex gap-x-4'>
           {socials.map((social) => {
             return (
-              <button
-                className='w-12 h-12 flex justify-center items-center border-none rounded bg-rose-600'
-                key={social.id}
-              >
-                <img src={social.src} alt={social.title} />
-              </button>
+              <a key={social.id} href={social.link}>
+                <button className='w-12 h-12 flex justify-center items-center border-none rounded bg-rose-600'>
+                  <img src={social.src} alt={social.title} />
+                </button>
+              </a>
             );
           })}
         </div>
