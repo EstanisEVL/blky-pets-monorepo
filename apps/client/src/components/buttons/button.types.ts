@@ -37,3 +37,9 @@ export type DeleteAndRemoveBtnPropsType = {
   pid: string;
   icon: string;
 };
+
+export type CarouselBtnPropsType = {
+  direction: string;
+  icon: string;
+  handleClick: () => void;
+};

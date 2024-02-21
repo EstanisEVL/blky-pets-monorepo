@@ -1,4 +1,5 @@
 import { ReactElement } from "react";
+import ButtonIndex from "../../buttons/ButtonIndex";
 
 type CarouselArrowPropType = {
   direction: string;
@@ -10,14 +11,11 @@ const CarouselArrow = ({
   handleClick,
 }: CarouselArrowPropType): ReactElement => {
   return (
-    <button
-      onClick={handleClick}
-      className={`w-12 h-12 bg-white/80 hover:bg-white rounded-full flex justify-center items-center absolute ${
-        direction && direction === "left" ? "left-0" : "right-0"
-      } z-10`}
-    >
-      {direction && direction === "left" ? "<" : ">"}
-    </button>
+    <ButtonIndex.CarouselBtn
+      direction={direction}
+      handleClick={handleClick}
+      icon={direction && direction === "left" ? "<" : ">"}
+    />
   );
 };
 

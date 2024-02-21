@@ -7,6 +7,7 @@ import {
   ClickAndTextBtnPropsType,
   AddBtnPropsType,
   DeleteAndRemoveBtnPropsType,
+  CarouselBtnPropsType,
 } from "./button.types";
 
 const ButtonIndex = {
@@ -165,6 +166,19 @@ const ButtonIndex = {
         className='w-6 sm:w-12 h-6 sm:h-12 flex justify-center items-center font-extrabold rounded border border-gray-600 text-gray-600 hover:bg-gray-600 hover:text-white transition duration-500'
         data-product-id={pid}
         onClick={handleClick}
+      >
+        {icon}
+      </button>
+    );
+  },
+
+  CarouselBtn: ({ direction, icon, handleClick }: CarouselBtnPropsType) => {
+    return (
+      <button
+        onClick={handleClick}
+        className={`w-12 h-12 bg-white/80 hover:bg-white rounded-full flex justify-center items-center absolute ${
+          direction && direction === "left" ? "left-0" : "right-0"
+        } z-10`}
       >
         {icon}
       </button>
