@@ -16,7 +16,7 @@ const CarouselArrow = ({
         direction && direction === "left" ? "left-0" : "right-0"
       } z-10`}
     >
-      <img src={direction && direction === "left" ? "<" : ">"} alt='' />
+      {direction && direction === "left" ? "<" : ">"}
     </button>
   );
 };
