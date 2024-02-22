@@ -1,7 +1,8 @@
-import { useState } from "react";
+import { Suspense, useState } from "react";
 import CarouselArrow from "../../presentation/main/CarouselArrow";
 import CarouselBody from "../../presentation/main/CarouselBody";
 import useProducts from "../../../hooks/useProducts";
+import Loader from "../../presentation/loader/Loader";
 
 const MobileCarousel = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -50,7 +51,9 @@ const MobileCarousel = () => {
       <div className='flex justify-center items-center relative'>
         <CarouselArrow direction={"left"} handleClick={handlePrevSlide} />
 
-        <CarouselBody slides={slides} />
+        <Suspense fallback={<Loader />}>
+          <CarouselBody slides={slides} />
+        </Suspense>
 
         <CarouselArrow direction={"right"} handleClick={handleNextSlide} />
       </div>

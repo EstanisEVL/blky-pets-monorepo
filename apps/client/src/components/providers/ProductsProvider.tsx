@@ -1,13 +1,13 @@
 import { ReactElement, useEffect, useState } from "react";
-import { fetchData } from "../../helpers/fetchData";
 import Contexts from "../../contexts/Contexts";
 import { Product } from "../../interfaces/product.interface";
+import Loader from "../presentation/loader/Loader";
 
 const URL: string = String(import.meta.env.VITE_API_URL);
-const apiData = fetchData(`${URL}/products`);
 
 export type UseProductsContextType = {
   products: Product[];
+  loading: boolean;
 };
 
 const ProductsContext = Contexts.StoreContext;
@@ -15,16 +15,22 @@ const ProductsContext = Contexts.StoreContext;
 type ChildrenType = { children?: ReactElement | ReactElement[] };
 
 export const ProductsProvider = ({ children }: ChildrenType): ReactElement => {
-  const [products, setProducts] = useState<Promise<any> | Product[]>([]);
-  const data = apiData.read();
+  const [products, setProducts] = useState<Product[]>([]);
+  const [loading, setLoading] = useState<boolean>(true);
 
   useEffect(() => {
-    setProducts(data);
+    fetch(`${URL}/products`)
+      .then((res) => res.json())
+      .then((data) => setProducts(data))
+      .catch((err) => console.error(err))
+      .finally(() => setLoading(false));
   }, []);
 
   return (
-    <ProductsContext.Provider value={{ products } as { products: Product[] }}>
-      {children}
+    <ProductsContext.Provider
+      value={{ loading, products } as { loading: boolean; products: Product[] }}
+    >
+      {loading ? <Loader /> : children}
     </ProductsContext.Provider>
   );
 };

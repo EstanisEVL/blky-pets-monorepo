@@ -24,7 +24,6 @@ const Main = () => {
         color={"text-white"}
         bgColor={"bg-cyan-500"}
       />
-
       <BigImgBanner
         bgImage={`bg-[url('https://i.ibb.co/4jTLtDY/big-banner.jpg')]`}
         height={"h-[578px]"}
@@ -41,7 +40,6 @@ const Main = () => {
         bgColor={"bg-rose-600"}
       />
       <Store />
-
       <Newsletter />
     </main>
   );

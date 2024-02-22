@@ -6,7 +6,7 @@
   "scripts": {
     "build": "dotenv -- turbo run build",
     "dev": "dotenv -- turbo run dev",
-    "start": "dotenv -- node apps/api/dist/main",
+    "start": "npm run build && dotenv -- node apps/api/dist/main",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
