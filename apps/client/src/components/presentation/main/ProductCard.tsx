@@ -1,6 +1,6 @@
 import { ReactElement } from "react";
-import { Product } from "../../../interfaces/product.interface";
-import ButtonIndex from "../../buttons/ButtonIndex";
+import { Product } from "../../../interfaces/interface.index";
+import ButtonIndex from "../buttons/ButtonIndex";
 
 type ProductCardProps = {
   product: Product;

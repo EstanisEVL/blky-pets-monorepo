@@ -1,5 +1,5 @@
 import { Suspense } from "react";
-import ButtonIndex from "../../buttons/ButtonIndex";
+import ButtonIndex from "../../presentation/buttons/ButtonIndex";
 import Loader from "../../presentation/loader/Loader";
 import StoreFilters from "../../presentation/main/StoreFilters";
 import StoreTitle from "../../presentation/main/StoreTitle";

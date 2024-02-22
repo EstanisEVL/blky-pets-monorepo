@@ -1,45 +1,32 @@
-import { ReactEventHandler, useEffect, useState } from "react";
-import ButtonIndex from "../buttons/ButtonIndex";
-import FormInput from "./inputs/FormInput";
-import FormLink from "./links/FormLink";
-import Title from "../presentation/Title";
-import useUserData from "../../hooks/useUserData";
+import { useState } from "react";
+import ButtonIndex from "../../presentation/buttons/ButtonIndex";
+import FormInput from "../../presentation/inputs/FormInput";
+import Title from "../../presentation/Title";
 
-type UserLoginFormPropsType = {
-  handleUserSignup: ReactEventHandler;
-  handleUserPwdRecovery: ReactEventHandler;
-};
-
-const UserLoginForm = ({
-  handleUserSignup,
-  handleUserPwdRecovery,
-}: UserLoginFormPropsType) => {
+const AdminLoginForm = () => {
   const URL: string = String(import.meta.env.VITE_API_URL);
-
-  const { loggedIn, setLoggedIn, setAccessToken } = useUserData();
-
-  const INITIAL_USER_STATE = {
+  const INITIAL_ADMIN_STATE = {
     email: "",
     password: "",
   };
+
+  const [adminInfo, setAdminInfo] = useState(INITIAL_ADMIN_STATE);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
-  const [userInfo, setUserInfo] = useState(INITIAL_USER_STATE);
-  const [token, setToken] = useState<string | null>(null);
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     setLoading(true);
 
-    fetch(`${URL}/auth/login`, {
+    fetch(`${URL}/auth/admin-login`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
         Accept: "application/json",
         "Access-Control-Allow-Origin": "*",
       },
-      body: JSON.stringify(userInfo),
+      body: JSON.stringify(adminInfo),
     })
       .then((res) => res.json())
       .then((data) => {
@@ -48,13 +35,7 @@ const UserLoginForm = ({
         } else if (data.statusCode === 404) {
           setError(data.message);
         } else {
-          setToken(String(data.access_token));
-
-          setError("");
-
-          if (token !== "") {
-            setLoggedIn(true);
-          }
+          console.log(data);
         }
       })
       .catch((err) => setError(`Error: ${err}`))
@@ -66,28 +47,19 @@ const UserLoginForm = ({
 
     switch (property) {
       case "email":
-        setUserInfo({ ...userInfo, email: e.target.value });
+        setAdminInfo({ ...adminInfo, email: e.target.value });
         break;
 
       case "password":
-        setUserInfo({ ...userInfo, password: e.target.value });
+        setAdminInfo({ ...adminInfo, password: e.target.value });
         break;
     }
   };
 
-  useEffect(() => {
-    if (!loggedIn) {
-      localStorage.clear();
-    }
-
-    localStorage.setItem("access_token", String(token));
-
-    setAccessToken(true);
-  }, [loggedIn]);
-
   return (
     <div className='w-full sm:min-w-[500px] sm:max-w-md'>
-      <Title text={"User login"} />
+      <Title text={"Admin login"} />
+
       {loading ? (
         <div>Loading...</div>
       ) : (
@@ -122,21 +94,8 @@ const UserLoginForm = ({
           </div>
         </form>
       )}
-
-      <div className='flex flex-col items-end gap-2 mt-6'>
-        <FormLink
-          text={"No account? "}
-          btnText={"Create one"}
-          handleClick={handleUserSignup}
-        />
-        <FormLink
-          text={"Forgot your password? "}
-          btnText={"Reset it here"}
-          handleClick={handleUserPwdRecovery}
-        />
-      </div>
     </div>
   );
 };
 
-export default UserLoginForm;
+export default AdminLoginForm;

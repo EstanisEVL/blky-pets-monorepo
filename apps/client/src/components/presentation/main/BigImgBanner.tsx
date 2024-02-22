@@ -1,4 +1,4 @@
-import ButtonIndex from "../../buttons/ButtonIndex";
+import ButtonIndex from "../buttons/ButtonIndex";
 
 type BigImgBannerPropsType = {
   bgImage: string;
@@ -20,7 +20,7 @@ const BigImgBanner = ({
       className={`my-10 ${height} flex flex-col justify-center items-center ${bgImage} bg-cover bg-no-repeat`}
     >
       <div className='w-full sm:top-2/3 flex flex-col items-center'>
-        <div className='text-center font-kanit mt-40 mb-6'>
+        <div className='text-center text-white font-kanit mt-40 mb-6'>
           <h3 className='uppercase font-medium text-3xl'>{title}</h3>
           <p className='uppercase text-lg'>{text}</p>
         </div>

@@ -1,7 +1,6 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import useUserData from "../../../hooks/useUserData";
-import { Cart } from "../../../interfaces/cart.interface";
-import { Product } from "../../../interfaces/product.interface";
+import { Cart, Product } from "../../../interfaces/interface.index";
 import ProductCard from "../../presentation/main/ProductCard";
 import toast from "react-hot-toast";
 import Loader from "../../presentation/loader/Loader";

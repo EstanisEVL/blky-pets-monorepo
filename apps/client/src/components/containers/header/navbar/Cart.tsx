@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
 import useUserData from "../../../../hooks/useUserData";
 import Title from "../../../presentation/Title";
-import { Cart as CartInterface } from "../../../../interfaces/cart.interface";
+import { Cart as CartInterface } from "../../../../interfaces/interface.index";
 import ProductInCartDetail from "../../../presentation/header/cart/ProductInCartDetail";
-import ButtonIndex from "../../../buttons/ButtonIndex";
+import ButtonIndex from "../../../presentation/buttons/ButtonIndex";
 import CartPurchaseTotal from "../../../presentation/header/cart/CartPurchaseTotal";
 
 const URL: string = String(import.meta.env.VITE_API_URL);

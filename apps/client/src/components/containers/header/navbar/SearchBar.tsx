@@ -3,7 +3,7 @@ import { useState } from "react";
 import SearchInput from "../../../presentation/header/navbar/SearchInput";
 import SearchResults from "../../../presentation/header/navbar/SearchResults";
 import useProducts from "../../../../hooks/useProducts";
-import { Product } from "../../../../interfaces/product.interface";
+import { Product } from "../../../../interfaces/interface.index";
 
 const SearchBar = () => {
   const [input, setInput] = useState("");

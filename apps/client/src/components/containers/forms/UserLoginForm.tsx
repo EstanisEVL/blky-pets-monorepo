@@ -1,33 +1,38 @@
-import { ReactEventHandler, useState } from "react";
-import FormLink from "./links/FormLink";
-import ButtonIndex from "../buttons/ButtonIndex";
-import FormInput from "./inputs/FormInput";
-import Title from "../presentation/Title";
-import toast from "react-hot-toast";
+import { ReactEventHandler, useEffect, useState } from "react";
+import ButtonIndex from "../../presentation/buttons/ButtonIndex";
+import FormInput from "../../presentation/inputs/FormInput";
+import FormLink from "../../presentation/links/FormLink";
+import Title from "../../presentation/Title";
+import useUserData from "../../../hooks/useUserData";
 
-type UserPwdRecoveryFormPropsType = {
-  handleUserLogin: ReactEventHandler;
+type UserLoginFormPropsType = {
   handleUserSignup: ReactEventHandler;
+  handleUserPwdRecovery: ReactEventHandler;
 };
 
-const UserPwdRecoveryForm = ({
-  handleUserLogin,
+const UserLoginForm = ({
   handleUserSignup,
-}: UserPwdRecoveryFormPropsType) => {
+  handleUserPwdRecovery,
+}: UserLoginFormPropsType) => {
   const URL: string = String(import.meta.env.VITE_API_URL);
+
+  const { loggedIn, setLoggedIn, setAccessToken } = useUserData();
+
   const INITIAL_USER_STATE = {
     email: "",
+    password: "",
   };
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
   const [userInfo, setUserInfo] = useState(INITIAL_USER_STATE);
+  const [token, setToken] = useState<string | null>(null);
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     setLoading(true);
 
-    fetch(`${URL}/auth/password/new`, {
+    fetch(`${URL}/auth/login`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -38,17 +43,18 @@ const UserPwdRecoveryForm = ({
     })
       .then((res) => res.json())
       .then((data) => {
-        if (data.statusCode === 400) {
+        if (data.statusCode === 401) {
           setError(data.message);
         } else if (data.statusCode === 404) {
           setError(data.message);
         } else {
-          toast.success(
-            "Please check your email address to continue with the password recovery process."
-          );
+          setToken(String(data.access_token));
 
           setError("");
-          console.log(data);
+
+          if (token !== "") {
+            setLoggedIn(true);
+          }
         }
       })
       .catch((err) => setError(`Error: ${err}`))
@@ -62,13 +68,26 @@ const UserPwdRecoveryForm = ({
       case "email":
         setUserInfo({ ...userInfo, email: e.target.value });
         break;
+
+      case "password":
+        setUserInfo({ ...userInfo, password: e.target.value });
+        break;
     }
   };
 
+  useEffect(() => {
+    if (!loggedIn) {
+      localStorage.clear();
+    }
+
+    localStorage.setItem("access_token", String(token));
+
+    setAccessToken(true);
+  }, [loggedIn]);
+
   return (
     <div className='w-full sm:min-w-[500px] sm:max-w-md'>
-      <Title text={"Reset password"} />
-
+      <Title text={"User login"} />
       {loading ? (
         <div>Loading...</div>
       ) : (
@@ -81,7 +100,14 @@ const UserPwdRecoveryForm = ({
               text={"Email"}
               isRequired={true}
               onChange={handleChange}
-              message={"Enter your email to reset password."}
+            />
+            <FormInput
+              label={"Password"}
+              input={"password"}
+              id={"password"}
+              text={"Password"}
+              isRequired={true}
+              onChange={handleChange}
             />
           </div>
 
@@ -92,25 +118,25 @@ const UserPwdRecoveryForm = ({
           )}
 
           <div className='flex justify-center mt-10'>
-            <ButtonIndex.EnterBtn text={"Reset password"} />
+            <ButtonIndex.EnterBtn text={"Login"} />
           </div>
         </form>
       )}
 
       <div className='flex flex-col items-end gap-2 mt-6'>
         <FormLink
-          text={"Already have an account? "}
-          btnText={"Log in"}
-          handleClick={handleUserLogin}
-        />
-        <FormLink
           text={"No account? "}
           btnText={"Create one"}
           handleClick={handleUserSignup}
+        />
+        <FormLink
+          text={"Forgot your password? "}
+          btnText={"Reset it here"}
+          handleClick={handleUserPwdRecovery}
         />
       </div>
     </div>
   );
 };
 
-export default UserPwdRecoveryForm;
+export default UserLoginForm;

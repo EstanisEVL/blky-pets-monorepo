@@ -1,5 +1,5 @@
 import { ReactElement, useEffect, useState } from "react";
-import { User } from "../../interfaces/user.interface";
+import { User } from "../../interfaces/interface.index";
 import Contexts from "../../contexts/Contexts";
 
 const URL: string = String(import.meta.env.VITE_API_URL);

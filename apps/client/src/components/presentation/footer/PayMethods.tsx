@@ -1,3 +1,5 @@
+import { Payment } from "../../../interfaces/interface.index";
+
 type PayMethodsType = {
   h3: string;
   payments: Payment[];

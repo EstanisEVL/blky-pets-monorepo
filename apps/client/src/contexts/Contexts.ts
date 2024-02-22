@@ -1,10 +1,12 @@
 import { createContext } from "react";
 import { UseProductsContextType } from "../components/providers/ProductsProvider";
 
-const initContextState: UseProductsContextType = { products: [] };
+const initContextState: UseProductsContextType = {
+  loading: true,
+  products: [],
+};
 
 const Contexts = {
-  CarouselContext: createContext([]),
   CartContext: createContext([]),
   StoreContext: createContext<UseProductsContextType>(initContextState),
   UserContext: createContext({}),

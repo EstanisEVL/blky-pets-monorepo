@@ -1,8 +1,8 @@
 import { ReactEventHandler, useState } from "react";
-import FormLink from "./links/FormLink";
-import FormInput from "./inputs/FormInput";
-import ButtonIndex from "../buttons/ButtonIndex";
-import Title from "../presentation/Title";
+import FormLink from "../../presentation/links/FormLink";
+import FormInput from "../../presentation/inputs/FormInput";
+import ButtonIndex from "../../presentation/buttons/ButtonIndex";
+import Title from "../../presentation/Title";
 
 type UserSignupFormPropsType = {
   handleUserLogin: ReactEventHandler;

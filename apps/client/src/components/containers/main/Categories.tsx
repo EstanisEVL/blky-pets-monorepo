@@ -1,5 +1,5 @@
-import { Category } from "../../../interfaces/category.interface";
-import CategoriesLink from "../../presentation/header/navbar/CategoriesLink";
+import { Category } from "../../../interfaces/interface.index";
+import CategoriesLink from "../../containers/header/navbar/CategoriesLink";
 
 type Categories = {
   categories: Category[];

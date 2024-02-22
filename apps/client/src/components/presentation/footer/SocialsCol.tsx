@@ -1,4 +1,4 @@
-import { Social } from "../../../interfaces/social.interface";
+import { Social } from "../../../interfaces/interface.index";
 
 type SocialsCol = {
   h3: string;

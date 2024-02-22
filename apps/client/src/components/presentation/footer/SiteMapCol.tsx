@@ -1,4 +1,4 @@
-import { Category } from "../../../interfaces/category.interface";
+import { Category } from "../../../interfaces/interface.index";
 
 type SiteMapCol = {
   h3: string;

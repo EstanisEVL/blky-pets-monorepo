@@ -1,5 +1,5 @@
-import ButtonIndex from "../../../buttons/ButtonIndex";
-import { Product } from "../../../../interfaces/product.interface";
+import ButtonIndex from "../../buttons/ButtonIndex";
+import { Product } from "../../../../interfaces/interface.index";
 
 type ProductInCartDetailPropsType = {
   product: Product;

@@ -1,5 +1,5 @@
 import { ReactElement } from "react";
-import ButtonIndex from "../../buttons/ButtonIndex";
+import ButtonIndex from "../buttons/ButtonIndex";
 
 type CarouselArrowPropType = {
   direction: string;

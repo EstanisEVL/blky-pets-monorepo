@@ -1,6 +1,6 @@
 import { ReactElement, useEffect, useState } from "react";
 import Contexts from "../../contexts/Contexts";
-import { Product } from "../../interfaces/product.interface";
+import { Product } from "../../interfaces/interface.index";
 import Loader from "../presentation/loader/Loader";
 
 const URL: string = String(import.meta.env.VITE_API_URL);

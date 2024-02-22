@@ -1,9 +1,9 @@
 import { ReactElement, useState } from "react";
-import ButtonIndex from "../../../buttons/ButtonIndex";
-import AdminLoginForm from "../../../forms/AdminLoginForm";
-import UserLoginForm from "../../../forms/UserLoginForm";
-import UserSignupForm from "../../../forms/UserSignupForm";
-import UserPwdRecoveryForm from "../../../forms/UserPwdRecoveryForm";
+import ButtonIndex from "../../../presentation/buttons/ButtonIndex";
+import AdminLoginForm from "../../forms/AdminLoginForm";
+import UserLoginForm from "../../forms/UserLoginForm";
+import UserSignupForm from "../../forms/UserSignupForm";
+import UserPwdRecoveryForm from "../../forms/UserPwdRecoveryForm";
 
 const LoginMode = ({}): ReactElement => {
   const INIT_STATE = "user";

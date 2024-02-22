@@ -1,8 +1,8 @@
 import { useState } from "react";
 import cartIcon from "../../../../assets/cart/cart.svg";
 import useUserData from "../../../../hooks/useUserData";
-import ButtonIndex from "../../../buttons/ButtonIndex";
-import BaseCartModalWrapper from "../../../modal/cart/BaseCartModalWrapper";
+import ButtonIndex from "../../../presentation/buttons/ButtonIndex";
+import BaseCartModalWrapper from "../../../presentation/modal/base/BaseModalWrapper";
 import Cart from "./Cart";
 
 const CartWidget = () => {

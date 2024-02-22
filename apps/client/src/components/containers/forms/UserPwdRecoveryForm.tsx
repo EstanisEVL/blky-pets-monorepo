@@ -1,40 +1,53 @@
-import { useState } from "react";
-import ButtonIndex from "../buttons/ButtonIndex";
-import FormInput from "./inputs/FormInput";
-import Title from "../presentation/Title";
+import { ReactEventHandler, useState } from "react";
+import FormLink from "../../presentation/links/FormLink";
+import ButtonIndex from "../../presentation/buttons/ButtonIndex";
+import FormInput from "../../presentation/inputs/FormInput";
+import Title from "../../presentation/Title";
+import toast from "react-hot-toast";
 
-const AdminLoginForm = () => {
+type UserPwdRecoveryFormPropsType = {
+  handleUserLogin: ReactEventHandler;
+  handleUserSignup: ReactEventHandler;
+};
+
+const UserPwdRecoveryForm = ({
+  handleUserLogin,
+  handleUserSignup,
+}: UserPwdRecoveryFormPropsType) => {
   const URL: string = String(import.meta.env.VITE_API_URL);
-  const INITIAL_ADMIN_STATE = {
+  const INITIAL_USER_STATE = {
     email: "",
-    password: "",
   };
-
-  const [adminInfo, setAdminInfo] = useState(INITIAL_ADMIN_STATE);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
+  const [userInfo, setUserInfo] = useState(INITIAL_USER_STATE);
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     setLoading(true);
 
-    fetch(`${URL}/auth/admin-login`, {
+    fetch(`${URL}/auth/password/new`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
         Accept: "application/json",
         "Access-Control-Allow-Origin": "*",
       },
-      body: JSON.stringify(adminInfo),
+      body: JSON.stringify(userInfo),
     })
       .then((res) => res.json())
       .then((data) => {
-        if (data.statusCode === 401) {
+        if (data.statusCode === 400) {
           setError(data.message);
         } else if (data.statusCode === 404) {
           setError(data.message);
         } else {
+          toast.success(
+            "Please check your email address to continue with the password recovery process."
+          );
+
+          setError("");
           console.log(data);
         }
       })
@@ -47,18 +60,14 @@ const AdminLoginForm = () => {
 
     switch (property) {
       case "email":
-        setAdminInfo({ ...adminInfo, email: e.target.value });
-        break;
-
-      case "password":
-        setAdminInfo({ ...adminInfo, password: e.target.value });
+        setUserInfo({ ...userInfo, email: e.target.value });
         break;
     }
   };
 
   return (
     <div className='w-full sm:min-w-[500px] sm:max-w-md'>
-      <Title text={"Admin login"} />
+      <Title text={"Reset password"} />
 
       {loading ? (
         <div>Loading...</div>
@@ -72,14 +81,7 @@ const AdminLoginForm = () => {
               text={"Email"}
               isRequired={true}
               onChange={handleChange}
-            />
-            <FormInput
-              label={"Password"}
-              input={"password"}
-              id={"password"}
-              text={"Password"}
-              isRequired={true}
-              onChange={handleChange}
+              message={"Enter your email to reset password."}
             />
           </div>
 
@@ -90,12 +92,25 @@ const AdminLoginForm = () => {
           )}
 
           <div className='flex justify-center mt-10'>
-            <ButtonIndex.EnterBtn text={"Login"} />
+            <ButtonIndex.EnterBtn text={"Reset password"} />
           </div>
         </form>
       )}
+
+      <div className='flex flex-col items-end gap-2 mt-6'>
+        <FormLink
+          text={"Already have an account? "}
+          btnText={"Log in"}
+          handleClick={handleUserLogin}
+        />
+        <FormLink
+          text={"No account? "}
+          btnText={"Create one"}
+          handleClick={handleUserSignup}
+        />
+      </div>
     </div>
   );
 };
 
-export default AdminLoginForm;
+export default UserPwdRecoveryForm;

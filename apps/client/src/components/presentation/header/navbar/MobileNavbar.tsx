@@ -1,4 +1,4 @@
-import ButtonIndex from "../../../buttons/ButtonIndex";
+import ButtonIndex from "../../buttons/ButtonIndex";
 import Brand from "./Brand";
 import BaseMenuWrapper from "./BaseMenuWrapper";
 

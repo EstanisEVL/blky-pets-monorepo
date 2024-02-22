@@ -1,5 +1,5 @@
 import { ReactElement } from "react";
-import { Product } from "../../../../interfaces/product.interface";
+import { Product } from "../../../../interfaces/interface.index";
 import ProductResult from "../../main/ProductResult";
 
 type SearchResultItemProp = {
