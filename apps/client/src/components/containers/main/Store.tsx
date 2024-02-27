@@ -1,6 +1,4 @@
-import { Suspense } from "react";
 import ButtonIndex from "../../presentation/buttons/ButtonIndex";
-import Loader from "../../presentation/loader/Loader";
 import StoreFilters from "../../presentation/main/StoreFilters";
 import StoreTitle from "../../presentation/main/StoreTitle";
 import ProductContainer from "./ProductContainer";
@@ -13,9 +11,7 @@ const Store = () => {
         <StoreFilters title={"filter"} text={"dropdown filter"} />
       </div>
 
-      <Suspense fallback={<Loader />}>
-        <ProductContainer />
-      </Suspense>
+      <ProductContainer />
 
       <div className='text-center my-8'>
         <ButtonIndex.ShowMoreBtn text={"show more"} />

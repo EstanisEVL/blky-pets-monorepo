@@ -1,15 +1,20 @@
-import { Suspense, useState } from "react";
+import { useEffect, useState } from "react";
 import CarouselArrow from "../../presentation/main/CarouselArrow";
 import CarouselBody from "../../presentation/main/CarouselBody";
 import useProducts from "../../../hooks/useProducts";
-import Loader from "../../presentation/loader/Loader";
+import { Product } from "../../../interfaces/interface.index";
 
 const MobileCarousel = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [lastIndex, setLastIndex] = useState(1);
-  const { products } = useProducts();
+  const { products, loading, error } = useProducts();
+  const [slides, setSlides] = useState<Product[] | undefined>();
 
-  const slides = products.slice(currentIndex, lastIndex);
+  useEffect(() => {
+    if (products) {
+      setSlides(products.slice(currentIndex, lastIndex));
+    }
+  }, [products, currentIndex]);
 
   const selectNewSlides = (
     startIndex: number,
@@ -24,12 +29,12 @@ const MobileCarousel = () => {
         : 0
       : condition
         ? startIndex - 1
-        : products.length - 4;
+        : products.length - 1;
 
     const nextLastIndex = next
       ? condition
         ? endIndex + 1
-        : 4
+        : 1
       : condition
         ? endIndex - 1
         : products.length;
@@ -51,9 +56,7 @@ const MobileCarousel = () => {
       <div className='flex justify-center items-center relative'>
         <CarouselArrow direction={"left"} handleClick={handlePrevSlide} />
 
-        <Suspense fallback={<Loader />}>
-          <CarouselBody slides={slides} />
-        </Suspense>
+        <CarouselBody slides={slides} loading={loading} error={error} />
 
         <CarouselArrow direction={"right"} handleClick={handleNextSlide} />
       </div>

@@ -1,15 +1,20 @@
-import { Suspense, useState } from "react";
+import { useEffect, useState } from "react";
 import CarouselArrow from "../../presentation/main/CarouselArrow";
 import CarouselBody from "../../presentation/main/CarouselBody";
 import useProducts from "../../../hooks/useProducts";
-import Loader from "../../presentation/loader/Loader";
+import { Product } from "../../../interfaces/interface.index";
 
 const DesktopCarousel = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [lastIndex, setLastIndex] = useState(4);
-  const { products } = useProducts();
+  const [slides, setSlides] = useState<Product[] | undefined>();
+  const { products, loading, error } = useProducts();
 
-  const slides = products.slice(currentIndex, lastIndex);
+  useEffect(() => {
+    if (products) {
+      setSlides(products.slice(currentIndex, lastIndex));
+    }
+  }, [products, currentIndex]);
 
   const selectNewSlides = (
     startIndex: number,
@@ -39,11 +44,15 @@ const DesktopCarousel = () => {
   };
 
   const handlePrevSlide = () => {
-    selectNewSlides(currentIndex, lastIndex, false);
+    if (slides) {
+      selectNewSlides(currentIndex, lastIndex, false);
+    }
   };
 
   const handleNextSlide = () => {
-    selectNewSlides(currentIndex, lastIndex);
+    if (slides) {
+      selectNewSlides(currentIndex, lastIndex);
+    }
   };
 
   return (
@@ -51,9 +60,7 @@ const DesktopCarousel = () => {
       <div className='flex justify-center items-center relative'>
         <CarouselArrow direction={"left"} handleClick={handlePrevSlide} />
 
-        <Suspense fallback={<Loader />}>
-          <CarouselBody slides={slides} />
-        </Suspense>
+        <CarouselBody slides={slides} loading={loading} error={error} />
 
         <CarouselArrow direction={"right"} handleClick={handleNextSlide} />
       </div>
