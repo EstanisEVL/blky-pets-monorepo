@@ -8,7 +8,7 @@ const Store = () => {
     <section id='store'>
       <div className='flex flex-col items-center sm:items-stretch sm:flex-row justify-between sm:mx-10 mt-16 font-kanit'>
         <StoreTitle title={"Our products"} text={"/ All products"} />
-        <StoreFilters title={"filter"} text={"dropdown filter"} />
+        <StoreFilters title={"filter"} text={"sort by"} />
       </div>
 
       <ProductContainer />
