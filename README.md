@@ -1,14 +1,17 @@
+<img src='https://i.ibb.co/mqhYZRD/Logo-BLKYpng.png' />
+
 # BLKY PETS - Full Stack project
 
 This project serves as a comprehensive demonstration of my skills in both frontend and backend development. The frontend is built using React.js, showcasing a user-friendly interface, while Tailwind CSS is employed to enhance the visual aesthetics. On the backend, Nest.js powers the API implementation, providing a robust and scalable server-side architecture. MongoDB is used as the database, ensuring efficient data storage and retrieval.
 
-Feel free to explore the project to experience how I seamlessly integrated those technologies.
+You can see the live project [here](https://blky-pets.vercel.app/).
 
 ## Table of Contents
 
 - [Installation](#installation)
 - [Usage](#usage)
 - [Features](#features)
+- [Upcoming features](#upcoming-features)
 - [Acknowledgments](#acknowledgments)
 - [Contact](#contact)
 - [Disclaimer](#disclaimer)
@@ -54,7 +57,7 @@ Feel free to explore the project to experience how I seamlessly integrated those
 
       Create a `.env` file in the backend folder and configure your MongoDB connection string, API keys, or any other necessary variables. You may also specify the environment by creating `.env.development`, `.env.qa`, and `.env.production` files for each environment.
 
-      ```plaintext
+      ```
       # Example .env for development
        PORT=8080
        NODE_ENV=development
@@ -72,7 +75,11 @@ Feel free to explore the project to experience how I seamlessly integrated those
 
     - **Frontend:**
 
-      Create a `.env` file in the frontend folder if needed.
+      Create a `.env` file in the frontend folder with the following variable:
+
+      ```
+      VITE_API_URL=http://localhost:yourPortNumber/api
+      ```
 
 4.  **Run the Application:**
 
@@ -139,6 +146,24 @@ Feel free to explore the project to experience how I seamlessly integrated those
   - bcrypt: for securely storing user passwords in the database.
   - nodemailer: to send emails, utilized for implementing password recovery and purchase confirmation.
   - passport: for authenticating users.
+
+#### Desktop version
+
+<img src='https://i.ibb.co/2gVDcpG/BLKY-Pets-desktop.png' />
+
+#### Mobile version
+
+<img src='https://i.ibb.co/02xHTZV/BLKY-Pets-mobile.png' />
+
+## Upcoming features
+
+- Full api docs with Swagger
+- Reset email confirmation
+- Admin dashboard
+- Animations
+- Filter options
+- Newsletter
+- Expanded site sections
 
 ## Acknowledgments
 
