@@ -1,8 +1,8 @@
 import { ReactElement } from "react";
 import { Product } from "../../../interfaces/interface.index";
 import CarouselSlide from "./CarouselSlide";
-import Loader from "../loader/Loader";
 import ErrorBox from "../error/ErrorBox";
+import SpinnerLoader from "../loaders/SpinnerLoader";
 
 type CarouselBodyPropsType = {
   slides: Product[] | undefined;
@@ -19,7 +19,7 @@ const CarouselBody = ({
     <div className='min-h-[300px] flex justify-center items-center gap-6 mb-10 mx-9'>
       {error && <ErrorBox error={error} />}
       {loading ? (
-        <Loader />
+        <SpinnerLoader />
       ) : (
         slides?.map((slide: Product) => {
           return <CarouselSlide key={slide._id} product={slide} />;

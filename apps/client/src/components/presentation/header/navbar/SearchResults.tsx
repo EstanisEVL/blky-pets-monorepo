@@ -1,8 +1,8 @@
 import { ReactElement } from "react";
 import { Product } from "../../../../interfaces/interface.index";
 import SearchResultItem from "./SearchResultItem";
-import Loader from "../../loader/Loader";
 import ErrorBar from "../../error/ErrorBar";
+import SpinnerLoader from "../../loaders/SpinnerLoader";
 
 type SearchResultsProp = {
   results: Product[];
@@ -20,7 +20,9 @@ const SearchResults = ({
       <div className='flex-col'>
         {error && <ErrorBar error={error} />}
         {loading ? (
-          <Loader />
+          <div className='min-h-[100px] flex justify-center items-center'>
+            <SpinnerLoader />
+          </div>
         ) : (
           results?.map((result) => {
             return <SearchResultItem key={result._id} result={result} />;
