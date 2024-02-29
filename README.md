@@ -149,11 +149,11 @@ You can see the live project [here](https://blky-pets.vercel.app/).
 
 #### Desktop version
 
-<img src='https://i.ibb.co/2gVDcpG/BLKY-Pets-desktop.png' />
+<img src='https://i.ibb.co/vkJPYps/BLKY-Pets-desktop.png' />
 
 #### Mobile version
 
-<img src='https://i.ibb.co/02xHTZV/BLKY-Pets-mobile.png' />
+<img src='https://i.ibb.co/NZCVbf3/BLKY-Pets-mobile.png' />
 
 ## Upcoming features
 
